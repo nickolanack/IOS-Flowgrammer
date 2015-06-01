@@ -7,54 +7,75 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FunctionalBlock.h"
 
-#import "Node.h"
-#import "FlowDevicesPanel.h"
 
 
 @class Junction;
+@class Connection;
+@class FunctionalBlock;
 
 @interface Flow : UIView
+@property (weak, nonatomic) IBOutlet UIButton *runButton;
 
 @property float delay;
 
 @property (nonatomic, readonly) bool groupSelection;
 @property (strong, nonatomic) id delegate;
 
+@property (nonatomic) bool drawCtrlPoints;
+@property (nonatomic) bool drawFrames;
 
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *description;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property bool autoSave;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *saveSpinner;
 
 -(void)run;
 -(void)setNSNumberDelay:(NSNumber *)n;
 
 
--(bool)sliceNode:(Node *)n;
+-(bool)sliceBlock:(FunctionalBlock *)n;
 
 
--(bool)insertNode:(Node *)next afterNode:(Node *)prev;
--(bool)insertNode:(Node *)n at:(Connection *)c;
--(bool)addNode:(Node *)n;
--(bool)deleteNode:(Node *)n;
--(bool)addRootNode:(Node *)n;
+-(bool)insertBlock:(FunctionalBlock *)next afterBlock:(FunctionalBlock *)prev;
+-(bool)insertBlock:(Block *)n at:(Connection *)c;
+-(bool)addBlock:(Block *)n;
+-(bool)deleteBlock:(Block *)n;
+-(bool)addRootBlock:(FunctionalBlock *)n;
 
 -(bool)addConnection:(Connection *)c;
 -(bool)deleteConnection:(Connection *)c;
 
--(void)selectNode:(Node *)n;
--(void)unselectNode:(Node *)n;
--(void)groupSelectNode:(Node *)n;
+-(void)selectNode:(Block *)n;
+-(void)unselectNode:(Block *)n;
+-(void)groupSelectNode:(Block *)n;
 
 
 -(NSArray *) getSelected;
--(NSArray *) getSelectedOffsetsFrom:(Node *)n;
+-(NSArray *) getSelectedOffsetsFrom:(Block *)n;
 
 
--(void)dragStart:(Node *)n;
--(void)drag:(Node *)n point:(CGPoint)p;
--(void)dragEnd:(Node *)n;
+-(void)dragStart:(Block *)n;
+-(void)drag:(Block *)n point:(CGPoint)p;
+-(void)dragEnd:(Block *)n;
 
 
 -(void)prepareForAutolayout;
 -(void)reactToAutolayout;
 
+
+- (UIImage *)captureView;
+
+-(NSDictionary *)save;
+-(bool)restore:(NSDictionary *)state;
+
+-(int)indexOfBlock:(Block *)block;
+-(Block *)blockAtIndex:(int)index;
+-(int)indexOfConnection:(Connection *)connection;
+-(Connection *)connectionAtIndex:(int)index;
 @end

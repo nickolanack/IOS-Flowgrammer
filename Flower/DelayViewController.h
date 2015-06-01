@@ -8,12 +8,8 @@
 
 #import "NodeViewController.h"
 
-@interface DelayViewController : NodeViewController
-@property (weak, nonatomic) IBOutlet UILabel *value;
-@property (weak, nonatomic) IBOutlet UILabel *min;
-@property (weak, nonatomic) IBOutlet UILabel *max;
-@property (weak, nonatomic) IBOutlet UIStepper *stepper;
-@property (weak, nonatomic) IBOutlet UISlider *slider;
+@interface DelayViewController : NodeViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
-- (IBAction)sliderChanged:(id)sender;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+
 @end

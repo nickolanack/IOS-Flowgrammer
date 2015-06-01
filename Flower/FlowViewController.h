@@ -7,12 +7,38 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flow.h"
-#import "Node.h"
+
+#import "NodeViewController.h"
+#import "FlowStackItem.h"
+
+@class Flow;
+@class Block;
+@class Connection;
+@class FunctionalBlock;
+
 
 @interface FlowViewController : UIViewController
 @property (strong, nonatomic) IBOutlet Flow *flow;
 - (IBAction)runClick:(id)sender;
-@property (weak, nonatomic) IBOutlet Node *start;
-@property (weak, nonatomic) IBOutlet Node *end;
+@property (weak, nonatomic) IBOutlet FunctionalBlock *start;
+@property (weak, nonatomic) IBOutlet FunctionalBlock *end;
+
+@property (weak, nonatomic) IBOutlet FlowStackItem *flowStack;
+@property (nonatomic) NSString *flowFile;
+@property (nonatomic) NSString *flowDir;
+@property (weak, nonatomic) IBOutlet UIButton *openClick;
+
+-(void)addBlockToFlow:(Block *)node;
+-(void)addBlockToFlow:(FunctionalBlock *)node atConnection:(Connection *)connection;
+-(void)displayDetailViewForNode:(Block *)node withViewController:(NodeViewController *)vc;
+-(void)displayNodeLibraryWithConnection:(Connection *) c;
+-(void)displayNodeLibraryWithPoint:(NSValue *)point;
+- (IBAction)saveClick:(id)sender;
+
+-(void)openFlow:(NSString *)file;
+
+-(NSString *)blankFlowFile;
+-(NSDictionary *)blankFlow;
+
+-(bool)writeFlow:(NSDictionary *)flow toFile:(NSString *)file;
 @end

@@ -7,10 +7,10 @@
 //
 
 #import "Connection.h"
-@class LoopNode;
+@class LoopBlock;
 
 @interface LoopConnection : Connection
 
-@property LoopNode *loopNode;
+@property LoopBlock *loopBlock;
 
 @end

@@ -10,8 +10,19 @@
 
 @implementation NodeViewController
 
-@synthesize node;
+@synthesize block, pvc;
 
 
-
+- (IBAction)onCloseClick:(id)sender {
+    
+    if(self.pvc!=nil){
+        [self.pvc dismissPopoverAnimated:true];
+    }else{
+    
+    [self dismissViewControllerAnimated:TRUE completion:^{
+        
+    }];
+    }
+ 
+}
 @end

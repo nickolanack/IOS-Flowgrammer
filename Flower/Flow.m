@@ -7,23 +7,24 @@
 //
 
 #import "Flow.h"
-#import "Node.h"
-#import "StartupNode.h"
-#import "CompletionNode.h"
+#import "FlowViewController.h"
+#import "StartupBlock.h"
+#import "CompletionBlock.h"
 #import "Junction.h"
 
 #import "Connection.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface Flow()
 
 @property JSContext *currentContext;
-@property NSMutableArray *nodes;
+@property NSMutableArray *blocks;
 @property NSMutableArray *connections;
 @property NSMutableArray *roots;
 @property bool running;
 
-@property NSMutableArray *selection;
+@property NSMutableArray *selectedBlocks;
 @property NSMutableArray *insertableConnections;
 @property Connection *hoveringOver;
 
@@ -34,6 +35,14 @@
 
 @property NSArray *autolayoutNodeOrigins;
 
+@property CGPoint nextInsertPoint;
+@property Connection *nextInsertConnection;
+
+@property UITapGestureRecognizer *flowTap;
+@property UITapGestureRecognizer *flowDoubleTap;
+
+@property bool isRestoring;
+
 
 @end
 
@@ -41,32 +50,44 @@
 
 
 
-@synthesize delegate, delay, groupSelection;
+@synthesize delegate, delay, groupSelection, drawCtrlPoints, drawFrames, autoSave, name, description;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
-
     self=[super initWithCoder:aDecoder];
-    if(self){
+    if (self) {
         
-        self.delay=1.0f;
         
-        self.nodes=[[NSMutableArray alloc] init];
-        self.connections=[[NSMutableArray alloc] init];
-        self.roots=[[NSMutableArray alloc] init];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [self addGestureRecognizer:tap];
-        
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-        [doubleTap setNumberOfTapsRequired:2];
-        [self addGestureRecognizer:doubleTap];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideEditMenu:) name:UIMenuControllerWillHideMenuNotification object:nil];
-        
+        [self configure];
         return self;
     }
     return nil;
+    
 }
+
+
+-(void)configure{
+    
+    self.autoSave=true;
+    self.delay=1.0f;
+    
+    self.blocks=[[NSMutableArray alloc] init];
+    self.connections=[[NSMutableArray alloc] init];
+    self.roots=[[NSMutableArray alloc] init];
+    
+    
+    _flowTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFlowTap:)];
+    [self addGestureRecognizer:_flowTap];
+    
+    _flowDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleFlowDoubleTap:)];
+    [_flowDoubleTap setNumberOfTapsRequired:2];
+    [self addGestureRecognizer:_flowDoubleTap];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideEditMenu:) name:UIMenuControllerWillHideMenuNotification object:nil];
+    
+    
+}
+
+
 
 
 
@@ -74,14 +95,14 @@
     self.delay=[n floatValue];
 }
 
--(void)handleTap:(UIGestureRecognizer *)gesture{
-
-    for (Node *node in self.nodes) {
-         [node setSelected:false];
-       }
+-(void)handleFlowTap:(UIGestureRecognizer *)gesture{
+    
+    for (FunctionalBlock *node in self.blocks) {
+        [node setIsSelected:false];
+        
+    }
     groupSelection=false;
     
-    //[self touch:[gesture locationInView:self] duration:0.2 color:[UIColor lightGrayColor]];
     [self clearTouch];
 }
 -(void)clearTouch{
@@ -102,7 +123,7 @@
     //[_touch.layer setBorderColor:[UIColor magentaColor].CGColor];
     //[_touch.layer setBorderWidth:1.0];
     [_touch setBackgroundColor:c];
-    [self prepareForAutolayout];
+    
     [self insertSubview:_touch atIndex:0];
     
     
@@ -112,11 +133,11 @@
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     [_touch setBackgroundColor:[UIColor clearColor]];
     [UIView commitAnimations];
-
+    
     return _touch;
 }
 
--(void)handleDoubleTap:(UIGestureRecognizer *)gesture{
+-(void)handleFlowDoubleTap:(UIGestureRecognizer *)gesture{
     CGPoint p=[gesture locationInView:self];
     
     bool hover=false;
@@ -126,13 +147,13 @@
         if(distance<0){
             hover=true;
             over=c;
-            p=[c convertPoint:c.c toView:self];
+            p=[c convertPoint:c.centerPoint toView:self];
             
             break;
         }
     }
     
-
+    
     CGRect frame;
     
     if(!hover){
@@ -147,68 +168,138 @@
     
     
     
-    UIMenuController *menuController = [UIMenuController sharedMenuController];
     
-    [menuController setMenuItems:@[[[UIMenuItem alloc] initWithTitle: hover?@"Insert Node":@"Place Node" action:@selector(handlePlaceNode)]]];
-    [menuController setTargetRect:frame inView:self];
-    // menuController.arrowDirection = UIMenuControllerArrowLeft;
-    [self becomeFirstResponder];
-    [menuController setMenuVisible:true animated:true];
-    //[self resignFirstResponder];
+    
+    _nextInsertConnection=nil;
+    if(hover){
+        _nextInsertConnection=over;
+        
+        NSArray *connectionsMenuItems=[_nextInsertConnection getTargetMenuItems];
+        
+        if(connectionsMenuItems==nil){
+            
+            UIMenuController *menuController = [UIMenuController sharedMenuController];
+            [menuController setMenuItems:@[[[UIMenuItem alloc] initWithTitle:@"Insert Block" action:@selector(handleInsertNode)]]];
+            
+            [menuController setTargetRect:frame inView:self];
+            [self becomeFirstResponder];
+            [menuController setMenuVisible:true animated:true];
+            
+        }else if(connectionsMenuItems.count){
+            
+            UIMenuController *menuController = [UIMenuController sharedMenuController];
+            [menuController setMenuItems:connectionsMenuItems];
+            [menuController setTargetRect:frame inView:self];
+            [menuController setMenuVisible:true animated:true];
+            
+        }
+        
+    }else{
+        
+        UIMenuController *menuController = [UIMenuController sharedMenuController];
+        _nextInsertPoint=p;
+        [menuController setMenuItems:@[
+                                       [[UIMenuItem alloc] initWithTitle:@"Place Block" action:@selector(handlePlaceBlock)]
+                                       
+                                       ]];
+        
+        [menuController setTargetRect:frame inView:self];
+        [self becomeFirstResponder];
+        [menuController setMenuVisible:true animated:true];
+        
+    }
+    
+    
+    
     
     
     
 }
 -(void)willHideEditMenu:(id)object{
     [self clearTouch];
+    [self clearDrag];
 }
--(void)handlePlaceNode{
+
+-(void)handlePlaceBlock{
+    
+    
+    if([self.delegate respondsToSelector:@selector(displayNodeLibraryWithPoint:)]){
+        [self.delegate performSelector:@selector(displayNodeLibraryWithPoint:) withObject:[NSValue valueWithCGPoint:_nextInsertPoint]];
+    }
+    
     NSLog(@"%s",__PRETTY_FUNCTION__);
 }
+-(void)handleInsertNode{
+    if([self.delegate respondsToSelector:@selector(displayNodeLibraryWithConnection:)]){
+        [self.delegate performSelector:@selector(displayNodeLibraryWithConnection:) withObject:_nextInsertConnection];
+    }
+    
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+}
+
 -(BOOL)canBecomeFirstResponder{
     return true;
 }
 -(void)run{
+    if(_running) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.runButton setEnabled:false];
+    });
+    _queue = dispatch_queue_create("Flow Execution Thread", 0);
+    _running=true;
     
-        _queue = dispatch_queue_create("Flow Execution Thread", 0);
-        _running=true;
-    
-        JSContext *context = [[JSContext alloc] initWithVirtualMachine:[[JSVirtualMachine alloc] init]];
-        _currentContext=context;
-        [context setExceptionHandler:^(JSContext * context, JSValue *value) {
-
-            NSLog(@"Exception Handler %s %@", __PRETTY_FUNCTION__, value);
-
-        }];
+    JSContext *context = [[JSContext alloc] initWithVirtualMachine:[[JSVirtualMachine alloc] init]];
+    _currentContext=context;
+    [context setExceptionHandler:^(JSContext * context, JSValue *value) {
         
-        for (Node *start in self.roots) {
-            dispatch_async(_queue, ^{
-                [self execute:start];
-            });
-        }
+        NSLog(@"Exception Handler %s %@", __PRETTY_FUNCTION__, value);
         
+    }];
     
+    for (FunctionalBlock *start in self.roots) {
+        dispatch_async(_queue, ^{
+            [self execute:start];
+        });
+    }
 }
 
--(void)execute:(Node *)node{
-
+-(void)execute:(FunctionalBlock *)block{
+    [self execute:block withPreviousBlock:nil];
+}
+-(void)execute:(FunctionalBlock *)block withPreviousBlock:(FunctionalBlock *)prev{
+    
     if(!_running)return;
     
     @try {
         
-        [node prepareToExecute]; //any setup.
-        [node execute:_currentContext];
-        [node afterExecution]; //any cleanup.
+        [block willEvaluate]; //any setup.
+        [block blockEvaluateContext:_currentContext withPreviousBlock:prev];
+        [block didEvaluate]; //any cleanup.
+        
+        
+        
         
         //chain execution.
-        if(node.output!=nil&&node.output.next!=nil){
+        [block selectNextConnection:self.delay-0.1];
+        FunctionalBlock *next=[block nextExecutionBlock];
+        if(next!=nil){
+            
             double delayInSeconds = self.delay;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            //dispatch_async(dispatch_get_main_queue(), ^{
             dispatch_after(popTime, _queue, ^(void){
-                [self execute:[node nextExecutionNode]];
+                [self execute:next withPreviousBlock:block];
             });
+            //});
+        }else{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.runButton setEnabled:true];
+            });
+            
+            _running=false;
         }
-
+        
     }
     @catch (NSException *exception) {
         NSLog(@"Caught Exception %s: %@",__PRETTY_FUNCTION__,exception);
@@ -219,60 +310,57 @@
 }
 
 
--(void)selectNode:(Node *)n{
-
-
-    NSArray *nodes=[n connectedNodes];
+-(void)selectNode:(FunctionalBlock *)n{
+    
+    
+    NSArray *nodes=[n getConnectedBlocks];
     bool nextToDoubleSelection=false;
-    for (Node *next in nodes) {
-        if(next.doubleSelected)nextToDoubleSelection=true;
+    for (FunctionalBlock *next in nodes) {
+        if(next.isDoubleSelected)nextToDoubleSelection=true;
     }
     
     if(nextToDoubleSelection){
-        [n setDoubleSelected:true];
-        [_selection addObject:n];
+        [n setIsDoubleSelected:true];
+        [_selectedBlocks addObject:n];
     }else{
-        for (Node *node in self.nodes) {
-            if(n!=node)[node setSelected:false];
+        for (FunctionalBlock *node in self.blocks) {
+            if(n!=node)[node setIsSelected:false];
         }
         groupSelection=false;
     }
     
     //[self dragEnd:nil];
-
+    
 }
 
--(void)unselectNode:(Node *)n{
+-(void)unselectNode:(FunctionalBlock *)n{
     if(!groupSelection)return;
-    [_selection removeObject:n];
+    [_selectedBlocks removeObject:n];
     
     //[self dragEnd:nil];
     
 }
 
 
--(void)dragStart:(Node *)n{
-
-    if(!groupSelection&&n.selected&&!n.doubleSelected){
-        Node *next=[n nextNode];
-        Node *prev=[n previousNode];
-        if(next==nil&&prev==nil){
-
+-(void)dragStart:(FunctionalBlock *)n{
+    
+    if(!groupSelection&&n.isSelected&&!n.isDoubleSelected){
+        if([n isAvailableForInsertion]){
+            
             _insertableConnections=[[NSMutableArray alloc] init];
             
             for(Connection *c in self.connections) {
-                if([c drawInsertArea:n]){
+                if([c canInsertBlock:n]&&[c drawInsertArea:n]){
                     [_insertableConnections addObject:c];
                 }
             }
             
         }
     }
-
 }
 
--(void)drag:(Node *)n point:(CGPoint)p{
-
+-(void)drag:(FunctionalBlock *)n point:(CGPoint)p{
+    
     if(_insertableConnections!=nil){
         for(Connection *c in _insertableConnections) {
             float distance=[c distanceToHoverArea:[c convertPoint:p fromView:self]];
@@ -304,10 +392,14 @@
     
 }
 
--(void)dragEnd:(Node *)n{
+-(void)clearDrag{
+    _hoveringOver=nil;
+    [self dragEnd:nil];
+}
+-(void)dragEnd:(FunctionalBlock *)n{
     
     if(_insertableConnections!=nil){
-    
+        
         for(Connection *c in _insertableConnections) {
             [c clearInsertArea:n];
         }
@@ -316,56 +408,57 @@
         
         if(_hoveringOver&&n!=nil){
             [_hoveringOver clearHoverArea:n];
-            [self prepareForAutolayout];
-            [self insertNode:n at:_hoveringOver];
+            
+            [self insertBlock:n at:_hoveringOver];
             _hoveringOver=nil;
-        
+            
         }
     }
-    //[self prepareForAutolayout];
     
 }
 
--(void)groupSelectNode:(Node *)n{
+-(void)groupSelectNode:(FunctionalBlock *)n{
     if(groupSelection)return;
-    for (Node *node in self.nodes) {
-        if(node!=n)[node setSelected:false];
+    for (FunctionalBlock *node in self.blocks) {
+        if(node!=n)[node setIsSelected:false];
     }
-    _selection=[[NSMutableArray alloc] initWithObjects:n, nil];
+    _selectedBlocks=[[NSMutableArray alloc] initWithObjects:n, nil];
     groupSelection=true;
-   
-
+    
+    
 }
 
 
 -(NSArray *) getSelected{
     if(!groupSelection)return nil;
-    return [[NSArray alloc] initWithArray:_selection];
+    return [[NSArray alloc] initWithArray:_selectedBlocks];
 }
--(NSArray *) getSelectedOffsetsFrom:(Node *)n{
+-(NSArray *) getSelectedOffsetsFrom:(Block *)n{
     if(!groupSelection)return nil;
     NSMutableArray *points = [[NSMutableArray alloc] init];
     
-    for (Node *node in _selection) {
+    for (FunctionalBlock *node in _selectedBlocks) {
         [points addObject:[NSValue valueWithCGPoint:CGPointMake(node.frame.origin.x-n.frame.origin.x, node.frame.origin.y-n.frame.origin.y)]];
     }
-
+    
     return [[NSArray alloc] initWithArray:points];
 }
 
 
--(bool)addNode:(Node *)n;{
-
-    if([self.nodes indexOfObject:n]==NSNotFound)[self.nodes addObject:n];
+-(bool)addBlock:(Block *)n;{
+    
+    if([self.blocks indexOfObject:n]==NSNotFound)[self.blocks addObject:n];
     [n setFlow:self];
-    [n setDelegate:self.delegate];
+    [n setFlowViewController:self.delegate];
     
     if(n.superview!=self){
-    
+        
         //todo: calculate position
+        
         [self addSubview:n];
-    
+        
     }
+    
     
     return true;
 }
@@ -377,6 +470,8 @@
         [self insertSubview:c atIndex:0];
     }
     [c setDelegate:self.delegate];
+    [c setDrawCtrlPoints:self.drawCtrlPoints];
+    [c setDrawFrame:self.drawFrames];
     
     return true;
 }
@@ -385,52 +480,69 @@
     
     [self.connections removeObject:c];
     [c removeFromSuperview];
-    [c setNext:nil];
-    [c setPrevious:nil];
+    [c deleteConnectionFromFlow:self]; //notification for self cleanup.
+    [c setDestination:nil];
+    [c setSource:nil];
     [c setDelegate:nil];
     
-    [c deleteConnectionFromFlow:self]; //notification for self cleanup.
     
     return true;
 }
 
--(bool)insertNode:(Node *)n at:(Connection *)c{
-
-    Node *next=c.next;
+-(bool)insertBlock:(Block *)n at:(Connection *)c{
     
-    [c connectNode:c.previous toNode:n];
+    Block *next=c.destination;
     
-    [self addNode:n];
+    if(c.source!=nil){
+        [c connectNode:c.source toNode:n];
+    }
     
-    Connection *nextCon=[c getNextConnectionForSplit];
-    [self addConnection:nextCon];
-   
-    [nextCon connectNode:n toNode:next];
+    [self addBlock:n];
     
+   /*
+    if(!_isRestoring){
+        CGPoint center=c.centerPoint;
+        center=[self convertPoint:center fromView:c];
+        [n moveCenterToPoint:center];
+    }
+    */
+    
+    if(next!=nil){
+        Connection *nextCon;
+        if(c.source==nil){
+            nextCon=c;
+        }else{
+            nextCon=[c getNextConnectionForSplit];
+            [self addConnection:nextCon];
+        }
+        
+        [nextCon connectNode:n toNode:next];
+        [nextCon needsUpdate];
+    }
     
     [c needsUpdate];
-    [nextCon needsUpdate];
+    
     
     
     
     return true;
-
+    
 }
 
 
 
 
 
--(bool)insertNode:(Node *)next afterNode:(Node *)prev{
+-(bool)insertBlock:(FunctionalBlock *)next afterBlock:(FunctionalBlock *)prev{
     
     if(prev==nil)@throw [[NSException alloc] initWithName:@"Insert After Null" reason:@"Expected parent node to be a valid node" userInfo:nil];
-    if([self.nodes indexOfObject:prev]==NSNotFound)@throw [[NSException alloc] initWithName:@"Insert Unkown Node" reason:@"Expected parent node to be in the current flow" userInfo:nil];
-
-    Connection *c=prev.output;
+    if([self.blocks indexOfObject:prev]==NSNotFound)@throw [[NSException alloc] initWithName:@"Insert Unkown Node" reason:@"Expected parent node to be in the current flow" userInfo:nil];
     
-    if(c!=nil)return [self insertNode:next at:c];
+    Connection *c=prev.primaryOutputConnection;
     
-    [self addNode:next];
+    if(c!=nil)return [self insertBlock:next at:c];
+    
+    [self addBlock:next];
     
     c=[[Connection alloc] init];
     [self addConnection:c];
@@ -440,42 +552,47 @@
     return true;
 }
 
--(bool)addRootNode:(Node *)n{
-
+-(bool)addRootBlock:(FunctionalBlock *)n{
+    [self clearDrag];
     if([self.roots indexOfObject:n]==NSNotFound)[self.roots addObject:n];
-    [self addNode:n];
+    [self addBlock:n];
     return true;
 }
 
--(bool)deleteNode:(Node *)n{
+-(bool)deleteBlock:(Block *)n{
     
-    if([self.nodes indexOfObject:n]!=NSNotFound)[self.nodes removeObject:n];
-    n.input=nil;
-    n.output=nil;
+    if([self.blocks indexOfObject:n]!=NSNotFound)[self.blocks removeObject:n];
+    
+    
+    
+    
+    
+    [n deleteBlockFromFlow:self]; //notification for self cleanup. loops can remove thier loopout
+    
     [n setFlow:nil];
-    [n setDelegate:nil];
+    [n setFlowViewController:nil];
     if(n.superview==self)[n removeFromSuperview];
-    [n deleteNodeFromFlow:self]; //notification for self cleanup.
     return true;
+    
 }
 
 
-
-
-
-
--(bool)sliceNode:(Node *)n{
-    [self prepareForAutolayout];
-    if([n isKindOfClass:[StartupNode class]])return false;
-    if([n isKindOfClass:[CompletionNode class]])return false;
-
-    Node *next=[n nextNode];
-    Node *previous=[n previousNode];;
+-(bool)sliceBlock:(FunctionalBlock *)n{
     
-  
+    if([n isKindOfClass:[StartupBlock class]])return false;
+    if([n isKindOfClass:[CompletionBlock class]])return false;
+    
+    FunctionalBlock *next=[n getNextBlock];
+    FunctionalBlock *previous=[n getPreviousBlock];;
+    
+    
     if(previous&&next){
-        [self deleteConnection:n.output];
-        [n.input connectNode:previous toNode:next];
+        Connection *c=n.primaryInputConnection;
+        [c setCenterAlignOffsetDestination:n.primaryOutputConnection.centerAlignOffsetDestination];
+        [self deleteConnection:n.primaryOutputConnection];
+        [c connectNode:previous toNode:next];
+        [c needsUpdate];
+        
         
     }else if(previous){
         
@@ -484,50 +601,248 @@
     }
     
     
-    [n setInput:nil];
-    [n setOutput:nil];
+    [n setPrimaryInputConnection:nil];
+    [n setPrimaryOutputConnection:nil];
     
     
-    for (Node *node in self.nodes) {
-        if(n!=node)[node setSelected:false];
+    for (FunctionalBlock *node in self.blocks) {
+        if(n!=node)[node setIsSelected:false];
     }
-
+    
     return true;
 }
 
 
 
 -(void)prepareForAutolayout{
-    
-    NSMutableArray *no=[[NSMutableArray alloc] init];
-    for (Node *n in self.nodes) {
-        [no addObject:[NSValue valueWithCGPoint:CGPointMake(n.frame.origin.x, n.frame.origin.y)]];
-    }
-    
-    _autolayoutNodeOrigins=[[NSArray alloc] initWithArray:no];
-    
+    /*
+     NSMutableArray *no=[[NSMutableArray alloc] init];
+     for (LogicBlock *n in self.blocks) {
+     [no addObject:[NSValue valueWithCGPoint:CGPointMake(n.frame.origin.x, n.frame.origin.y)]];
+     }
+     
+     _autolayoutNodeOrigins=[[NSArray alloc] initWithArray:no];
+     */
 }
 -(void)reactToAutolayout{
     
-   // double delayInSeconds = 0.0;
-   //dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-   // dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        if(_autolayoutNodeOrigins==nil)return;
-        int i=0;
-        for (NSValue *v in _autolayoutNodeOrigins) {
-            CGPoint p=[v CGPointValue];
-            Node *c=[self.nodes objectAtIndex:i];
-            CGPoint current=c.frame.origin;
-            [c moveToPoint:p];
-            i++;
-        }
-        _autolayoutNodeOrigins=nil;
-   // });
+    // double delayInSeconds = 0.0;
+    //dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    // dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     
+    /*
+     if(_autolayoutNodeOrigins==nil){
+     return;
+     }
+     int i=0;
+     for (NSValue *v in _autolayoutNodeOrigins) {
+     CGPoint p=[v CGPointValue];
+     LogicBlock *c=[self.blocks objectAtIndex:i];
+     //CGPoint current=c.frame.origin;
+     [c moveToPoint:p];
+     i++;
+     }
+     _autolayoutNodeOrigins=nil;
+     // });
+     
+     */
     
-   
     
 }
 
+-(void)setDrawCtrlPoints:(bool)d{
+    drawCtrlPoints=d;
+    for (Connection *c in self.connections) {
+        [c setDrawCtrlPoints:d];
+        [c needsUpdate];
+    }
+    
+}
+
+-(void)setDrawFrames:(bool)d{
+    drawFrames=d;
+    for (Connection *c in self.connections) {
+        [c setDrawFrame:d];
+        [c needsUpdate];
+    }
+    
+}
+
+-(int)indexInBundle{
+    return 6;
+}
+
+- (UIImage *)captureView {
+    
+    //hide controls if needed
+    CGRect rect = [self bounds];
+    
+    
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.layer renderInContext:context];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return img;
+    
+}
+-(int)indexOfBlock:(Block *)block{
+    return [self.blocks indexOfObject:block];
+    
+}
+-(Block *)blockAtIndex:(int)index{
+    if(self.blocks.count>index)return [self.blocks objectAtIndex:index];
+    return nil;
+}
+-(int)indexOfConnection:(Connection *)connection{
+    return [self.connections indexOfObject:connection];
+    
+}
+-(Connection *)connectionAtIndex:(int)index{
+    if(self.connections.count>index)return [self.connections objectAtIndex:index];
+    return nil;
+}
+-(NSDictionary *)save{
+    //[self.saveSpinner setHidden:false];
+     dispatch_async(dispatch_get_main_queue(), ^{
+         [self.saveSpinner startAnimating];
+     });
+    
+    NSMutableArray *connections=[[NSMutableArray alloc] init];
+    for (Connection *c in self.connections) {
+        NSDictionary *cdata=[c save];
+        if(cdata!=nil)[connections addObject:cdata];
+    }
+    
+    
+    NSMutableArray *blocks=[[NSMutableArray alloc] init];
+    for (Block *b in self.blocks) {
+        [blocks addObject:[b save]];
+    }
+    
+    NSDictionary *d=@{
+             
+             @"connections":connections,
+             @"blocks":blocks,
+             @"size":@[[NSNumber numberWithInt:self.frame.size.width], [NSNumber numberWithInt:self.frame.size.height]],
+             @"delay":[NSNumber numberWithFloat:self.delay],
+             @"name":self.name!=nil?self.name:@"My Flow",
+             @"description":self.description!=nil?self.description:@"my first flowgram"
+             
+        };
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.saveSpinner stopAnimating];
+    });
+  
+    //[self.saveSpinner setHidden:true];
+    return d;
+}
+
+-(bool)restore:(NSDictionary *)state{
+    //NSLog(@"%@",state);
+    _isRestoring=true;
+    
+    Block *s=[self.blocks objectAtIndex:0];
+    [s moveCenterToPoint:CGPointMake(100, 100)];
+    Block *e=[self.blocks objectAtIndex:1];
+    
+    [e moveCenterToPoint:CGPointMake(self.frame.size.width-100, self.frame.size.height-100)];
+    
+    NSArray *blockStates=(NSArray *)[state objectForKey:@"blocks"];
+    for(int i=0;i<blockStates.count;i++){
+        NSDictionary *blockState=[blockStates objectAtIndex:i];
+        Block *current;
+        if(self.blocks.count>i)current=[self.blocks objectAtIndex:i];
+        if(current==nil){
+            NSArray *bundle=[blockState objectForKey:@"bundle"];
+            if(bundle!=nil){
+                NSString *bundleName=(NSString *)[bundle objectAtIndex:0];
+                int index=[(NSNumber *)[bundle objectAtIndex:1] integerValue];
+                current=[Block InstantiateWithBundle:bundleName andIndex:index andOwner:self.delegate];
+                
+                [self addBlock:current];
+                
+            }else{
+                
+               // @throw [[NSException alloc] initWithName:@"Expected to find bundle" reason:@"Encountered a block state without bundle info" userInfo:nil];
+            }
+        }
+    }
+    
+    
+    for(int i=0;i<blockStates.count;i++){
+        NSDictionary *blockState=[blockStates objectAtIndex:i];
+        Block *current;
+        if(self.blocks.count>i)current=[self.blocks objectAtIndex:i];
+        if(current!=nil){
+            [current restore:blockState];
+        }else{
+            
+        }
+    }
+    
+    NSMutableArray *connectionStates=[[NSMutableArray alloc] initWithArray:(NSArray *)[state objectForKey:@"connections"]];
+    NSMutableArray *removed=[[NSMutableArray alloc] init];
+    while(connectionStates.count){
+        for(int i=0;i<connectionStates.count;i++){
+            NSDictionary *connectionState=[connectionStates objectAtIndex:i];
+            int a=[((NSNumber *)[connectionState objectForKey:@"source"]) integerValue];
+            int b=[((NSNumber *)[connectionState objectForKey:@"destination"]) integerValue];
+            
+            if(a!=NSNotFound&&b!=NSNotFound){
+                Block *ab=[self blockAtIndex:a];
+                Block *bb=[self blockAtIndex:b];
+                if([ab isKindOfClass:[FunctionalBlock class]]&&[bb isKindOfClass:[FunctionalBlock class]]){
+                    FunctionalBlock *la=(FunctionalBlock *)ab;
+                    if([la getNextBlock]!=bb){
+                        if(la.primaryOutputConnection!=nil){
+                            
+                            [removed addObject:connectionState];
+                            [self insertBlock:(FunctionalBlock *)bb at:la.primaryOutputConnection];
+                        }
+                    }else{
+                        [removed addObject:connectionState];
+                    }
+                }
+            }
+        }
+        
+        for (NSDictionary *d in removed) {
+            [connectionStates removeObject:d];
+        }
+    }
+    
+    NSString *strName=[state objectForKey:@"name"];
+    if(strName!=nil){
+        self.name=strName;
+    }else{
+        self.name=@"My Flow";
+    }
+
+    
+    NSString *strDesc=[state objectForKey:@"description"];
+    if(strDesc!=nil){
+        self.description=strDesc;
+    }else{
+        self.description=@"my first flowgram";
+    }
+
+    _isRestoring=false;
+    return true;
+}
+
+-(void)setName:(NSString *)n{
+    name=n;
+    self.nameLabel.text=n;
+}
+
+-(void)setDescription:(NSString *)d{
+    description=d;
+    self.descriptionLabel.text=d;
+}
 
 @end

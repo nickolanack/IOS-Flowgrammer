@@ -14,5 +14,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *editor;
-- (IBAction)onCloseClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *outputConnectionLabel;
+
+
 @end

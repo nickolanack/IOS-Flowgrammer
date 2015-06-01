@@ -7,15 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Flow.h"
 
 @interface FlowOptionsViewController : UIViewController
 
-@property (strong, nonatomic) id delegate;
+@property (strong, nonatomic) Flow *flow;
 @property (weak, nonatomic) IBOutlet UISwitch *delayToggle;
 @property (weak, nonatomic) IBOutlet UISlider *delaySlider;
 - (IBAction)didToggleDelay:(id)sender;
 - (IBAction)didAlterDelay:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *sliderDelayLabel;
 - (IBAction)onCloseClick:(id)sender;
+- (IBAction)didToggleCtrlPoints:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwitch *ctrlPointToggle;
+- (IBAction)didToggleFrames:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwitch *framesToggle;
+@property (weak, nonatomic) IBOutlet UISwitch *autoSaveToggle;
+- (IBAction)didToggleAutoSave:(id)sender;
 
 @end

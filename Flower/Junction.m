@@ -11,16 +11,9 @@
 
 @implementation Junction
 
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self.layer setCornerRadius:self.frame.size.height/2.0];
-    }
-    return self;
+-(void)configure{
+    [super configure];
+    [self.layer setCornerRadius:self.frame.size.height/2.0];
 }
-
 
 @end

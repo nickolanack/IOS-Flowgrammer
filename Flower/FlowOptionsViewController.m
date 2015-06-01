@@ -13,50 +13,24 @@
 @end
 
 @implementation FlowOptionsViewController
-@synthesize delegate;
+@synthesize flow;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)didToggleDelay:(id)sender {
     
     if(self.delayToggle.isOn){
         [self.delaySlider setEnabled:true];
-        if([self.delegate respondsToSelector:@selector(setNSNumberDelay:)]){
-            [self.delegate performSelector:@selector(setNSNumberDelay:) withObject:[NSNumber numberWithFloat:self.delaySlider.value]];
-        }
+        [self.flow setDelay:self.delaySlider.value];
     }else{
         [self.delaySlider setEnabled:false];
-        if([self.delegate respondsToSelector:@selector(setNSNumberDelay:)]){
-            [self.delegate performSelector:@selector(setNSNumberDelay:) withObject:[NSNumber numberWithFloat:0.0]];
-        }
+        [self.flow setDelay:0.0];
     }
-    
-    
-    
 }
 
 - (IBAction)didAlterDelay:(id)sender {
-    if([self.delegate respondsToSelector:@selector(setNSNumberDelay:)]){
-        [self.delegate performSelector:@selector(setNSNumberDelay:) withObject:[NSNumber numberWithFloat:self.delaySlider.value]];
+    if([self.flow respondsToSelector:@selector(setNSNumberDelay:)]){
+        [self.flow performSelector:@selector(setNSNumberDelay:) withObject:[NSNumber numberWithFloat:self.delaySlider.value]];
     }
     [self.sliderDelayLabel setText:[NSString stringWithFormat:@"%.1f",self.delaySlider.value]];
 }
@@ -65,10 +39,36 @@
     [self didToggleDelay:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    if(self.flow.delay==0.0){
+        [self.delayToggle setOn:false];
+        [self.delaySlider setValue:self.delaySlider.minimumValue];
+    }else{
+        [self.delaySlider setValue:self.flow.delay];
+    }
+    
+    [self.ctrlPointToggle setOn:self.flow.drawCtrlPoints];
+    [self.framesToggle setOn:self.flow.drawFrames];
+    [self.autoSaveToggle setOn:self.flow.autoSave];
+    
+    [self didAlterDelay:nil];
+}
+
 - (IBAction)onCloseClick:(id)sender {
- 
     [self dismissViewControllerAnimated:TRUE completion:^{
-        
     }];
+}
+
+- (IBAction)didToggleCtrlPoints:(id)sender {
+    [self.flow setDrawCtrlPoints:self.ctrlPointToggle.isOn];
+}
+- (IBAction)didToggleFrames:(id)sender {
+    [self.flow setDrawFrames:self.framesToggle.isOn];
+}
+
+
+- (IBAction)didToggleAutoSave:(id)sender {
+    [self.flow setAutoSave:self.autoSaveToggle.isOn];
 }
 @end

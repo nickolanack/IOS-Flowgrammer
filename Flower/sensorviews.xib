@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Qwd-YQ-f03" customClass="HeadingSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-fJ-qyM">
+                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="compas.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="b4Q-rQ-ytz" customClass="LocationSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-Sk-bDe">
+                    <rect key="frame" x="8" y="8" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="globe.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="905-PL-Fje" customClass="AltitudeSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-Wm-YJ5">
+                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="plane.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="3Yv-UM-W9n" customClass="SpeedSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evg-JB-8YJ">
+                    <rect key="frame" x="10" y="12" width="20" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="car.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="CMP-Mt-vy0" customClass="GyroscopeSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmN-e5-1ZQ">
+                    <rect key="frame" x="9" y="7" width="23" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="gyro.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="7yg-Lh-wf7" customClass="AccelerometerSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sU-LV-PHY">
+                    <rect key="frame" x="6" y="6" width="29" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="axis.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="8nu-Fs-NgS" customClass="MicrophoneLevelSensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7J-gW-p5U">
+                    <rect key="frame" x="8" y="6" width="25" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="mic.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="frn-U9-POt" customClass="ProximitySensor">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LyU-Vs-yDd">
+                    <rect key="frame" x="8" y="6" width="25" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="proximity.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.074322640149999994" green="0.2323210554" blue="0.3919005102" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="axis.png" width="29" height="28"/>
+        <image name="car.png" width="27" height="22"/>
+        <image name="compas.png" width="26" height="26"/>
+        <image name="globe.png" width="27" height="27"/>
+        <image name="gyro.png" width="23" height="26"/>
+        <image name="mic.png" width="15" height="29"/>
+        <image name="plane.png" width="24" height="25"/>
+        <image name="proximity.png" width="25" height="28"/>
+    </resources>
+</document>

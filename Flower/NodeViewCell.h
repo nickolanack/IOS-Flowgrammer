@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Node.h"
+#import "Block.h"
+#import "NodeLibraryViewController.h"
 
 @interface NodeViewCell : UICollectionViewCell
-@property (nonatomic) Node *node;
+@property (nonatomic) Block *node;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property id delegate;
+@property NodeLibraryViewController *nodeLibraryViewController;
 
 @end

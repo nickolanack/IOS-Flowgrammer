@@ -8,16 +8,23 @@
 
 #import "NodeLibraryViewController.h"
 #import "NodeViewCell.h"
-#import "Node.h"
+#import "VariableViewCell.h"
+#import "FunctionalBlock.h"
+#import "Variable.h"
+#import "Sensor.h"
+#import "LogicGate.h"
 
 @interface NodeLibraryViewController ()
 
-@property NSArray *library;
+@property NSArray *blocklibrary;
+@property NSArray *variablelibrary;
+@property NSArray *sensorlibrary;
+@property NSArray *logiclibrary;
 
 @end
 
 @implementation NodeLibraryViewController
-@synthesize delegate;
+@synthesize flow, connection, point;
 
 
 
@@ -35,45 +42,147 @@
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-   return [self getNodeLib].count;
+    if(collectionView==self.blockCollection){
+       return [self getNodeLib].count;
+    }else if(collectionView==self.variableCollection){
+        return [self getVariableLib].count;
+    }else if(collectionView==self.sensorCollection){
+        return [self getSensorLib].count;
+    }
+    else if(collectionView==self.logicCollection){
+        return [self getLogicLib].count;
+    }
+    return 0;
 }
 
 -(NSArray*)getNodeLib{
-    if(_library!=nil)return _library;
+    if(_blocklibrary!=nil)return _blocklibrary;
     NSBundle *b=[NSBundle mainBundle];
-    NSArray *a=[b loadNibNamed:@"IpadNodeView" owner:self.delegate options:nil];
-    _library=a;
+    NSArray *a=[b loadNibNamed:@"nodeviews" owner:self options:nil];
+    _blocklibrary=a;
+    return a;
+}
+-(NSArray*)getVariableLib{
+    if(_variablelibrary!=nil)return _variablelibrary;
+    NSBundle *b=[NSBundle mainBundle];
+    NSArray *a=[b loadNibNamed:@"variableviews" owner:self options:nil];
+    _variablelibrary=a;
     return a;
 }
 
--(Node *)getLibraryNodeForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(NSArray*)getSensorLib{
+    if(_sensorlibrary!=nil)return _sensorlibrary;
+    NSBundle *b=[NSBundle mainBundle];
+    NSArray *a=[b loadNibNamed:@"sensorviews" owner:self options:nil];
+    _sensorlibrary=a;
+    return a;
+}
+-(NSArray*)getLogicLib{
+    if(_logiclibrary!=nil)return _logiclibrary;
+    NSBundle *b=[NSBundle mainBundle];
+    NSArray *a=[b loadNibNamed:@"logicviews" owner:self options:nil];
+    _logiclibrary=a;
+    return a;
+}
+
+-(FunctionalBlock *)getLibraryNodeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     int i=indexPath.item;
-    return (Node *)[[self getNodeLib] objectAtIndex:i];
+    return (FunctionalBlock *)[[self getNodeLib] objectAtIndex:i];
 
+}
+
+-(Variable *)getLibraryVariableForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    int i=indexPath.item;
+    return (Variable *)[[self getVariableLib] objectAtIndex:i];
+    
+}
+-(Sensor *)getLibrarySensorForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    int i=indexPath.item;
+    return (Sensor *)[[self getSensorLib] objectAtIndex:i];
+    
+}
+
+-(LogicGate *)getLibraryLogicGateForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    int i=indexPath.item;
+    return (LogicGate *)[[self getLogicLib] objectAtIndex:i];
+    
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
- 
-    NodeViewCell *c=[collectionView dequeueReusableCellWithReuseIdentifier:@"nodeViewCell" forIndexPath:indexPath];
-    if(c!=nil){
-    
-        [c setNode:[self getLibraryNodeForItemAtIndexPath:indexPath]];
-        [c setDelegate:self];
-        return c;
+    if(collectionView==self.blockCollection){
+        NodeViewCell *c=[collectionView dequeueReusableCellWithReuseIdentifier:@"nodeViewCell" forIndexPath:indexPath];
+        if(c!=nil){
+            Block *block=[self getLibraryNodeForItemAtIndexPath:indexPath];
+            
+            [block setBundleName:@"nodeviews"];
+            [block setIndexInBundle:indexPath.item];
+            
+            [c setNode:block];
+            [c setNodeLibraryViewController:self];
+            return c;
+        }
+    }else if(collectionView==self.variableCollection){
+        VariableViewCell *c=[collectionView dequeueReusableCellWithReuseIdentifier:@"variableViewCell" forIndexPath:indexPath];
+        if(c!=nil){
+            
+            Block *block=[self getLibraryVariableForItemAtIndexPath:indexPath];
+            
+            [block setBundleName:@"variableviews"];
+            [block setIndexInBundle:indexPath.item];
+            
+            [c setNode:block];
+            [c setNodeLibraryViewController:self];
+            return c;
+        }
+    }else if(collectionView==self.sensorCollection){
+        NodeViewCell *c=[collectionView dequeueReusableCellWithReuseIdentifier:@"nodeViewCell" forIndexPath:indexPath];
+        if(c!=nil){
+            
+            Block *block=[self getLibrarySensorForItemAtIndexPath:indexPath];
+            
+            [block setBundleName:@"sensorviews"];
+            [block setIndexInBundle:indexPath.item];
+            
+            [c setNode:block];
+            [c setNodeLibraryViewController:self];
+            return c;
+        }
+    }else if(collectionView==self.logicCollection){
+        VariableViewCell *c=[collectionView dequeueReusableCellWithReuseIdentifier:@"variableViewCell" forIndexPath:indexPath];
+        if(c!=nil){
+            
+            Block *block=[self getLibraryLogicGateForItemAtIndexPath:indexPath];
+            
+            [block setBundleName:@"logicviews"];
+            [block setIndexInBundle:indexPath.item];
+            
+            [c setNode:block];
+            [c setNodeLibraryViewController:self];
+            return c;
+        }
     }
+    
     return nil;
 }
-- (void) selectFlowNode:(Node *)node{
-    if(self.delegate){
-        if([self.delegate respondsToSelector:@selector(addNodeToFlow:)]){
-            [self.delegate performSelector:@selector(addNodeToFlow:) withObject:node];
-            [self dismissViewControllerAnimated:TRUE completion:^{
-                
-            }];
+- (void) selectFlowNode:(Block *)node{
+    if(self.flow){
+        if(self.connection!=nil&&[node isKindOfClass:[FunctionalBlock class]]){
+            [self.flow insertBlock:((FunctionalBlock *)node) at:self.connection];
+        }else{
+            [self.flow addBlock:node];
+            if(self.point!=nil){
+                [node moveCenterToPoint:[self.point CGPointValue]];
+            }
         }
-    
+        [self dismissViewControllerAnimated:TRUE completion:^{
+                
+        }];
+
     }
 
 }

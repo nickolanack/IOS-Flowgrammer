@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "Node.h"
+#import "FunctionalBlock.h"
 
-@interface Junction : Node
+@interface Junction : FunctionalBlock
 
 @end

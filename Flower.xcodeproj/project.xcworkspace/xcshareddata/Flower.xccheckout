@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B549D657-B286-47F9-87D9-7EFD6CCA186F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Flower</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
+		<string>https://github.com/nickolanack/IOS-Flowgrammer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Flower.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nickolanack/IOS-Flowgrammer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Flower</string>
+		</dict>
+	</array>
+</dict>
+</plist>

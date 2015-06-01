@@ -7,11 +7,12 @@
 //
 
 #import "NodeViewCell.h"
+#import "Block.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation NodeViewCell
 
-@synthesize node, delegate;
+@synthesize node, nodeLibraryViewController;
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     
@@ -31,10 +32,12 @@
     
 }
 
--(void)setNode:(Node *)n{
+
+
+-(void)setNode:(Block *)n{
     
     if(node!=nil){
-        [node removeFromSuperview];
+        [node deleteBlock];
         node=nil;
     }
     
@@ -42,17 +45,23 @@
     self.label.text=node.name;
     
     [self insertSubview:n atIndex:0];
-    CGPoint p=CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0);
-    p.y+=20;
-    [n setCenter:p];
+    CGPoint p=CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0+15);
+    [n moveCenterToPoint:p];
+    //double delayInSeconds = 0.1;
+    //dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    //dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [n declarePositionChange];
+    //});
     
+    if(!node.userInteractionEnabled){
+        [self.layer setOpacity:0.5];
+    }else{
+        [self.layer setOpacity:1.0];
+    }
 }
 -(void)handleTap:(UIGestureRecognizer *)gesture{
-    
-    if(self.delegate&&[self.delegate respondsToSelector:@selector(selectFlowNode:)]){
-        [self.delegate performSelector:@selector(selectFlowNode:) withObject:node];
+    if(node.userInteractionEnabled){
+        if(self.nodeLibraryViewController!=nil)[self.nodeLibraryViewController selectFlowNode:node];
     }
-    
-
 }
 @end

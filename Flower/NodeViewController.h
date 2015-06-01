@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Node.h"
+@class Block;
 
 @interface NodeViewController : UIViewController
 
-@property (strong, nonatomic) Node *node;
-
+@property (strong, nonatomic) Block *block;
+@property UIPopoverController *pvc;
+- (IBAction)onCloseClick:(id)sender;
 @end

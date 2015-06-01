@@ -1,3 +1,4 @@
+
 //
 //  CodeViewController.m
 //  Flower
@@ -7,6 +8,7 @@
 //
 
 #import "CodeViewController.h"
+#import "FunctionalBlock.h"
 
 @interface CodeViewController ()
 
@@ -15,38 +17,33 @@
 @implementation CodeViewController
 
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    if(self.node!=nil)[self.editor setText:self.node.code];
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)onCloseClick:(id)sender {
+-(void)viewWillAppear:(BOOL)animated{
+    if(self.block!=nil&&[self.block isKindOfClass:[FunctionalBlock class]])[self.editor setText:((FunctionalBlock *)self.block).javascript];
+    [self.editor becomeFirstResponder];
+    [super viewWillAppear:animated];
     
-    if(self.node !=nil){
-        [self.node setCode:self.editor.text];
-    }
+    //[self.editor.layer setBorderWidth:1.0];
+    //[self.editor.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [self.editor.layer setCornerRadius:3.0];
     
-    [self dismissViewControllerAnimated:TRUE completion:^{
-        
-    }];
+    if(self.block){
+        if(((VariableConnection *)[((FunctionalBlock *)self.block).outputVariableConnections objectAtIndex:0]).destination!=nil){
+            
+        }else{
+            self.outputConnectionLabel.text=[NSString stringWithFormat:@"//%@ //no output connection",self.outputConnectionLabel.text];
+            [self.outputConnectionLabel setTextColor:[UIColor lightGrayColor]];
+        }
+    }
 }
+-(void)viewWillDisappear:(BOOL)animated{
+
+    if(self.block!=nil&&[self.block isKindOfClass:[FunctionalBlock class]]){
+        [((FunctionalBlock *)self.block) setJavascript:self.editor.text];
+    }
+    [super viewWillDisappear:animated];
+
+    
+}
+
+
 @end
