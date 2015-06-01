@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[Node touchesEnded:withEvent:]:Node.m">
+      </ContextState>
+      <ContextState
+         contextName = "__31-[Node touchesEnded:withEvent:]_block_invoke:Node.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "c">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
