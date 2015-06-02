@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "Junction.h"
+#import "FunctionalBlock.h"
 
-@interface StartupBlock : Junction
+@interface ThreadStartBlock : FunctionalBlock
 
 
 -(void)run;

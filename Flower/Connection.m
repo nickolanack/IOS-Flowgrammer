@@ -8,7 +8,7 @@
 
 #import "Connection.h"
 #import "ProcessorBlock.h"
-#import "Junction.h"
+#import "ThreadStartBlock.h"
 #import "FlowView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -208,8 +208,8 @@
         
         return true;
     }else{
-        if([nodeA isKindOfClass:[Junction class]]&&nodeB==nil){
-            [(Junction *)nodeA setPrimaryOutputConnection:self];
+        if([nodeA isKindOfClass:[ThreadStartBlock class]]&&nodeB==nil){
+            [(ThreadStartBlock *)nodeA setPrimaryOutputConnection:self];
             [self setSource:nodeA];
             return true;
         }

@@ -8,9 +8,9 @@
 
 #import "FlowView.h"
 #import "FlowViewController.h"
-#import "StartupBlock.h"
-#import "CompletionBlock.h"
-#import "Junction.h"
+#import "ThreadStartBlock.h"
+#import "ThreadEndBlock.h"
+
 
 #import "Connection.h"
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -244,7 +244,7 @@
 }
 -(void)run{
     
-    for (StartupBlock *start in self.roots) {
+    for (ThreadStartBlock *start in self.roots) {
         [start run];
     }
     
@@ -392,8 +392,8 @@
     
     if([self.blocks indexOfObject:n]==NSNotFound){
         [self.blocks addObject:n];
-        if([n isKindOfClass:[StartupBlock class]]){
-            return [self addRootBlock:(StartupBlock *)n];
+        if([n isKindOfClass:[ThreadStartBlock class]]){
+            return [self addRootBlock:(ThreadStartBlock *)n];
         }
     }
     [n setFlow:self];
@@ -467,8 +467,8 @@
 
 -(bool)sliceBlock:(FunctionalBlock *)n{
     
-    if([n isKindOfClass:[StartupBlock class]])return false;
-    if([n isKindOfClass:[CompletionBlock class]])return false;
+    if([n isKindOfClass:[ThreadStartBlock class]])return false;
+    if([n isKindOfClass:[ThreadEndBlock class]])return false;
     
     FunctionalBlock *next=[n getNextBlock];
     FunctionalBlock *previous=[n getPreviousBlock];;

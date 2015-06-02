@@ -10,7 +10,7 @@
 #import "Flowutils.h"
 #import "Block.h"
 #import "Connection.h"
-#import "StartupBlock.h"
+#import "ThreadStartBlock.h"
 
 
 @interface FlowerTests : XCTestCase
@@ -107,7 +107,7 @@
     
     [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"blocks"]];
     
-    StartupBlock *start=(StartupBlock *)[blocks objectAtIndex:0];
+    ThreadStartBlock *start=(ThreadStartBlock *)[blocks objectAtIndex:0];
     [start run];
     
     

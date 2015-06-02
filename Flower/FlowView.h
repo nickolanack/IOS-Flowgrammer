@@ -11,7 +11,6 @@
 
 
 
-@class Junction;
 @class Connection;
 @class FunctionalBlock;
 

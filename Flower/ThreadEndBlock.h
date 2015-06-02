@@ -1,13 +1,13 @@
 //
-//  Junction.h
+//  CompletionNode.h
 //  Flower
 //
-//  Created by Nick Blackwell on 2/24/2014.
+//  Created by Nick Blackwell on 2/25/2014.
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
 #import "FunctionalBlock.h"
 
-@interface Junction : FunctionalBlock
+@interface ThreadEndBlock : FunctionalBlock
 
 @end
