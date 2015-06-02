@@ -1,4 +1,7 @@
 # IOS-Flowgrammer
+
+[![Build Status](https://travis-ci.org/nickolanack/IOS-Flowgrammer.svg?branch=master)](https://travis-ci.org/nickolanack/IOS-Flowgrammer)
+
 a graphical programming interface for building programs graphically using a flow diagram style programming interface
 
 this is/was a for fun project to try and create a simple visual programming interface. I was able to create some simple programs
