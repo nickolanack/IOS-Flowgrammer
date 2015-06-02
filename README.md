@@ -6,4 +6,4 @@ as well as some boolean logic simulators
 
 #Simple Logic Simulations
 ##SR Latch Example
-![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/sr-latch.png =400)
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/sr-latch.png)
