@@ -1,4 +1,4 @@
 language: objective-c
-xcode_project: IOS-Flowgrammer.xcodeproj # path to your xcodeproj folder
-xcode_scheme: IOS-FlowgrammerTests
+xcode_project: Flower.xcodeproj # path to your xcodeproj folder
+xcode_scheme: FlowerTests
 xcode_sdk: iphonesimulator8.1
