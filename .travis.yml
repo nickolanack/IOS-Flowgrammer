@@ -1,4 +1,4 @@
 language: objective-c
-xcode_project: IOS-JSONConnection.xcodeproj # path to your xcodeproj folder
-xcode_scheme: IOS-JSONConnectionTests
+xcode_project: IOS-Flowgrammer.xcodeproj # path to your xcodeproj folder
+xcode_scheme: IOS-FlowgrammerTests
 xcode_sdk: iphonesimulator8.1
