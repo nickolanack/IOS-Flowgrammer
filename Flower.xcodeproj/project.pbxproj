@@ -66,14 +66,11 @@
 		909EC4C718E5298C0003DBE9 /* FlowLibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C618E5298C0003DBE9 /* FlowLibraryCell.m */; };
 		909EC4CA18E54B2A0003DBE9 /* FlowNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C918E54B2A0003DBE9 /* FlowNameViewController.m */; };
 		90A8C5FE18C599DB00E73E79 /* nodeviews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A8C5FD18C599DB00E73E79 /* nodeviews.xib */; };
-		90CC41D31B1E010A008A87D2 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D21B1E010A008A87D2 /* .travis.yml */; };
-		90CC41D51B1E0A1D008A87D2 /* sr-latch.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D41B1E0A1D008A87D2 /* sr-latch.png */; };
-		90CC41D71B1E0E4E008A87D2 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D61B1E0E4D008A87D2 /* loop.png */; };
-		90CC41D91B1E0FB3008A87D2 /* mic-sensor.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D81B1E0FB3008A87D2 /* mic-sensor.png */; };
-		90CC41DB1B1E126F008A87D2 /* program-blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DA1B1E126F008A87D2 /* program-blocks.png */; };
-		90CC41DD1B1E127A008A87D2 /* io-program-blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */; };
-		90CC41DF1B1E1288008A87D2 /* sensors.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DE1B1E1288008A87D2 /* sensors.png */; };
-		90CC41E11B1E142A008A87D2 /* variables.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41E01B1E142A008A87D2 /* variables.png */; };
+		90CC41E91B1E289E008A87D2 /* Flowutils.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CC41E81B1E289E008A87D2 /* Flowutils.m */; };
+		90CC41ED1B1E3408008A87D2 /* 2015-06-02 000002.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */; };
+		90CC41EF1B1E3426008A87D2 /* config.txt in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41EE1B1E3426008A87D2 /* config.txt */; };
+		90CC41F11B1E4666008A87D2 /* 2015-06-02 000002.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */; };
+		90CC41F31B1E5691008A87D2 /* program.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F21B1E5691008A87D2 /* program.xib */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -91,7 +88,7 @@
 		90CFC91318BB881B00F083B1 /* FlowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91218BB881B00F083B1 /* FlowerTests.m */; };
 		90CFC91F18BB88C000F083B1 /* FunctionalBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */; };
 		90CFC92418BBA4D700F083B1 /* Junction.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92318BBA4D700F083B1 /* Junction.m */; };
-		90CFC92A18BBAF5400F083B1 /* Flow.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92918BBAF5400F083B1 /* Flow.m */; };
+		90CFC92A18BBAF5400F083B1 /* FlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92918BBAF5400F083B1 /* FlowView.m */; };
 		90CFC92D18BBB16D00F083B1 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92C18BBB16D00F083B1 /* Connection.m */; };
 		90CFC92F18BBB90000F083B1 /* play_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC92E18BBB8FF00F083B1 /* play_d.png */; };
 		90CFC93218BCF4A400F083B1 /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93118BCF4A400F083B1 /* CodeViewController.m */; };
@@ -236,6 +233,12 @@
 		90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "io-program-blocks.png"; sourceTree = "<group>"; };
 		90CC41DE1B1E1288008A87D2 /* sensors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sensors.png; sourceTree = "<group>"; };
 		90CC41E01B1E142A008A87D2 /* variables.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = variables.png; sourceTree = "<group>"; };
+		90CC41E21B1E1CC5008A87D2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		90CC41E71B1E289E008A87D2 /* Flowutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flowutils.h; sourceTree = "<group>"; };
+		90CC41E81B1E289E008A87D2 /* Flowutils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flowutils.m; sourceTree = "<group>"; };
+		90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-02 000002.flow"; sourceTree = "<group>"; };
+		90CC41EE1B1E3426008A87D2 /* config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.txt; sourceTree = "<group>"; };
+		90CC41F21B1E5691008A87D2 /* program.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = program.xib; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,8 +263,8 @@
 		90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionalBlock.m; sourceTree = "<group>"; };
 		90CFC92218BBA4D700F083B1 /* Junction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Junction.h; sourceTree = "<group>"; };
 		90CFC92318BBA4D700F083B1 /* Junction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Junction.m; sourceTree = "<group>"; };
-		90CFC92818BBAF5400F083B1 /* Flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flow.h; sourceTree = "<group>"; };
-		90CFC92918BBAF5400F083B1 /* Flow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flow.m; sourceTree = "<group>"; };
+		90CFC92818BBAF5400F083B1 /* FlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowView.h; sourceTree = "<group>"; };
+		90CFC92918BBAF5400F083B1 /* FlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowView.m; sourceTree = "<group>"; };
 		90CFC92B18BBB16D00F083B1 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		90CFC92C18BBB16D00F083B1 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		90CFC92E18BBB8FF00F083B1 /* play_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_d.png; sourceTree = "<group>"; };
@@ -503,13 +506,24 @@
 			children = (
 				90A8C5FD18C599DB00E73E79 /* nodeviews.xib */,
 				9031A3AE18C91A5700893E8E /* nodeviews.viewcontrollers.xib */,
+				90CC41F21B1E5691008A87D2 /* program.xib */,
 			);
 			name = "Nib Library";
+			sourceTree = "<group>";
+		};
+		90CC41E41B1E27D5008A87D2 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				90CC41E71B1E289E008A87D2 /* Flowutils.h */,
+				90CC41E81B1E289E008A87D2 /* Flowutils.m */,
+			);
+			name = Utilites;
 			sourceTree = "<group>";
 		};
 		90CFC8D818BB881B00F083B1 = {
 			isa = PBXGroup;
 			children = (
+				90CC41E21B1E1CC5008A87D2 /* README.md */,
 				90CC41E01B1E142A008A87D2 /* variables.png */,
 				90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */,
 				90CC41DE1B1E1288008A87D2 /* sensors.png */,
@@ -577,8 +591,9 @@
 				9009C63B18F5DC3500D9A188 /* Sensors */,
 				90CFC91C18BB885800F083B1 /* Functions */,
 				9009C63C18F5DCB500D9A188 /* Gate */,
-				90CFC92818BBAF5400F083B1 /* Flow.h */,
-				90CFC92918BBAF5400F083B1 /* Flow.m */,
+				90CFC92818BBAF5400F083B1 /* FlowView.h */,
+				90CFC92918BBAF5400F083B1 /* FlowView.m */,
+				90CC41E41B1E27D5008A87D2 /* Utilites */,
 				90CFC8F618BB881B00F083B1 /* Main_iPhone.storyboard */,
 				90CFC8F918BB881B00F083B1 /* Main_iPad.storyboard */,
 				90CFC8FC18BB881B00F083B1 /* FlowViewController.h */,
@@ -620,6 +635,8 @@
 		90CFC90D18BB881B00F083B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				90CC41EE1B1E3426008A87D2 /* config.txt */,
+				90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */,
 				90CFC90E18BB881B00F083B1 /* FlowerTests-Info.plist */,
 				90CFC90F18BB881B00F083B1 /* InfoPlist.strings */,
 			);
@@ -757,27 +774,20 @@
 				900FE8AA18D6BD3100DDFDF5 /* Morse.aiff in Resources */,
 				900FE8A718D6BD3100DDFDF5 /* Funk.aiff in Resources */,
 				902C0BCB18CA1B58008A177A /* xsm_loop.png in Resources */,
-				90CC41D91B1E0FB3008A87D2 /* mic-sensor.png in Resources */,
 				90CFC93C18BDBE1100F083B1 /* xsm_controls.png in Resources */,
-				90CC41DB1B1E126F008A87D2 /* program-blocks.png in Resources */,
 				900FE8AF18D6BD3100DDFDF5 /* Submarine.aiff in Resources */,
-				90CC41D51B1E0A1D008A87D2 /* sr-latch.png in Resources */,
 				900FE8A918D6BD3100DDFDF5 /* Hero.aiff in Resources */,
 				90D6C7A218F74EE300645E94 /* plane.png in Resources */,
 				900FE8B018D6BD3100DDFDF5 /* Tink.aiff in Resources */,
-				90CC41D71B1E0E4E008A87D2 /* loop.png in Resources */,
-				90CC41DD1B1E127A008A87D2 /* io-program-blocks.png in Resources */,
 				90D6C7B118F85CE800645E94 /* target.png in Resources */,
 				901F476C18FB1F3300E6D213 /* mic.png in Resources */,
 				9009C63E18F5EE0B00D9A188 /* sensorviews.xib in Resources */,
-				90CC41DF1B1E1288008A87D2 /* sensors.png in Resources */,
 				901F476718FB0DEE00E6D213 /* out.png in Resources */,
 				901F476518FB0C7A00E6D213 /* axis.png in Resources */,
 				90CFC93A18BD509F00F083B1 /* xsm_edit.png in Resources */,
 				90CFC8FB18BB881B00F083B1 /* Main_iPad.storyboard in Resources */,
 				900FE8A318D6BD3100DDFDF5 /* Basso.aiff in Resources */,
 				90CFC92F18BBB90000F083B1 /* play_d.png in Resources */,
-				90CC41E11B1E142A008A87D2 /* variables.png in Resources */,
 				90CFC90018BB881B00F083B1 /* Images.xcassets in Resources */,
 				900FE8AC18D6BD3100DDFDF5 /* Pop.aiff in Resources */,
 				900FE8A518D6BD3100DDFDF5 /* Bottle.aiff in Resources */,
@@ -787,14 +797,15 @@
 				9071F16618D95CEC00202A7C /* speaker.png in Resources */,
 				9031A3AF18C91A5700893E8E /* nodeviews.viewcontrollers.xib in Resources */,
 				900FE8AE18D6BD3100DDFDF5 /* Sosumi.aiff in Resources */,
+				90CC41F31B1E5691008A87D2 /* program.xib in Resources */,
 				900FE8A418D6BD3100DDFDF5 /* Blow.aiff in Resources */,
 				900FE8A818D6BD3100DDFDF5 /* Glass.aiff in Resources */,
 				90D6C7B618F865FA00645E94 /* gyro.png in Resources */,
+				90CC41F11B1E4666008A87D2 /* 2015-06-02 000002.flow in Resources */,
 				9009C64318F604DA00D9A188 /* logicviews.xib in Resources */,
 				90D6C7BA18F8675600645E94 /* globe.png in Resources */,
 				900FE8A618D6BD3100DDFDF5 /* Frog.aiff in Resources */,
 				90A8C5FE18C599DB00E73E79 /* nodeviews.xib in Resources */,
-				90CC41D31B1E010A008A87D2 /* .travis.yml in Resources */,
 				900FE8AD18D6BD3100DDFDF5 /* Purr.aiff in Resources */,
 				90D6C7A018F74EE300645E94 /* car.png in Resources */,
 				902C0BD418CBAB1F008A177A /* variableviews.xib in Resources */,
@@ -808,6 +819,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90CFC91118BB881B00F083B1 /* InfoPlist.strings in Resources */,
+				90CC41ED1B1E3408008A87D2 /* 2015-06-02 000002.flow in Resources */,
+				90CC41EF1B1E3426008A87D2 /* config.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,9 +847,10 @@
 				902B6D8E18C782D70040EB77 /* NodeLibraryViewController.m in Sources */,
 				90CFC93F18BDC37900F083B1 /* FlowOptionsViewController.m in Sources */,
 				90CFC93518BD18BC00F083B1 /* StartupBlock.m in Sources */,
-				90CFC92A18BBAF5400F083B1 /* Flow.m in Sources */,
+				90CFC92A18BBAF5400F083B1 /* FlowView.m in Sources */,
 				90CFC8F118BB881B00F083B1 /* main.m in Sources */,
 				900FE86318CD49A200DDFDF5 /* VariableConnection.m in Sources */,
+				90CC41E91B1E289E008A87D2 /* Flowutils.m in Sources */,
 				900FE89318D6BB1D00DDFDF5 /* AudioBlock.m in Sources */,
 				901F476A18FB1ADB00E6D213 /* MicrophoneLevelSensor.m in Sources */,
 				9009C64618F6050700D9A188 /* LogicGate.m in Sources */,
