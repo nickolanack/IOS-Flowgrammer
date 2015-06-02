@@ -66,6 +66,7 @@
 		909EC4C718E5298C0003DBE9 /* FlowLibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C618E5298C0003DBE9 /* FlowLibraryCell.m */; };
 		909EC4CA18E54B2A0003DBE9 /* FlowNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C918E54B2A0003DBE9 /* FlowNameViewController.m */; };
 		90A8C5FE18C599DB00E73E79 /* nodeviews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A8C5FD18C599DB00E73E79 /* nodeviews.xib */; };
+		90CC41D31B1E010A008A87D2 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D21B1E010A008A87D2 /* .travis.yml */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -220,6 +221,7 @@
 		909EC4C818E54B2A0003DBE9 /* FlowNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowNameViewController.h; sourceTree = "<group>"; };
 		909EC4C918E54B2A0003DBE9 /* FlowNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowNameViewController.m; sourceTree = "<group>"; };
 		90A8C5FD18C599DB00E73E79 /* nodeviews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = nodeviews.xib; sourceTree = "<group>"; };
+		90CC41D21B1E010A008A87D2 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -494,6 +496,7 @@
 		90CFC8D818BB881B00F083B1 = {
 			isa = PBXGroup;
 			children = (
+				90CC41D21B1E010A008A87D2 /* .travis.yml */,
 				90CFC8EA18BB881B00F083B1 /* Flower */,
 				90CFC90C18BB881B00F083B1 /* FlowerTests */,
 				90CFC8E318BB881B00F083B1 /* Frameworks */,
@@ -763,6 +766,7 @@
 				90D6C7BA18F8675600645E94 /* globe.png in Resources */,
 				900FE8A618D6BD3100DDFDF5 /* Frog.aiff in Resources */,
 				90A8C5FE18C599DB00E73E79 /* nodeviews.xib in Resources */,
+				90CC41D31B1E010A008A87D2 /* .travis.yml in Resources */,
 				900FE8AD18D6BD3100DDFDF5 /* Purr.aiff in Resources */,
 				90D6C7A018F74EE300645E94 /* car.png in Resources */,
 				902C0BD418CBAB1F008A177A /* variableviews.xib in Resources */,
