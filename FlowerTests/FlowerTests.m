@@ -74,9 +74,16 @@
     
     
     NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
+    
+    XCTAssertEqual(2, blocks.count);
+
+    
     for (int i=0; i<blocks.count; i++) {
         XCTAssertTrue([[blocks objectAtIndex:i] isKindOfClass:[Block class]]);
     }
+    
+    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"blocks"]];
+    
     
 
     

@@ -160,8 +160,6 @@
     }
     
     FlowView *flow=c.source.flow;
-  
-    NSLog(@"test");
     
     /*
      if(!_isRestoring){

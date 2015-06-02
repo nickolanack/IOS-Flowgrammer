@@ -717,36 +717,7 @@
         }
     }
     
-    NSMutableArray *connectionStates=[[NSMutableArray alloc] initWithArray:(NSArray *)[state objectForKey:@"connections"]];
-    NSMutableArray *removed=[[NSMutableArray alloc] init];
-    while(connectionStates.count){
-        for(int i=0;i<connectionStates.count;i++){
-            NSDictionary *connectionState=[connectionStates objectAtIndex:i];
-            int a=[((NSNumber *)[connectionState objectForKey:@"source"]) integerValue];
-            int b=[((NSNumber *)[connectionState objectForKey:@"destination"]) integerValue];
-            
-            if(a!=NSNotFound&&b!=NSNotFound){
-                Block *ab=[self blockAtIndex:a];
-                Block *bb=[self blockAtIndex:b];
-                if([ab isKindOfClass:[FunctionalBlock class]]&&[bb isKindOfClass:[FunctionalBlock class]]){
-                    FunctionalBlock *la=(FunctionalBlock *)ab;
-                    if([la getNextBlock]!=bb){
-                        if(la.primaryOutputConnection!=nil){
-                            
-                            [removed addObject:connectionState];
-                            [Flowutils InsertBlock:(FunctionalBlock *)bb At:la.primaryOutputConnection];
-                        }
-                    }else{
-                        [removed addObject:connectionState];
-                    }
-                }
-            }
-        }
-        
-        for (NSDictionary *d in removed) {
-            [connectionStates removeObject:d];
-        }
-    }
+    [Flowutils ConnectFlowgramBlocks:self.blocks withConnections:[state objectForKey:@"connections"]];
     
     NSString *strName=[state objectForKey:@"name"];
     if(strName!=nil){
