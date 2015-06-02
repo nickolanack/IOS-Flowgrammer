@@ -27,3 +27,10 @@ use text variables to set the alert message, (title and description)
 use number variables to hold sensor values
 
 ![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/mic-sensor.png)
+
+##Blocks and variables
+
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/sensors.png)
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/program-blocks.png)
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/io-program-blocks.png)
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/variabls.png)
