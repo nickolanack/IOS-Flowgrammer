@@ -11,7 +11,7 @@
 
 @interface FlowLibraryCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UILabel *description;
+@property (weak, nonatomic) IBOutlet UILabel *note;
 @property (weak, nonatomic) IBOutlet UILabel *file;
 
 @property FlowLibraryViewController *flowLibraryViewController;

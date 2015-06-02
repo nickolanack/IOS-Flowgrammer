@@ -194,4 +194,12 @@
 }
 
 
++(Block *)InstantiateWithBundle:(NSString *)bundle andIndex:(int)index andOwner:(id) owner{
+    Block *b= (Block *)[[[NSBundle mainBundle] loadNibNamed:bundle owner:owner options:nil] objectAtIndex:index];
+    [b setBundleName:bundle];
+    [b setIndexInBundle:index];
+    return b;
+}
+
+
 @end

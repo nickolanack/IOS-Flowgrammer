@@ -97,13 +97,13 @@
         NSString *file=[_files objectAtIndex:indexPath.item];
         [c.file setText:file];
         [c.label setText:@"My Flow"];
-        [c.description setText:@"my first flowgram"];
+        [c.note setText:@"my first flowgram"];
         
         NSDictionary *state=[self decodeFile:file];
         if(state!=nil){
         
             [c.label setText:(NSString *)[state objectForKey:@"name"]];
-            [c.description setText:(NSString *)[state objectForKey:@"description"]];
+            [c.note setText:(NSString *)[state objectForKey:@"description"]];
             
             [c setPath:file];
             [c setFlowLibraryViewController:self];
