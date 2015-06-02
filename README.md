@@ -15,7 +15,15 @@ use boolean variables to connect logic blocks,  not, or/nor/xor/xnor, and/nand b
 #Simple Programs
 ##Print (UIAlertView) Loop Example
 
-use boolean variables to enable the loop (or an integer variable for a count loop)
+use boolean variables to enable the loop (or an number variable for a count loop)
 use text variables to set the alert message, title and description
 
 ![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/loop.png)
+
+
+#Sensors/Inputs
+##Microphone power sensor
+
+use number variables to hold sensor values
+
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/mic-sensor.png)
