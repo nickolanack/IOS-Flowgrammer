@@ -243,74 +243,12 @@
     return true;
 }
 -(void)run{
-    if(_running) return;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.runButton setEnabled:false];
-    });
-    _queue = dispatch_queue_create("Flow Execution Thread", 0);
-    _running=true;
     
-    JSContext *context = [[JSContext alloc] initWithVirtualMachine:[[JSVirtualMachine alloc] init]];
-    _currentContext=context;
-    [context setExceptionHandler:^(JSContext * context, JSValue *value) {
-        
-        NSLog(@"Exception Handler %s %@", __PRETTY_FUNCTION__, value);
-        
-    }];
-    
-    for (FunctionalBlock *start in self.roots) {
-        dispatch_async(_queue, ^{
-            [self execute:start];
-        });
+    for (StartupBlock *start in self.roots) {
+        [start run];
     }
+    
 }
-
--(void)execute:(FunctionalBlock *)block{
-    [self execute:block withPreviousBlock:nil];
-}
--(void)execute:(FunctionalBlock *)block withPreviousBlock:(FunctionalBlock *)prev{
-    
-    if(!_running)return;
-    
-    @try {
-        
-        [block willEvaluate]; //any setup.
-        [block blockEvaluateContext:_currentContext withPreviousBlock:prev];
-        [block didEvaluate]; //any cleanup.
-        
-        
-        
-        
-        //chain execution.
-        [block selectNextConnection:self.delay-0.1];
-        FunctionalBlock *next=[block nextExecutionBlock];
-        if(next!=nil){
-            
-            double delayInSeconds = self.delay;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            //dispatch_async(dispatch_get_main_queue(), ^{
-            dispatch_after(popTime, _queue, ^(void){
-                [self execute:next withPreviousBlock:block];
-            });
-            //});
-        }else{
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.runButton setEnabled:true];
-            });
-            
-            _running=false;
-        }
-        
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Caught Exception %s: %@",__PRETTY_FUNCTION__,exception);
-    }
-    @finally {
-        
-    }
-}
-
 
 -(void)selectNode:(FunctionalBlock *)n{
     

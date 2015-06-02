@@ -10,6 +10,8 @@
 #import "Flowutils.h"
 #import "Block.h"
 #import "Connection.h"
+#import "StartupBlock.h"
+
 
 @interface FlowerTests : XCTestCase
 
@@ -83,7 +85,32 @@
     }
     
     [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"blocks"]];
+    
+    
       
+}
+
+
+- (void)testRun{
+    
+    
+    NSString *blankProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000002.flow"];
+
+    
+    NSDictionary * state=[Flowutils ParseFlowgramFromFile:blankProgram];
+
+    NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
+    
+    for (int i=0; i<blocks.count; i++) {
+        XCTAssertTrue([[blocks objectAtIndex:i] isKindOfClass:[Block class]]);
+    }
+    
+    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"blocks"]];
+    
+    StartupBlock *start=(StartupBlock *)[blocks objectAtIndex:0];
+    [start run];
+    
+    
 }
 
 @end
