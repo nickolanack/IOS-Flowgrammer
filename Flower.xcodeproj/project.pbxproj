@@ -87,13 +87,12 @@
 		90CFC91118BB881B00F083B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC90F18BB881B00F083B1 /* InfoPlist.strings */; };
 		90CFC91318BB881B00F083B1 /* FlowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91218BB881B00F083B1 /* FlowerTests.m */; };
 		90CFC91F18BB88C000F083B1 /* FunctionalBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */; };
-		90CFC92418BBA4D700F083B1 /* Junction.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92318BBA4D700F083B1 /* Junction.m */; };
 		90CFC92A18BBAF5400F083B1 /* FlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92918BBAF5400F083B1 /* FlowView.m */; };
 		90CFC92D18BBB16D00F083B1 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92C18BBB16D00F083B1 /* Connection.m */; };
 		90CFC92F18BBB90000F083B1 /* play_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC92E18BBB8FF00F083B1 /* play_d.png */; };
 		90CFC93218BCF4A400F083B1 /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93118BCF4A400F083B1 /* CodeViewController.m */; };
-		90CFC93518BD18BC00F083B1 /* StartupBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93418BD18BC00F083B1 /* StartupBlock.m */; };
-		90CFC93818BD196800F083B1 /* CompletionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93718BD196800F083B1 /* CompletionBlock.m */; };
+		90CFC93518BD18BC00F083B1 /* ThreadStartBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93418BD18BC00F083B1 /* ThreadStartBlock.m */; };
+		90CFC93818BD196800F083B1 /* ThreadEndBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93718BD196800F083B1 /* ThreadEndBlock.m */; };
 		90CFC93A18BD509F00F083B1 /* xsm_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC93918BD509F00F083B1 /* xsm_edit.png */; };
 		90CFC93C18BDBE1100F083B1 /* xsm_controls.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC93B18BDBE1100F083B1 /* xsm_controls.png */; };
 		90CFC93F18BDC37900F083B1 /* FlowOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC93E18BDC37900F083B1 /* FlowOptionsViewController.m */; };
@@ -261,8 +260,6 @@
 		90CFC91218BB881B00F083B1 /* FlowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlowerTests.m; sourceTree = "<group>"; };
 		90CFC91D18BB88C000F083B1 /* FunctionalBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionalBlock.h; sourceTree = "<group>"; };
 		90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionalBlock.m; sourceTree = "<group>"; };
-		90CFC92218BBA4D700F083B1 /* Junction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Junction.h; sourceTree = "<group>"; };
-		90CFC92318BBA4D700F083B1 /* Junction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Junction.m; sourceTree = "<group>"; };
 		90CFC92818BBAF5400F083B1 /* FlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowView.h; sourceTree = "<group>"; };
 		90CFC92918BBAF5400F083B1 /* FlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowView.m; sourceTree = "<group>"; };
 		90CFC92B18BBB16D00F083B1 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
@@ -270,10 +267,10 @@
 		90CFC92E18BBB8FF00F083B1 /* play_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_d.png; sourceTree = "<group>"; };
 		90CFC93018BCF4A400F083B1 /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		90CFC93118BCF4A400F083B1 /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
-		90CFC93318BD18BC00F083B1 /* StartupBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupBlock.h; sourceTree = "<group>"; };
-		90CFC93418BD18BC00F083B1 /* StartupBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupBlock.m; sourceTree = "<group>"; };
-		90CFC93618BD196800F083B1 /* CompletionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionBlock.h; sourceTree = "<group>"; };
-		90CFC93718BD196800F083B1 /* CompletionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionBlock.m; sourceTree = "<group>"; };
+		90CFC93318BD18BC00F083B1 /* ThreadStartBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadStartBlock.h; sourceTree = "<group>"; };
+		90CFC93418BD18BC00F083B1 /* ThreadStartBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadStartBlock.m; sourceTree = "<group>"; };
+		90CFC93618BD196800F083B1 /* ThreadEndBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadEndBlock.h; sourceTree = "<group>"; };
+		90CFC93718BD196800F083B1 /* ThreadEndBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadEndBlock.m; sourceTree = "<group>"; };
 		90CFC93918BD509F00F083B1 /* xsm_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xsm_edit.png; sourceTree = "<group>"; };
 		90CFC93B18BDBE1100F083B1 /* xsm_controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xsm_controls.png; sourceTree = "<group>"; };
 		90CFC93D18BDC37900F083B1 /* FlowOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowOptionsViewController.h; sourceTree = "<group>"; };
@@ -654,12 +651,10 @@
 				900FE88618D3F4BE00DDFDF5 /* FlowBlock.m */,
 				9031A3AA18C9162600893E8E /* ScriptBlock.h */,
 				9031A3AB18C9162600893E8E /* ScriptBlock.m */,
-				90CFC92218BBA4D700F083B1 /* Junction.h */,
-				90CFC92318BBA4D700F083B1 /* Junction.m */,
-				90CFC93318BD18BC00F083B1 /* StartupBlock.h */,
-				90CFC93418BD18BC00F083B1 /* StartupBlock.m */,
-				90CFC93618BD196800F083B1 /* CompletionBlock.h */,
-				90CFC93718BD196800F083B1 /* CompletionBlock.m */,
+				90CFC93318BD18BC00F083B1 /* ThreadStartBlock.h */,
+				90CFC93418BD18BC00F083B1 /* ThreadStartBlock.m */,
+				90CFC93618BD196800F083B1 /* ThreadEndBlock.h */,
+				90CFC93718BD196800F083B1 /* ThreadEndBlock.m */,
 				901444FA18BFDB4F00867BFA /* TimedDelayBlock.h */,
 				901444FB18BFDB4F00867BFA /* TimedDelayBlock.m */,
 				901444FD18BFF6B400867BFA /* LoopBlock.h */,
@@ -846,7 +841,7 @@
 				902C0BD718CBAD0A008A177A /* ComparisonBlock.m in Sources */,
 				902B6D8E18C782D70040EB77 /* NodeLibraryViewController.m in Sources */,
 				90CFC93F18BDC37900F083B1 /* FlowOptionsViewController.m in Sources */,
-				90CFC93518BD18BC00F083B1 /* StartupBlock.m in Sources */,
+				90CFC93518BD18BC00F083B1 /* ThreadStartBlock.m in Sources */,
 				90CFC92A18BBAF5400F083B1 /* FlowView.m in Sources */,
 				90CFC8F118BB881B00F083B1 /* main.m in Sources */,
 				900FE86318CD49A200DDFDF5 /* VariableConnection.m in Sources */,
@@ -864,7 +859,7 @@
 				90D6C78718F6F80100645E94 /* OrGate.m in Sources */,
 				90CFC94618BE427600F083B1 /* EmptyContainer.m in Sources */,
 				90D6C79318F7303100645E94 /* ProximitySensor.m in Sources */,
-				90CFC93818BD196800F083B1 /* CompletionBlock.m in Sources */,
+				90CFC93818BD196800F083B1 /* ThreadEndBlock.m in Sources */,
 				90D6C78118F6EE5500645E94 /* NotGate.m in Sources */,
 				900FE88718D3F4BF00DDFDF5 /* FlowBlock.m in Sources */,
 				90CFC93218BCF4A400F083B1 /* CodeViewController.m in Sources */,
@@ -881,7 +876,6 @@
 				900FE88418D2DBE700DDFDF5 /* FlowStackItem.m in Sources */,
 				900FE88A18D41FBA00DDFDF5 /* FlowLibraryViewController.m in Sources */,
 				900FE87518D179C200DDFDF5 /* StringVariable.m in Sources */,
-				90CFC92418BBA4D700F083B1 /* Junction.m in Sources */,
 				900FE86618CD5CC900DDFDF5 /* Block.m in Sources */,
 				901444FC18BFDB4F00867BFA /* TimedDelayBlock.m in Sources */,
 				90D6C7AF18F8431200645E94 /* AccelerometerSensor.m in Sources */,
