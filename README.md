@@ -6,4 +6,15 @@ as well as some boolean logic simulators
 
 #Simple Logic Simulations
 ##SR Latch Example
+
+use boolean variables to connect logic blocks,  not, or/nor/xor/xnor, and/nand blocks. 
+
 ![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/sr-latch.png)
+
+
+#Simple Programs
+##Print (UIAlertView) Loop Example
+
+use boolean variables to enable the loop (or an integer variable for a count loop)
+
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/loop.png)
