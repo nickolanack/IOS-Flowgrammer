@@ -70,6 +70,9 @@
 		90CC41D51B1E0A1D008A87D2 /* sr-latch.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D41B1E0A1D008A87D2 /* sr-latch.png */; };
 		90CC41D71B1E0E4E008A87D2 /* loop.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D61B1E0E4D008A87D2 /* loop.png */; };
 		90CC41D91B1E0FB3008A87D2 /* mic-sensor.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41D81B1E0FB3008A87D2 /* mic-sensor.png */; };
+		90CC41DB1B1E126F008A87D2 /* program-blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DA1B1E126F008A87D2 /* program-blocks.png */; };
+		90CC41DD1B1E127A008A87D2 /* io-program-blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */; };
+		90CC41DF1B1E1288008A87D2 /* sensors.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41DE1B1E1288008A87D2 /* sensors.png */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -228,6 +231,9 @@
 		90CC41D41B1E0A1D008A87D2 /* sr-latch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sr-latch.png"; sourceTree = "<group>"; };
 		90CC41D61B1E0E4D008A87D2 /* loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loop.png; sourceTree = "<group>"; };
 		90CC41D81B1E0FB3008A87D2 /* mic-sensor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic-sensor.png"; sourceTree = "<group>"; };
+		90CC41DA1B1E126F008A87D2 /* program-blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "program-blocks.png"; sourceTree = "<group>"; };
+		90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "io-program-blocks.png"; sourceTree = "<group>"; };
+		90CC41DE1B1E1288008A87D2 /* sensors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sensors.png; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -502,6 +508,9 @@
 		90CFC8D818BB881B00F083B1 = {
 			isa = PBXGroup;
 			children = (
+				90CC41DC1B1E127A008A87D2 /* io-program-blocks.png */,
+				90CC41DE1B1E1288008A87D2 /* sensors.png */,
+				90CC41DA1B1E126F008A87D2 /* program-blocks.png */,
 				90CC41D81B1E0FB3008A87D2 /* mic-sensor.png */,
 				90CC41D61B1E0E4D008A87D2 /* loop.png */,
 				90CC41D41B1E0A1D008A87D2 /* sr-latch.png */,
@@ -747,15 +756,18 @@
 				902C0BCB18CA1B58008A177A /* xsm_loop.png in Resources */,
 				90CC41D91B1E0FB3008A87D2 /* mic-sensor.png in Resources */,
 				90CFC93C18BDBE1100F083B1 /* xsm_controls.png in Resources */,
+				90CC41DB1B1E126F008A87D2 /* program-blocks.png in Resources */,
 				900FE8AF18D6BD3100DDFDF5 /* Submarine.aiff in Resources */,
 				90CC41D51B1E0A1D008A87D2 /* sr-latch.png in Resources */,
 				900FE8A918D6BD3100DDFDF5 /* Hero.aiff in Resources */,
 				90D6C7A218F74EE300645E94 /* plane.png in Resources */,
 				900FE8B018D6BD3100DDFDF5 /* Tink.aiff in Resources */,
 				90CC41D71B1E0E4E008A87D2 /* loop.png in Resources */,
+				90CC41DD1B1E127A008A87D2 /* io-program-blocks.png in Resources */,
 				90D6C7B118F85CE800645E94 /* target.png in Resources */,
 				901F476C18FB1F3300E6D213 /* mic.png in Resources */,
 				9009C63E18F5EE0B00D9A188 /* sensorviews.xib in Resources */,
+				90CC41DF1B1E1288008A87D2 /* sensors.png in Resources */,
 				901F476718FB0DEE00E6D213 /* out.png in Resources */,
 				901F476518FB0C7A00E6D213 /* axis.png in Resources */,
 				90CFC93A18BD509F00F083B1 /* xsm_edit.png in Resources */,
