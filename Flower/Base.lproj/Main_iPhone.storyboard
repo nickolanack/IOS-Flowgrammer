@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
@@ -16,18 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-AK-oLx" customClass="ThreadEndBlock">
-                                <rect key="frame" x="210" y="477" width="30" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="end" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-Wr-Fwc">
-                                        <rect key="frame" x="0.0" y="7" width="30" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGt-qJ-IdM">
                                 <rect key="frame" x="191" y="515" width="63" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -44,18 +33,6 @@
                                     <action selector="runClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lo7-fn-OyY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sTe-KG-D1n" customClass="ThreadStartBlock">
-                                <rect key="frame" x="20" y="79" width="31" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oO-OR-DcK">
-                                        <rect key="frame" x="0.0" y="5" width="30" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EI-q8-kAs">
                                 <rect key="frame" x="127" y="515" width="51" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -70,19 +47,13 @@
                             <constraint firstItem="aA4-Cp-rLY" firstAttribute="top" secondItem="15J-zh-yye" secondAttribute="bottom" constant="20" id="2oL-FV-tG8"/>
                             <constraint firstAttribute="trailing" secondItem="15J-zh-yye" secondAttribute="trailing" constant="20" id="4kx-ck-HNa"/>
                             <constraint firstItem="aA4-Cp-rLY" firstAttribute="top" secondItem="3EI-q8-kAs" secondAttribute="bottom" constant="20" id="AG6-7C-Ysl"/>
-                            <constraint firstAttribute="bottom" secondItem="oS1-AK-oLx" secondAttribute="bottom" constant="61" id="Eyb-Il-pIr"/>
                             <constraint firstItem="IGt-qJ-IdM" firstAttribute="leading" secondItem="3EI-q8-kAs" secondAttribute="trailing" constant="16" id="H0I-ca-nIf"/>
-                            <constraint firstItem="sTe-KG-D1n" firstAttribute="top" secondItem="GaX-PC-Oqr" secondAttribute="bottom" constant="59" id="aN8-n0-L8v"/>
                             <constraint firstItem="15J-zh-yye" firstAttribute="leading" secondItem="IGt-qJ-IdM" secondAttribute="trailing" constant="8" id="eOW-nW-wkV"/>
-                            <constraint firstItem="sTe-KG-D1n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="fuI-AO-hmD"/>
-                            <constraint firstAttribute="trailing" secondItem="oS1-AK-oLx" secondAttribute="trailing" constant="80" id="p6b-RE-7mF"/>
                             <constraint firstItem="aA4-Cp-rLY" firstAttribute="top" secondItem="IGt-qJ-IdM" secondAttribute="bottom" constant="20" id="run-cd-Xwv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="end" destination="oS1-AK-oLx" id="ZAr-ro-Mzr"/>
                         <outlet property="flow" destination="kh9-bI-dsS" id="SFh-d8-YEX"/>
-                        <outlet property="start" destination="sTe-KG-D1n" id="oTi-2A-6li"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
