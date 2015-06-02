@@ -11,7 +11,7 @@
 
 @class FlowViewController;
 @class NodeViewController;
-@class Flow;
+@class FlowView;
 @interface Block : UIView
 
 @property NSString *bundleName;
@@ -20,7 +20,7 @@
 @property NSString *name;
 @property NSString *description;
 
-@property (nonatomic) Flow *flow;
+@property (nonatomic) FlowView *flow;
 @property FlowViewController *flowViewController;
 
 
@@ -43,7 +43,7 @@
 
 -(bool) isAvailableForInsertion;
 
--(void)deleteBlockFromFlow:(Flow *)f;
+-(void)deleteBlockFromFlow:(FlowView *)f;
 
 -(void)moveRelative:(CGPoint)offset;
 -(void)moveToTouch: (CGPoint)location;

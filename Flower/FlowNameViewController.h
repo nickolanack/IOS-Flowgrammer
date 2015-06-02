@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flow.h"
+#import "FlowView.h"
 
 @interface FlowNameViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionField;
 
-@property Flow *flow;
+@property FlowView *flow;
 
 @end

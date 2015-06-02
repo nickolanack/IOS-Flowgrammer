@@ -7,6 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Flowutils.h"
+#import "Block.h"
+#import "Connection.h"
 
 @interface FlowerTests : XCTestCase
 
@@ -26,10 +29,58 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testParse
 {
     XCTAssertTrue(true, @"Pass");
-    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    
+    NSDictionary * state=[Flowutils ParseFlowgramJson:@"{ "
+     "\"blocks\":[]"
+     "}"];
+    
+    XCTAssertTrue([state objectForKey:@"blocks"]!=nil);
+    
+    NSString *blankProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000002.flow"];
+    
+    NSError *error;
+    NSArray *dir=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[NSBundle mainBundle] bundlePath]  error:&error];
+    NSLog(@"%@", dir);
+    
+    
+    state=[Flowutils ParseFlowgramFromFile:blankProgram];
+    
+    XCTAssertTrue([state objectForKey:@"blocks"]!=nil);
+
+    
+}
+
+- (void)testLoad{
+
+    
+    NSString *blankProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000002.flow"];
+    
+    NSError *error;
+    NSArray *dir=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[[NSBundle mainBundle] bundlePath]  error:&error];
+    NSLog(@"%@", dir);
+    
+    
+    NSDictionary * state=[Flowutils ParseFlowgramFromFile:blankProgram];
+    
+    XCTAssertTrue([state objectForKey:@"blocks"]!=nil);
+    XCTAssertEqual(2, [((NSArray *)[state objectForKey:@"blocks"]) count]);
+    
+
+    XCTAssertTrue([state objectForKey:@"connections"]!=nil);
+    XCTAssertEqual(1, [((NSArray *)[state objectForKey:@"connections"]) count]);
+    
+    
+    NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
+    for (int i=0; i<blocks.count; i++) {
+        XCTAssertTrue([[blocks objectAtIndex:i] isKindOfClass:[Block class]]);
+    }
+    
+
+    
+    
 }
 
 @end

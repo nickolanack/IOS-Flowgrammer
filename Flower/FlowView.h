@@ -15,7 +15,7 @@
 @class Connection;
 @class FunctionalBlock;
 
-@interface Flow : UIView
+@interface FlowView : UIView
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
 
 @property float delay;
@@ -41,12 +41,9 @@
 
 -(bool)sliceBlock:(FunctionalBlock *)n;
 
-
--(bool)insertBlock:(FunctionalBlock *)next afterBlock:(FunctionalBlock *)prev;
--(bool)insertBlock:(Block *)n at:(Connection *)c;
 -(bool)addBlock:(Block *)n;
 -(bool)deleteBlock:(Block *)n;
--(bool)addRootBlock:(FunctionalBlock *)n;
+
 
 -(bool)addConnection:(Connection *)c;
 -(bool)deleteConnection:(Connection *)c;

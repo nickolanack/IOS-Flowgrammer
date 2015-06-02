@@ -11,17 +11,16 @@
 #import "NodeViewController.h"
 #import "FlowStackItem.h"
 
-@class Flow;
+@class FlowView;
 @class Block;
 @class Connection;
 @class FunctionalBlock;
 
 
 @interface FlowViewController : UIViewController
-@property (strong, nonatomic) IBOutlet Flow *flow;
+@property (strong, nonatomic) IBOutlet FlowView *flow;
 - (IBAction)runClick:(id)sender;
-@property (weak, nonatomic) IBOutlet FunctionalBlock *start;
-@property (weak, nonatomic) IBOutlet FunctionalBlock *end;
+
 
 @property (weak, nonatomic) IBOutlet FlowStackItem *flowStack;
 @property (nonatomic) NSString *flowFile;

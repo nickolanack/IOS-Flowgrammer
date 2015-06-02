@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 };
 
 @class Block;
-@class Flow;
+@class FlowView;
 @interface Connection : UIView
 
 @property NSString *name;
@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 -(Connection *)getNextConnectionForSplit;
 
 -(bool)connectNode:(Block *)a toNode:(Block *)b;
--(bool)deleteConnectionFromFlow:(Flow *)f;
+-(bool)deleteConnectionFromFlow:(FlowView *)f;
 
 
 /* protected methods */

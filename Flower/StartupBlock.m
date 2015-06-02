@@ -7,7 +7,8 @@
 //
 
 #import "StartupBlock.h"
-#import "Flow.h"
+#import "Connection.h"
+#import "FlowView.h"
 @interface StartupBlock()
 
 @property NSCondition *lock;
@@ -19,6 +20,13 @@
 
 @end
 @implementation StartupBlock
+
+
+-(void)configure{
+    [super configure];
+    [self setName:@"Start"];
+    [[[Connection alloc] init] connectNode:self toNode:nil];
+}
 
 -(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
     
@@ -89,10 +97,7 @@
 }
 
 
--(void)configure{
-    [super configure];
-    [self setName:@"Start"];
-}
+
 
 
 @end

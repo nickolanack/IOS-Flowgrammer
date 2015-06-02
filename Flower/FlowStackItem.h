@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flow.h"
+#import "FlowView.h"
 @interface FlowStackItem : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (nonatomic) Flow *flow;
+@property (nonatomic) FlowView *flow;
 @end

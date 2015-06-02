@@ -8,7 +8,8 @@
 
 #import "Connection.h"
 #import "ProcessorBlock.h"
-#import "Flow.h"
+#import "Junction.h"
+#import "FlowView.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -206,11 +207,18 @@
         [self setDestination:nodeB];
         
         return true;
+    }else{
+        if([nodeA isKindOfClass:[Junction class]]&&nodeB==nil){
+            [(Junction *)nodeA setPrimaryOutputConnection:self];
+            [self setSource:nodeA];
+            return true;
+        }
+    
     }
     return false;
 }
 
--(bool)deleteConnectionFromFlow:(Flow *)f{
+-(bool)deleteConnectionFromFlow:(FlowView *)f{
     return true;
 }
 

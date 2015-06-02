@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flow.h"
+#import "FlowView.h"
 
 @interface FlowOptionsViewController : UIViewController
 
-@property (strong, nonatomic) Flow *flow;
+@property (strong, nonatomic) FlowView *flow;
 @property (weak, nonatomic) IBOutlet UISwitch *delayToggle;
 @property (weak, nonatomic) IBOutlet UISlider *delaySlider;
 - (IBAction)didToggleDelay:(id)sender;

@@ -8,7 +8,7 @@
 
 #import "VariableConnection.h"
 #import "ProcessorBlock.h"
-#import "Flow.h"
+#import "FlowView.h"
 
 @implementation VariableConnection
 
@@ -78,8 +78,8 @@
     }
     
     if(self.source==nil&&self.destination==nil){
-        if([self.superview isKindOfClass:[Flow class]]){
-            [(Flow *)self.superview deleteConnection:self];
+        if([self.superview isKindOfClass:[FlowView class]]){
+            [(FlowView *)self.superview deleteConnection:self];
         }else{
             [self removeFromSuperview];
         }
@@ -260,7 +260,7 @@
     
     return f;
 }
--(bool)deleteConnectionFromFlow:(Flow *)f{
+-(bool)deleteConnectionFromFlow:(FlowView *)f{
     if(self.destination!=nil){
         if([self.destination isKindOfClass:[ProcessorBlock class]]){
             [((ProcessorBlock *)self.destination) removeInputVariableConnection:self];

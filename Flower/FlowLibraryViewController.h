@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Flow.h"
+#import "FlowView.h"
 #import "FlowViewController.h"
 
 @interface FlowLibraryViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *onNewClick;
 
-@property Flow *flow;
+@property FlowView *flow;
 @property FlowViewController *flowViewController;
 
 

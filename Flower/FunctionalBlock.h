@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@class Flow;
+@class FlowView;
 
 
 

@@ -8,7 +8,7 @@
 
 #import "Block.h"
 #import "Connection.h"
-#import "Flow.h"
+#import "FlowView.h"
 #import "NodeViewController.h"
 #import "FlowViewController.h"
 #import "ScriptBlock.h"
@@ -64,7 +64,7 @@
 }
 
 
--(void)setFlow:(Flow *)f{
+-(void)setFlow:(FlowView *)f{
     flow=f;
     if(f!=nil){
         for(Connection *c in [self getConnections]){
@@ -192,7 +192,7 @@
     
 }
 
--(void)deleteBlockFromFlow:(Flow *)f{
+-(void)deleteBlockFromFlow:(FlowView *)f{
     //cleanup.
 }
 -(void)handleDeleteRequest{
@@ -201,7 +201,7 @@
 
 -(void)deleteBlock{
     if(self.flow!=nil){
-        Flow *f=self.flow;
+        FlowView *f=self.flow;
         [f deleteBlock:self];
         for (Connection *c in [self getConnections]) {
             [f deleteConnection:c];

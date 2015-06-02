@@ -8,9 +8,10 @@
 
 #import "ComparisonBlock.h"
 #import "ComparisonConnection.h"
-#import "Flow.h"
+#import "FlowView.h"
 #import "NumberVariable.h"
 #import "BooleanVariable.h"
+#import "Flowutils.h"
 
 @interface ComparisonBlock()
 
@@ -297,14 +298,14 @@
     NSArray *ifLoopBlocks=[state objectForKey:@"ifLoopBlocks"];
     if(ifLoopBlocks!=nil){
         for(NSNumber *b in ifLoopBlocks){
-            [self.flow insertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] at:self.primaryLoopInputConnection];
+            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.primaryLoopInputConnection];
         }
     }
     
     NSArray *elseLoopBlocks=[state objectForKey:@"elseLoopBlocks"];
     if(elseLoopBlocks!=nil){
         for(NSNumber *b in elseLoopBlocks){
-            [self.flow insertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] at:self.secondaryLoopInputConnection];
+            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.secondaryLoopInputConnection];
         }
     }
     

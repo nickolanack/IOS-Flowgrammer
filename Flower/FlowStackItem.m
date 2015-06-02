@@ -42,7 +42,7 @@
     return nil;
 }
 
--(void)setFlow:(Flow *)f{
+-(void)setFlow:(FlowView *)f{
     flow=f;
     _running=true;
     if(_running){

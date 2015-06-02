@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "Flow.h"
+#import "FlowView.h"
 #import "FlowViewController.h"
 #import "StartupBlock.h"
 #import "CompletionBlock.h"
@@ -16,7 +16,9 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface Flow()
+#import "Flowutils.h"
+
+@interface FlowView()
 
 @property JSContext *currentContext;
 @property NSMutableArray *blocks;
@@ -46,7 +48,7 @@
 
 @end
 
-@implementation Flow
+@implementation FlowView
 
 
 
@@ -409,7 +411,7 @@
         if(_hoveringOver&&n!=nil){
             [_hoveringOver clearHoverArea:n];
             
-            [self insertBlock:n at:_hoveringOver];
+            [Flowutils InsertBlock:n At:_hoveringOver];
             _hoveringOver=nil;
             
         }
@@ -447,7 +449,15 @@
 
 -(bool)addBlock:(Block *)n;{
     
-    if([self.blocks indexOfObject:n]==NSNotFound)[self.blocks addObject:n];
+    
+    
+    
+    if([self.blocks indexOfObject:n]==NSNotFound){
+        [self.blocks addObject:n];
+        if([n isKindOfClass:[StartupBlock class]]){
+            return [self addRootBlock:(StartupBlock *)n];
+        }
+    }
     [n setFlow:self];
     [n setFlowViewController:self.delegate];
     
@@ -458,6 +468,8 @@
         [self addSubview:n];
         
     }
+    
+    
     
     
     return true;
@@ -489,68 +501,9 @@
     return true;
 }
 
--(bool)insertBlock:(Block *)n at:(Connection *)c{
-    
-    Block *next=c.destination;
-    
-    if(c.source!=nil){
-        [c connectNode:c.source toNode:n];
-    }
-    
-    [self addBlock:n];
-    
-   /*
-    if(!_isRestoring){
-        CGPoint center=c.centerPoint;
-        center=[self convertPoint:center fromView:c];
-        [n moveCenterToPoint:center];
-    }
-    */
-    
-    if(next!=nil){
-        Connection *nextCon;
-        if(c.source==nil){
-            nextCon=c;
-        }else{
-            nextCon=[c getNextConnectionForSplit];
-            [self addConnection:nextCon];
-        }
-        
-        [nextCon connectNode:n toNode:next];
-        [nextCon needsUpdate];
-    }
-    
-    [c needsUpdate];
-    
-    
-    
-    
-    return true;
-    
-}
 
 
 
-
-
--(bool)insertBlock:(FunctionalBlock *)next afterBlock:(FunctionalBlock *)prev{
-    
-    if(prev==nil)@throw [[NSException alloc] initWithName:@"Insert After Null" reason:@"Expected parent node to be a valid node" userInfo:nil];
-    if([self.blocks indexOfObject:prev]==NSNotFound)@throw [[NSException alloc] initWithName:@"Insert Unkown Node" reason:@"Expected parent node to be in the current flow" userInfo:nil];
-    
-    Connection *c=prev.primaryOutputConnection;
-    
-    if(c!=nil)return [self insertBlock:next at:c];
-    
-    [self addBlock:next];
-    
-    c=[[Connection alloc] init];
-    [self addConnection:c];
-    
-    [c connectNode:prev toNode:next];
-    
-    return true;
-}
 
 -(bool)addRootBlock:(FunctionalBlock *)n{
     [self clearDrag];
@@ -562,9 +515,6 @@
 -(bool)deleteBlock:(Block *)n{
     
     if([self.blocks indexOfObject:n]!=NSNotFound)[self.blocks removeObject:n];
-    
-    
-    
     
     
     [n deleteBlockFromFlow:self]; //notification for self cleanup. loops can remove thier loopout
@@ -745,34 +695,16 @@
 -(bool)restore:(NSDictionary *)state{
     //NSLog(@"%@",state);
     _isRestoring=true;
+       
     
-    Block *s=[self.blocks objectAtIndex:0];
-    [s moveCenterToPoint:CGPointMake(100, 100)];
-    Block *e=[self.blocks objectAtIndex:1];
     
-    [e moveCenterToPoint:CGPointMake(self.frame.size.width-100, self.frame.size.height-100)];
     
     NSArray *blockStates=(NSArray *)[state objectForKey:@"blocks"];
-    for(int i=0;i<blockStates.count;i++){
-        NSDictionary *blockState=[blockStates objectAtIndex:i];
-        Block *current;
-        if(self.blocks.count>i)current=[self.blocks objectAtIndex:i];
-        if(current==nil){
-            NSArray *bundle=[blockState objectForKey:@"bundle"];
-            if(bundle!=nil){
-                NSString *bundleName=(NSString *)[bundle objectAtIndex:0];
-                int index=[(NSNumber *)[bundle objectAtIndex:1] integerValue];
-                current=[Block InstantiateWithBundle:bundleName andIndex:index andOwner:self.delegate];
-                
-                [self addBlock:current];
-                
-            }else{
-                
-               // @throw [[NSException alloc] initWithName:@"Expected to find bundle" reason:@"Encountered a block state without bundle info" userInfo:nil];
-            }
-        }
+    NSArray *blocks=[Flowutils LoadFlowgramBlocks:blockStates withOwner:self.delegate];
+
+    for(int i=0;i<blocks.count;i++){
+        [self addBlock:[blocks objectAtIndex:i]];
     }
-    
     
     for(int i=0;i<blockStates.count;i++){
         NSDictionary *blockState=[blockStates objectAtIndex:i];
@@ -802,7 +734,7 @@
                         if(la.primaryOutputConnection!=nil){
                             
                             [removed addObject:connectionState];
-                            [self insertBlock:(FunctionalBlock *)bb at:la.primaryOutputConnection];
+                            [Flowutils InsertBlock:(FunctionalBlock *)bb At:la.primaryOutputConnection];
                         }
                     }else{
                         [removed addObject:connectionState];

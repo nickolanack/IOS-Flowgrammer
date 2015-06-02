@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
-#import "Flow.h"
+#import "FlowView.h"
 
 
 @interface NodeLibraryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 - (IBAction)onCloseClick:(id)sender;
-@property (strong, nonatomic) Flow *flow;
+@property (strong, nonatomic) FlowView *flow;
 @property Connection *connection;
 @property NSValue *point;
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
@@ -9,7 +8,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController restorationIdentifier="Flow" storyboardIdentifier="Flow" id="BYZ-38-t0r" customClass="FlowViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="Flow">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="FlowView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -90,34 +89,6 @@
                                     <segue destination="vsW-Nh-OOu" kind="modal" identifier="blockLibrary" modalPresentationStyle="formSheet" id="PTM-zt-1B6"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="iho-AF-kSK" customClass="StartupBlock">
-                                <rect key="frame" x="113" y="317" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Su5-rP-lcQ">
-                                        <rect key="frame" x="10" y="15" width="30" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="9id-PT-N10" customClass="CompletionBlock">
-                                <rect key="frame" x="612" y="576" width="49" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="end" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="keH-cd-rH4">
-                                        <rect key="frame" x="9" y="17" width="30" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" id="j4E-5V-8Yu" customClass="FlowStackItem">
                                 <rect key="frame" x="20" y="936" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -143,11 +114,9 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="end" destination="9id-PT-N10" id="MgQ-42-j45"/>
                         <outlet property="flow" destination="8bC-Xf-vdC" id="shV-3i-9n1"/>
                         <outlet property="flowStack" destination="j4E-5V-8Yu" id="rBX-gI-hAO"/>
                         <outlet property="openClick" destination="w4W-EZ-8Kf" id="POa-gm-898"/>
-                        <outlet property="start" destination="iho-AF-kSK" id="WoQ-ge-GXP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

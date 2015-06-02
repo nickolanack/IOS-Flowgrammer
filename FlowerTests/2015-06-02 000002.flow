@@ -1,0 +1,47 @@
+{
+  "delay" : 1,
+  "name" : "My New Flow",
+  "connections" : [
+    {
+      "source" : 0,
+      "destination" : 1
+    }
+  ],
+  "size" : [
+    1024,
+    768
+  ],
+  "blocks" : [
+    {
+      "name" : "Start",
+      "center" : [
+        781,
+        90
+      ],
+      "outputs" : [
+
+      ],
+      "inputs" : [
+
+      ],
+      "description" : "a logic block performs some function possibly interacting with variables and special connections",
+      "index" : 0
+    },
+    {
+      "name" : "End",
+      "center" : [
+        925,
+        219
+      ],
+      "outputs" : [
+
+      ],
+      "inputs" : [
+
+      ],
+      "description" : "a logic block performs some function possibly interacting with variables and special connections",
+      "index" : 1
+    }
+  ],
+  "description" : "Tuesday June 2, 2015 - 09:12 AM"
+}

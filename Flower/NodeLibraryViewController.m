@@ -13,6 +13,7 @@
 #import "Variable.h"
 #import "Sensor.h"
 #import "LogicGate.h"
+#import "Flowutils.h"
 
 @interface NodeLibraryViewController ()
 
@@ -172,7 +173,7 @@
 - (void) selectFlowNode:(Block *)node{
     if(self.flow){
         if(self.connection!=nil&&[node isKindOfClass:[FunctionalBlock class]]){
-            [self.flow insertBlock:((FunctionalBlock *)node) at:self.connection];
+            [Flowutils InsertBlock:((FunctionalBlock *)node) At:self.connection];
         }else{
             [self.flow addBlock:node];
             if(self.point!=nil){

@@ -11,7 +11,7 @@
 #import "FunctionalBlock.h"
 #import "CodeViewController.h"
 #import "Connection.h"
-#import "Flow.h"
+#import "FlowView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface FunctionalBlock()
@@ -118,7 +118,7 @@
 
 
 
--(void)deleteBlockFromFlow:(Flow *)f{
+-(void)deleteBlockFromFlow:(FlowView *)f{
     //cleanup.
     primaryInputConnection=nil;
     primaryOutputConnection=nil;

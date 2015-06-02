@@ -7,7 +7,8 @@
 //
 
 #import "ProcessorBlock.h"
-#import "Flow.h"
+#import "FlowView.h"
+#import "Flowutils.h"
 
 @implementation ProcessorBlock
 
@@ -66,7 +67,7 @@
     if(inputs!=nil){
         for(int i=0;i<inputs.count;i++){
             int j=[((NSNumber *)[inputs objectAtIndex:i]) integerValue];
-            if(j!=NSNotFound)[self.flow insertBlock:[self.flow blockAtIndex:j] at:[self.inputVariableConnections objectAtIndex:i]];
+            if(j!=NSNotFound)[Flowutils InsertBlock:[self.flow blockAtIndex:j] At:[self.inputVariableConnections objectAtIndex:i]];
             
             
             
@@ -78,10 +79,7 @@
     if(outputs!=nil){
         for(int i=0;i<outputs.count;i++){
             int j=[((NSNumber *)[outputs objectAtIndex:i]) integerValue];
-            if(j!=NSNotFound)[self.flow insertBlock:[self.flow blockAtIndex:j] at:[self.outputVariableConnections objectAtIndex:i]];
-            
-            
-            
+            if(j!=NSNotFound)[Flowutils InsertBlock:[self.flow blockAtIndex:j] At:[self.outputVariableConnections objectAtIndex:i]];
         }
         
     }

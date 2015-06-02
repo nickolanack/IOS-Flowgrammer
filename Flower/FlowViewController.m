@@ -13,6 +13,7 @@
 #import "FlowLibraryViewController.h"
 #import "FlowNameViewController.h"
 #import "FunctionalBlock.h"
+#import "Flowutils.h"
 
 
 
@@ -40,8 +41,6 @@
 -(void)viewDidAppear:(BOOL)animated{
 
     [self.flow setDelegate:self];
-    [self.flow addRootBlock:self.start];
-    [self.flow insertBlock:self.end afterBlock:self.start];
     [self.flowStack setFlow:self.flow];
     
     NSError *error;
@@ -57,25 +56,24 @@
         
     }
     bool restored=false;
-    NSString *flowgram=[NSString stringWithContentsOfFile:[self.flowDir stringByAppendingPathComponent:self.flowFile] encoding:NSUTF8StringEncoding error:&error];
     
-    if(flowgram!=nil){
-        
-        NSDictionary* state = [NSJSONSerialization JSONObjectWithData:[flowgram dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
-        
-        if(state!=nil){
+    
+
+    NSDictionary* state = [Flowutils ParseFlowgramFromFile:[self.flowDir stringByAppendingPathComponent:self.flowFile]];
+    
+    if(state!=nil){
             
-            [self.flow restore:state];
-            restored=true;
-            
-        }
+        [self.flow restore:state];
+        restored=true;
         
     }
+        
+
 
     if(!restored){
         
-        [self.start moveCenterToPoint:CGPointMake(200, 200)];
-        [self.end moveCenterToPoint:CGPointMake(self.flow.frame.size.width-200, self.flow.frame.size.height-200)];
+//        [self.start moveCenterToPoint:CGPointMake(200, 200)];
+//        [self.end moveCenterToPoint:CGPointMake(self.flow.frame.size.width-200, self.flow.frame.size.height-200)];
     }
 
 }
@@ -86,7 +84,7 @@
 }
 
 -(void)addBlockToFlow:(FunctionalBlock *)node atConnection:(Connection *)connection{
-    [self.flow insertBlock:node at:connection];
+    [Flowutils InsertBlock:node At:connection];
     
 }
 

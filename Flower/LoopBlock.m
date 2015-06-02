@@ -8,10 +8,10 @@
 
 #import "LoopBlock.h"
 #import "LoopConnection.h"
-#import "Flow.h"
+#import "FlowView.h"
 #import "NumberVariable.h"
 #import "BooleanVariable.h"
-
+#import "Flowutils.h"
 
 @interface LoopBlock()
 
@@ -187,7 +187,7 @@
  
     if(loopBlocks!=nil){
         for(NSNumber *b in loopBlocks){
-            [self.flow insertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] at:self.loopin];
+            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.loopin];
         }
         
    

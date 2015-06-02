@@ -10,7 +10,7 @@
 #import "VariableConnection.h"
 #import  "StringVariable.h"
 #import "Variable.h"
-#import "Flow.h"
+#import "FlowView.h"
 
 @implementation ScriptBlock
 
