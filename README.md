@@ -5,4 +5,4 @@ this is/was a for fun project to try and create a simple visual programming inte
 as well as some boolean logic simulators
 
 
-![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/sr-latch.png)
+![alt tag](https://raw.github.com/nickolanack/IOS-Flowgrammer/master/sr-latch.png)
