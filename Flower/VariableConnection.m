@@ -92,6 +92,10 @@
     return true;
 }
 
+-(bool)shouldDrawMidPoint{
+    return self.source==nil||self.destination==nil;
+}
+
 -(bool)connectNode:(Block *)nodeA toNode:(Block *)nodeB{
     
     if(self.locksToFirstConnected&&self.source==nil&&self.destination==nil){

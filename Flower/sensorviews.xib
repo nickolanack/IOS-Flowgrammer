@@ -20,6 +20,9 @@
             <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="Jcd-fJ-qyM" id="qKi-ch-Zn3"/>
+            </connections>
         </view>
         <view contentMode="scaleToFill" id="b4Q-rQ-ytz" customClass="LocationSensor">
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -51,6 +54,9 @@
             <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="bx0-Wm-YJ5" id="3vf-e5-kcj"/>
+            </connections>
         </view>
         <view contentMode="scaleToFill" id="3Yv-UM-W9n" customClass="SpeedSensor">
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>

@@ -714,31 +714,35 @@
     //CGContextAddEllipseInRect(context, CGRectMake(b.x-r, b.y-r, d, d));
     //CGContextStrokePath(context);
 }
+-(bool)shouldDrawMidPoint{
+    return true;
+}
 -(void)drawMidPoint:(CGContextRef)context{
-    UIColor *midPointColor=[midPointColors objectAtIndex:0];
-    float r=4; float d=8; //ellipse dimension for midpoint psuedo-node
     
-    if(midPointColors.count==1){
-    CGContextSetFillColorWithColor(context, midPointColor.CGColor);
-    CGContextFillEllipseInRect(context, CGRectMake(centerPoint.x-r, centerPoint.y-r, d, d));
-    }else{
-       
+    if([self shouldDrawMidPoint]){
         UIColor *midPointColor=[midPointColors objectAtIndex:0];
-        CGContextSetFillColorWithColor(context, midPointColor.CGColor);
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, r, M_PI_2, -M_PI_2, 0);
-        CGContextFillPath(context);
+        float r=4; float d=8; //ellipse dimension for midpoint psuedo-node
         
-        midPointColor=[midPointColors objectAtIndex:1];
-        CGContextSetFillColorWithColor(context, midPointColor.CGColor);
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, r, M_PI_2, -M_PI_2, 1);
-        CGContextFillPath(context);
-    
+        if(midPointColors.count==1){
+            CGContextSetFillColorWithColor(context, midPointColor.CGColor);
+            CGContextFillEllipseInRect(context, CGRectMake(centerPoint.x-r, centerPoint.y-r, d, d));
+        }else{
+            
+            UIColor *midPointColor=[midPointColors objectAtIndex:0];
+            CGContextSetFillColorWithColor(context, midPointColor.CGColor);
+            CGContextAddArc(context, centerPoint.x, centerPoint.y, r, M_PI_2, -M_PI_2, 0);
+            CGContextFillPath(context);
+            
+            midPointColor=[midPointColors objectAtIndex:1];
+            CGContextSetFillColorWithColor(context, midPointColor.CGColor);
+            CGContextAddArc(context, centerPoint.x, centerPoint.y, r, M_PI_2, -M_PI_2, 1);
+            CGContextFillPath(context);
+            
+        }
+        CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0].CGColor);
+        CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x-r, centerPoint.y-r, d, d));
+        CGContextStrokePath(context);
     }
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0].CGColor);
-    CGContextAddEllipseInRect(context, CGRectMake(centerPoint.x-r, centerPoint.y-r, d, d));
-    CGContextStrokePath(context);
-    
-
     
     
 }

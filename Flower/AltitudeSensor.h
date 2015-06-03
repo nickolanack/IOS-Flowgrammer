@@ -10,5 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface AltitudeSensor : Sensor<CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *icon;
 
 @end

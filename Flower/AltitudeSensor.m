@@ -24,20 +24,10 @@
 -(void)configure{
     [super configure];
     [self setName:@"Altitude Sensor"];
-    
-    
-    
-    if (nil == _locationManager)
-        _locationManager = [[CLLocationManager alloc] init];
-    
-    [_locationManager setDelegate:self];
-    
-    [_locationManager startUpdatingLocation];
-    //[_locationManager startUpdatingHeading];
-    
+        
     
     VariableConnection *alt=[[VariableConnection alloc] init];
-    [alt setName:@"altitude"];
+    [alt setName:@"altitude m"];
     [alt setCenterAlignOffsetSource:CGPointMake(0, -10)];
     [alt setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [alt connectNode:self toNode:nil];
@@ -47,7 +37,7 @@
     [alt setMidPointColor:[UIColor cyanColor]];
     
     VariableConnection *acc=[[VariableConnection alloc] init];
-    [acc setName:@"accuracy"];
+    [acc setName:@"accuracy m"];
     [acc setCenterAlignOffsetSource:CGPointMake(0, 10)];
     [acc setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [acc connectNode:self toNode:nil];
@@ -65,6 +55,15 @@
     if(locations.count){
         
         
+        [self.icon setTintColor:[UIColor magentaColor]];
+        
+        double delayInSeconds = 0.2;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.icon setTintColor:[UIColor whiteColor]];
+        });
+        
+        
         CLLocation *l=[locations objectAtIndex:0];
         //l.coordinate.latitude
         VariableConnection *vc=(VariableConnection *)[self.outputVariableConnections objectAtIndex:0];
@@ -72,7 +71,7 @@
         if(v!=nil){
             [v setValue:[NSNumber numberWithFloat:l.altitude]];
         }
-        
+
         vc=(VariableConnection *)[self.outputVariableConnections objectAtIndex:1];
         v=(Variable *)vc.destination;
         if(v!=nil){
@@ -87,4 +86,29 @@
        didUpdateHeading:(CLHeading *)newHeading __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0){
     
 }
+
+
+-(void)startRecording{
+    
+    if (_locationManager==nil){
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+    
+    [_locationManager setDelegate:self];
+    
+    
+    //[_locationManager startUpdatingHeading];
+    
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
+}
+
+-(void)stopRecording{
+    
+    if (_locationManager!=nil){
+        [_locationManager stopUpdatingLocation];
+    }
+    
+}
+
 @end

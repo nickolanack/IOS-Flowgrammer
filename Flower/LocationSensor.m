@@ -25,12 +25,10 @@
     [super configure];
     [self setName:@"Location Sensor"];
  
-
-
     
     
     VariableConnection *lat=[[VariableConnection alloc] init];
-    [lat setName:@"latitude"];
+    [lat setName:@"latitude °"];
     [lat setCenterAlignOffsetSource:CGPointMake(0, -15)];
     [lat setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [lat connectNode:self toNode:nil];
@@ -41,7 +39,7 @@
     
     
     VariableConnection *lon=[[VariableConnection alloc] init];
-    [lon setName:@"longitude"];
+    [lon setName:@"longitude °"];
     [lon setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [lon connectNode:self toNode:nil];
     [lon setNamesVariable:true];
@@ -50,7 +48,7 @@
     [lon setMidPointColor:[UIColor cyanColor]];
     
     VariableConnection *alt=[[VariableConnection alloc] init];
-    [alt setName:@"accuracy"];
+    [alt setName:@"accuracy m"];
     [alt setCenterAlignOffsetSource:CGPointMake(0, 15)];
     [alt setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [alt connectNode:self toNode:nil];
@@ -67,6 +65,14 @@
 	 didUpdateLocations:(NSArray *)locations __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_6_0){
     
     if(locations.count){
+        
+        [self.icon setTintColor:[UIColor magentaColor]];
+        
+        double delayInSeconds = 0.2;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.icon setTintColor:[UIColor whiteColor]];
+        });
         
         
         CLLocation *l=[locations objectAtIndex:0];
@@ -119,7 +125,7 @@
 -(void)stopRecording{
     
     if (_locationManager!=nil){
-        [_locationManager stopUpdatingHeading];
+        [_locationManager stopUpdatingLocation];
     }
      
 }
