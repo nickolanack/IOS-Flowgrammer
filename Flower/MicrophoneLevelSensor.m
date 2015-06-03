@@ -22,8 +22,8 @@
     [super configure];
     [self setName:@"Microphone Level Sensor"];
     
-    VariableConnection *peak=[[VariableConnection alloc] init];
-    [peak setName:@"peak"];
+    VariableConnection * peak=[[VariableConnection alloc] init];
+    [peak setName:@"peak db"];
     [peak setCenterAlignOffsetSource:CGPointMake(0, -10)];
     [peak setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [peak connectNode:self toNode:nil];
@@ -34,7 +34,7 @@
     
     
     VariableConnection *avg=[[VariableConnection alloc] init];
-    [avg setName:@"average"];
+    [avg setName:@"average db"];
     [avg setCenterAlignOffsetSource:CGPointMake(0, 10)];
     [avg setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
     [avg connectNode:self toNode:nil];

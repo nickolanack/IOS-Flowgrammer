@@ -200,10 +200,7 @@
         
         UIMenuController *menuController = [UIMenuController sharedMenuController];
         _nextInsertPoint=p;
-        [menuController setMenuItems:@[
-                                       [[UIMenuItem alloc] initWithTitle:@"Place Block" action:@selector(handlePlaceBlock)]
-                                       
-                                       ]];
+        [menuController setMenuItems:@[[[UIMenuItem alloc] initWithTitle:@"Place Block" action:@selector(handlePlaceBlock)], [[UIMenuItem alloc] initWithTitle:@"Place Flow" action:@selector(handlePlaceFlow)]]];
         
         [menuController setTargetRect:frame inView:self];
         [self becomeFirstResponder];
@@ -230,6 +227,21 @@
     }
     
     NSLog(@"%s",__PRETTY_FUNCTION__);
+}
+
+
+-(void)handlePlaceFlow{
+    
+    ThreadStartBlock *start=(ThreadStartBlock *)[Flowutils InstantiateWithBundle:@"program" andIndex:0 andOwner:self.delegate];
+    [self addBlock:start];
+    [start moveCenterToPoint:_nextInsertPoint];
+    
+    ThreadEndBlock *end=(ThreadEndBlock *)[Flowutils InstantiateWithBundle:@"program" andIndex:1 andOwner:self.delegate];
+    [self addBlock:end];
+    [end moveCenterToPoint:CGPointMake(_nextInsertPoint.x+100, _nextInsertPoint.y+100)];
+    [Flowutils InsertBlock:end At:start.primaryOutputConnection];
+    
+    
 }
 -(void)handleInsertNode{
     if([self.delegate respondsToSelector:@selector(displayNodeLibraryWithConnection:)]){
