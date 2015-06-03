@@ -10,4 +10,6 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface MicrophoneLevelSensor : Sensor
+@property (weak, nonatomic) IBOutlet UIButton *icon;
+@property (weak, nonatomic) IBOutlet UIButton *iconMeter;
 @end

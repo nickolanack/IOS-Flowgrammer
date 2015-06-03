@@ -8,12 +8,13 @@
 
 #import "Block.h"
 @class VariableConnection;
-@interface Variable : Block
+@interface Variable : Block<UIAlertViewDelegate>
 
 @property NSMutableArray *mutatorConnections;
 @property NSMutableArray *accessorConnections;
 
 @property (nonatomic) id value;
+@property  NSString *labelText;
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
@@ -26,4 +27,5 @@
 -(NSString *)stringValue;
 -(NSString *)type;
 -(NSString *)toString;
+
 @end

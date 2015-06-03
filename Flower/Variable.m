@@ -12,7 +12,7 @@
 
 @implementation Variable
 
-@synthesize value;
+@synthesize value, labelText;
 
 -(void)configure{
     [super configure];
@@ -31,7 +31,25 @@
 -(bool)isAvailableForInsertion{
     return true;
 }
+-(void)handleRenameRequest{
+    UIAlertView *rename = [[UIAlertView alloc] initWithTitle:@"Variable Name"
+                                                    message:@"set the label for this variable"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Close"
+                                          otherButtonTitles:@"Ok", nil];
+    rename.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [rename show];
+}
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==1){
+        NSString *label = [[alertView textFieldAtIndex:0] text];
+        [self setLabelText:label];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.label.text=[self toString];
+        });
+    }
+}
 
 -(void)handleDeleteRequest{
     for (VariableConnection *v in self.accessorConnections) {
@@ -108,15 +126,33 @@
 }
 
 
+-(NSArray *)getMenuItemsArray{
+    NSMutableArray *array=[[NSMutableArray alloc] initWithArray:[super getMenuItemsArray]];
+    if(![self isNamedByMutator]){
+        [array addObject:[[UIMenuItem alloc] initWithTitle: @"Rename" action:@selector(handleRenameRequest)]];
+    }
+
+    return [[NSArray alloc] initWithArray:array];
+}
+
 -(NSString *)instanceName{
     NSArray *names=[self instanceNames];
     if(names.count)return [names componentsJoinedByString:@":"];
     return nil;
 }
 
+-(bool)isNamedByMutator{
+    return [self instanceNames].count>0;
+}
+
 -(NSString *)toString{
     if(self.flow==nil)return [self type];
     NSString *name=[self instanceName];
+    
+    if(self.labelText!=nil&&(![self.labelText isEqualToString:@""])){
+        name=self.labelText;
+    }
+    
     if(name==nil)name=[self type];
     return [NSString stringWithFormat:@"%@:%@", name, [self stringValue]];
 }

@@ -104,7 +104,17 @@
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7J-gW-p5U">
+                <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bz7-rr-069">
+                    <rect key="frame" x="8" y="6" width="25" height="28"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="mic.png"/>
+                </button>
+                <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlO-aP-cOL">
+                    <rect key="frame" x="8" y="6" width="25" height="28"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="mic.png"/>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7J-gW-p5U">
                     <rect key="frame" x="8" y="6" width="25" height="28"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="mic.png"/>
@@ -113,6 +123,10 @@
             <color key="backgroundColor" red="0.074322640154950964" green="0.23232105542253526" blue="0.39190051020408168" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="B7J-gW-p5U" id="0TS-UZ-hSR"/>
+                <outlet property="iconMeter" destination="zlO-aP-cOL" id="Daa-jp-Ill"/>
+            </connections>
         </view>
         <view contentMode="scaleToFill" id="frn-U9-POt" customClass="ProximitySensor">
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
