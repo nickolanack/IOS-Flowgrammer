@@ -41,8 +41,6 @@
 -(NSArray *)getMenuItemsArray;
 -(void)handleDeleteRequest;
 
--(bool) isAvailableForInsertion;
-
 -(void)deleteBlockFromFlow:(FlowView *)f;
 
 -(void)moveRelative:(CGPoint)offset;
@@ -60,6 +58,11 @@
 
 -(bool)displaysDetailViewInPopover;
 -(CGSize)detailViewPopoverSize;
+
+
+-(bool)isAvailableForInsertion;
+-(bool)isDeletable;
+
 
 
 @property (nonatomic) bool isDraggable;

@@ -29,7 +29,6 @@
     return [[NSArray alloc] initWithArray:a];
     
   
-
 }
 
 
@@ -43,8 +42,8 @@
 -(void)addOutputVariableConnection:(VariableConnection *)v{
     
     if([self.outputVariableConnections indexOfObject:v]==NSNotFound)[self.outputVariableConnections addObject:v];
-    
 }
+
 
 -(void)removeInputVariableConnection:(VariableConnection *)v{
     

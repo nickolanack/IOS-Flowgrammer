@@ -117,7 +117,7 @@
 -(void)testVariables{
 
     //this is a program that contains un-initialized variables.
-    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000003.flow"];
+    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-03 000001.flow"];
     
     NSDictionary * state=[Flowutils ParseFlowgramFromFile:varsProgram];
     NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
@@ -128,7 +128,6 @@
         Variable *v=(Variable *)[blocks objectAtIndex:i];
         NSLog(@"Variable: %@", [v name]);
         
-        
     }
 
 }
@@ -137,7 +136,7 @@
 -(void)testLogic{
     
     //this is a program that contains un-initialized variables.
-    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-03 000001.flow"];
+    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000003.flow"];
     
     NSDictionary * state=[Flowutils ParseFlowgramFromFile:varsProgram];
     NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];

@@ -352,20 +352,28 @@
 				9009C63D18F5EE0B00D9A188 /* sensorviews.xib */,
 				9009C63F18F602D200D9A188 /* Sensor.h */,
 				9009C64018F602D200D9A188 /* Sensor.m */,
+				90D6C7B718F866F100645E94 /* proximity.png */,
 				90D6C79118F7303100645E94 /* ProximitySensor.h */,
 				90D6C79218F7303100645E94 /* ProximitySensor.m */,
+				90D6C7B918F8675600645E94 /* globe.png */,
 				90D6C79418F7361F00645E94 /* LocationSensor.h */,
 				90D6C79518F7361F00645E94 /* LocationSensor.m */,
+				90D6C79F18F74EE300645E94 /* plane.png */,
 				90D6C79718F7450B00645E94 /* AltitudeSensor.h */,
 				90D6C79818F7450B00645E94 /* AltitudeSensor.m */,
+				90D6C79D18F74EE300645E94 /* car.png */,
 				90D6C79A18F7466900645E94 /* SpeedSensor.h */,
 				90D6C79B18F7466900645E94 /* SpeedSensor.m */,
+				90D6C7B518F865FA00645E94 /* gyro.png */,
 				90D6C7AA18F83D7700645E94 /* GyroscopeSensor.h */,
 				90D6C7AB18F83D7700645E94 /* GyroscopeSensor.m */,
+				901F476418FB0C7A00E6D213 /* axis.png */,
 				90D6C7AD18F8431200645E94 /* AccelerometerSensor.h */,
 				90D6C7AE18F8431200645E94 /* AccelerometerSensor.m */,
+				90D6C79E18F74EE300645E94 /* compas.png */,
 				90D6C7B218F85E3300645E94 /* HeadingSensor.h */,
 				90D6C7B318F85E3300645E94 /* HeadingSensor.m */,
+				901F476B18FB1F3300E6D213 /* mic.png */,
 				901F476818FB1ADB00E6D213 /* MicrophoneLevelSensor.h */,
 				901F476918FB1ADB00E6D213 /* MicrophoneLevelSensor.m */,
 			);
@@ -504,16 +512,6 @@
 			name = FunctionViewControllers;
 			sourceTree = "<group>";
 		};
-		9031A3AD18C919BB00893E8E /* Nib Library */ = {
-			isa = PBXGroup;
-			children = (
-				90A8C5FD18C599DB00E73E79 /* nodeviews.xib */,
-				9031A3AE18C91A5700893E8E /* nodeviews.viewcontrollers.xib */,
-				90CC41F21B1E5691008A87D2 /* program.xib */,
-			);
-			name = "Nib Library";
-			sourceTree = "<group>";
-		};
 		90CC41E41B1E27D5008A87D2 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,16 +568,8 @@
 				90CFC92E18BBB8FF00F083B1 /* play_d.png */,
 				90CFC93918BD509F00F083B1 /* xsm_edit.png */,
 				9071F16518D95CEC00202A7C /* speaker.png */,
-				90D6C79D18F74EE300645E94 /* car.png */,
 				901F476618FB0DEE00E6D213 /* out.png */,
-				90D6C79E18F74EE300645E94 /* compas.png */,
-				901F476418FB0C7A00E6D213 /* axis.png */,
-				90D6C7B518F865FA00645E94 /* gyro.png */,
 				90D6C7B018F85CE800645E94 /* target.png */,
-				90D6C7B718F866F100645E94 /* proximity.png */,
-				90D6C7B918F8675600645E94 /* globe.png */,
-				90D6C79F18F74EE300645E94 /* plane.png */,
-				901F476B18FB1F3300E6D213 /* mic.png */,
 				909EC4C318E358110003DBE9 /* keyboard.png */,
 				902C0BCA18CA1B58008A177A /* xsm_loop.png */,
 				90CFC8F318BB881B00F083B1 /* FlowAppDelegate.h */,
@@ -651,8 +641,10 @@
 		90CFC91C18BB885800F083B1 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				9031A3AD18C919BB00893E8E /* Nib Library */,
 				902EA14418C1471E0097D357 /* FunctionViewControllers */,
+				90A8C5FD18C599DB00E73E79 /* nodeviews.xib */,
+				9031A3AE18C91A5700893E8E /* nodeviews.viewcontrollers.xib */,
+				90CC41F21B1E5691008A87D2 /* program.xib */,
 				90CFC91D18BB88C000F083B1 /* FunctionalBlock.h */,
 				90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */,
 				900FE88518D3F4BE00DDFDF5 /* FlowBlock.h */,
@@ -739,7 +731,10 @@
 					90CFC8E018BB881B00F083B1 = {
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1036,6 +1031,7 @@
 				GCC_PREFIX_HEADER = "Flower/Flower-Prefix.pch";
 				INFOPLIST_FILE = "Flower/Flower-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1049,6 +1045,7 @@
 				GCC_PREFIX_HEADER = "Flower/Flower-Prefix.pch";
 				INFOPLIST_FILE = "Flower/Flower-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

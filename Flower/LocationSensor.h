@@ -10,5 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface LocationSensor : Sensor<CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *icon;
 
 @end

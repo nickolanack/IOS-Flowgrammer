@@ -27,15 +27,7 @@
  
 
 
-    if (nil == _locationManager)
-        _locationManager = [[CLLocationManager alloc] init];
     
-    [_locationManager setDelegate:self];
-    
-    [_locationManager startUpdatingLocation];
-    //[_locationManager startUpdatingHeading];
-    
-
     
     VariableConnection *lat=[[VariableConnection alloc] init];
     [lat setName:@"latitude"];
@@ -97,9 +89,7 @@
              [v setValue:[NSNumber numberWithFloat:l.horizontalAccuracy]];
            
         }
-        
-        
-        
+
         
     }
 
@@ -108,6 +98,30 @@
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0){
 
+}
+
+
+-(void)startRecording{
+    
+    if (_locationManager==nil){
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+    
+    [_locationManager setDelegate:self];
+    
+    
+    //[_locationManager startUpdatingHeading];
+    
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
+}
+
+-(void)stopRecording{
+    
+    if (_locationManager!=nil){
+        [_locationManager stopUpdatingHeading];
+    }
+     
 }
 
 @end

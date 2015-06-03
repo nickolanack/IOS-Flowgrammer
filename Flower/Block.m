@@ -29,6 +29,7 @@
     
 }
 
+
 -(void)configure{
     
     self.borderColor=[UIColor colorWithRed:0.0f green:33.0f/255.0f blue:99.0f/255.0f alpha:1.0];
@@ -101,15 +102,34 @@
     return nil;
 }
 
+
+-(int)countVariableOutputs{
+    return 0;
+}
+-(int)countVariableInputs{
+    return 0;
+}
+
+-(NSArray *)supportedVariableTypesAtInput:(int) index{
+    return @[];
+}
+-(NSArray *)supportedVariableTypesAtOutput:(int) index{
+    return @[];
+}
+
+
 -(bool) isAvailableForInsertion{
     return false;
+}
+-(bool) isDeletable{
+    return true;
 }
 
 #pragma mark Detail Views and Menu
 
 -(NSArray *)getMenuItemsArray{
     NSMutableArray *array=[[NSMutableArray alloc] init];
-    if([self isAvailableForInsertion]){
+    if([self isDeletable]){
         [array addObject:[[UIMenuItem alloc] initWithTitle: @"Delete" action:@selector(handleDeleteRequest)]];
     }
     [array addObject:[[UIMenuItem alloc] initWithTitle: @"Clone" action:@selector(handleCloneRequest)]];
