@@ -57,23 +57,27 @@
     }
     bool restored=false;
     
-    
-
-    NSDictionary* state = [Flowutils ParseFlowgramFromFile:[self.flowDir stringByAppendingPathComponent:self.flowFile]];
-    
-    if(state!=nil){
+    NSString *file=[self.flowDir stringByAppendingPathComponent:self.flowFile];
+    if([[NSFileManager defaultManager] fileExistsAtPath:file]){
+        
+        
+        
+        
+        
+        NSDictionary* state = [Flowutils ParseFlowgramFromFile:file];
+        
+        if(state!=nil){
             
-        [self.flow restore:state];
-        restored=true;
+            [self.flow restore:state];
+            restored=true;
+            
+        }
         
     }
-        
-
-
+    
     if(!restored){
         
-//        [self.start moveCenterToPoint:CGPointMake(200, 200)];
-//        [self.end moveCenterToPoint:CGPointMake(self.flow.frame.size.width-200, self.flow.frame.size.height-200)];
+        [self.flow restore:[self blankFlow]];
     }
 
 }

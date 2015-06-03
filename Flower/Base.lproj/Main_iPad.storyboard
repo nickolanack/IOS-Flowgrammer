@@ -81,15 +81,6 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lp8-kj-mGV">
-                                <rect key="frame" x="460" y="960" width="71" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Blocks"/>
-                                <connections>
-                                    <segue destination="vsW-Nh-OOu" kind="modal" identifier="blockLibrary" modalPresentationStyle="formSheet" id="PTM-zt-1B6"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="j4E-5V-8Yu" customClass="FlowStackItem">
                                 <rect key="frame" x="20" y="936" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -475,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ri4-Zy-L8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="552"/>
+            <point key="canvasLocation" x="1212" y="510"/>
         </scene>
         <!--Flow Library View Controller-->
         <scene sceneID="tuK-qU-pQ2">
