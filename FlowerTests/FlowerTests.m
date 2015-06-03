@@ -93,7 +93,7 @@
 
 - (void)testRun{
     
-    
+    //this is a program with a single Thread, start and end blocks are connected and no other blocks exists
     NSString *blankProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000002.flow"];
 
     
@@ -105,10 +105,49 @@
         XCTAssertTrue([[blocks objectAtIndex:i] isKindOfClass:[Block class]]);
     }
     
-    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"blocks"]];
+    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"connections"]];
     
     ThreadStartBlock *start=(ThreadStartBlock *)[blocks objectAtIndex:0];
     [start run];
+    
+    
+}
+
+
+-(void)testVariables{
+
+    //this is a program that contains un-initialized variables.
+    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-02 000003.flow"];
+    
+    NSDictionary * state=[Flowutils ParseFlowgramFromFile:varsProgram];
+    NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
+    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"connections"]];
+
+
+    for(int i=0;i<blocks.count;i++){
+        Variable *v=(Variable *)[blocks objectAtIndex:i];
+        NSLog(@"Variable: %@", [v name]);
+        
+        
+    }
+
+}
+
+
+-(void)testLogic{
+    
+    //this is a program that contains un-initialized variables.
+    NSString *varsProgram = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"2015-06-03 000001.flow"];
+    
+    NSDictionary * state=[Flowutils ParseFlowgramFromFile:varsProgram];
+    NSArray *blocks =[Flowutils LoadFlowgramBlocks:[state objectForKey:@"blocks"] withOwner:nil];
+    [Flowutils ConnectFlowgramBlocks:blocks withConnections:[state objectForKey:@"connections"]];
+    
+    for(int i=0;i<blocks.count;i++){
+    
+        
+    
+    }
     
     
 }

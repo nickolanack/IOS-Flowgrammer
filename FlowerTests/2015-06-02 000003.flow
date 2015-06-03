@@ -1,0 +1,153 @@
+{
+  "delay" : 1,
+  "name" : "Logic Gates",
+  "connections" : [
+
+  ],
+  "size" : [
+    1024,
+    768
+  ],
+  "blocks" : [
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647
+      ],
+      "index" : 0,
+      "name" : "Not Gate",
+      "center" : [
+        134,
+        237
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        0
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 1,
+      "name" : "Or Gate",
+      "center" : [
+        249,
+        238
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        1
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 2,
+      "name" : "And Gate",
+      "center" : [
+        362,
+        239
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        2
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 3,
+      "name" : "Nor Gate",
+      "center" : [
+        135,
+        337
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        3
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 4,
+      "name" : "Nand Gate",
+      "center" : [
+        251,
+        335
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        4
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 5,
+      "name" : "Xor Gate",
+      "center" : [
+        367,
+        336
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        5
+      ]
+    },
+    {
+      "description" : "a block is a moveable object that can be connected to other blocks using connections",
+      "inputs" : [
+        2147483647,
+        2147483647
+      ],
+      "index" : 6,
+      "name" : "Xnor Gate",
+      "center" : [
+        135,
+        430
+      ],
+      "outputs" : [
+        2147483647
+      ],
+      "bundle" : [
+        "logicviews",
+        6
+      ]
+    }
+  ],
+  "description" : "Tuesday June 2, 2015 - 05:25 PM"
+}

@@ -71,6 +71,10 @@
 		90CC41EF1B1E3426008A87D2 /* config.txt in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41EE1B1E3426008A87D2 /* config.txt */; };
 		90CC41F11B1E4666008A87D2 /* 2015-06-02 000002.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */; };
 		90CC41F31B1E5691008A87D2 /* program.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F21B1E5691008A87D2 /* program.xib */; };
+		90CC41F91B1F5C8A008A87D2 /* 2015-06-02 000003.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */; };
+		90CC41FA1B1F5C8A008A87D2 /* 2015-06-03 000001.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */; };
+		90CC41FE1B1F5CCF008A87D2 /* 2015-06-02 000003.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */; };
+		90CC41FF1B1F5CCF008A87D2 /* 2015-06-03 000001.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -238,6 +242,8 @@
 		90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-02 000002.flow"; sourceTree = "<group>"; };
 		90CC41EE1B1E3426008A87D2 /* config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.txt; sourceTree = "<group>"; };
 		90CC41F21B1E5691008A87D2 /* program.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = program.xib; sourceTree = "<group>"; };
+		90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-02 000003.flow"; sourceTree = "<group>"; };
+		90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-03 000001.flow"; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -634,6 +640,8 @@
 			children = (
 				90CC41EE1B1E3426008A87D2 /* config.txt */,
 				90CC41EB1B1E3408008A87D2 /* 2015-06-02 000002.flow */,
+				90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */,
+				90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */,
 				90CFC90E18BB881B00F083B1 /* FlowerTests-Info.plist */,
 				90CFC90F18BB881B00F083B1 /* InfoPlist.strings */,
 			);
@@ -768,6 +776,7 @@
 				900FE8AB18D6BD3100DDFDF5 /* Ping.aiff in Resources */,
 				900FE8AA18D6BD3100DDFDF5 /* Morse.aiff in Resources */,
 				900FE8A718D6BD3100DDFDF5 /* Funk.aiff in Resources */,
+				90CC41FF1B1F5CCF008A87D2 /* 2015-06-03 000001.flow in Resources */,
 				902C0BCB18CA1B58008A177A /* xsm_loop.png in Resources */,
 				90CFC93C18BDBE1100F083B1 /* xsm_controls.png in Resources */,
 				900FE8AF18D6BD3100DDFDF5 /* Submarine.aiff in Resources */,
@@ -797,6 +806,7 @@
 				900FE8A818D6BD3100DDFDF5 /* Glass.aiff in Resources */,
 				90D6C7B618F865FA00645E94 /* gyro.png in Resources */,
 				90CC41F11B1E4666008A87D2 /* 2015-06-02 000002.flow in Resources */,
+				90CC41FE1B1F5CCF008A87D2 /* 2015-06-02 000003.flow in Resources */,
 				9009C64318F604DA00D9A188 /* logicviews.xib in Resources */,
 				90D6C7BA18F8675600645E94 /* globe.png in Resources */,
 				900FE8A618D6BD3100DDFDF5 /* Frog.aiff in Resources */,
@@ -814,6 +824,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90CFC91118BB881B00F083B1 /* InfoPlist.strings in Resources */,
+				90CC41FA1B1F5C8A008A87D2 /* 2015-06-03 000001.flow in Resources */,
+				90CC41F91B1F5C8A008A87D2 /* 2015-06-02 000003.flow in Resources */,
 				90CC41ED1B1E3408008A87D2 /* 2015-06-02 000002.flow in Resources */,
 				90CC41EF1B1E3426008A87D2 /* config.txt in Resources */,
 			);

@@ -1,0 +1,88 @@
+{
+  "delay" : 1,
+  "name" : "Variables",
+  "connections" : [
+
+  ],
+  "size" : [
+    1024,
+    768
+  ],
+  "blocks" : [
+    {
+      "name" : "Boolean",
+      "bundle" : [
+        "variableviews",
+        0
+      ],
+      "center" : [
+        191,
+        299
+      ],
+      "value" : false,
+      "description" : "a boolean variable has two states: on, and off. it can be connected as the input or output of a variable connection",
+      "index" : 0
+    },
+    {
+      "name" : "Number",
+      "bundle" : [
+        "variableviews",
+        1
+      ],
+      "center" : [
+        284,
+        300
+      ],
+      "value" : 0,
+      "description" : "represents integer, or floating point numbers",
+      "index" : 1
+    },
+    {
+      "name" : "String",
+      "bundle" : [
+        "variableviews",
+        2
+      ],
+      "center" : [
+        374,
+        302
+      ],
+      "value" : "",
+      "description" : "represents text",
+      "index" : 2
+    },
+    {
+      "name" : "Array",
+      "bundle" : [
+        "variableviews",
+        3
+      ],
+      "center" : [
+        192,
+        403
+      ],
+      "value" : [
+
+      ],
+      "description" : "represents an array of variables",
+      "index" : 3
+    },
+    {
+      "name" : "Object",
+      "bundle" : [
+        "variableviews",
+        4
+      ],
+      "center" : [
+        269,
+        404
+      ],
+      "value" : {
+
+      },
+      "description" : "represents text",
+      "index" : 4
+    }
+  ],
+  "description" : "Wednesday June 3, 2015 - 08:57 AM"
+}
