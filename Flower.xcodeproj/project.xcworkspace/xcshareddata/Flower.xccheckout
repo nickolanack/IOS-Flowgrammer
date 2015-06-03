@@ -10,8 +10,6 @@
 	<string>Flower</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>66aa3869-3058-da05-06cd-ce57b7db7bff++505</key>
-		<string>https://github.com/nickolanack/IOS-Flowgrammer.git/trunk</string>
 		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
 		<string>https://github.com/nickolanack/IOS-Flowgrammer.git</string>
 	</dict>
@@ -19,14 +17,12 @@
 	<string>Flower.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>66aa3869-3058-da05-06cd-ce57b7db7bff++505</key>
-		<string>../..</string>
 		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
 		<string>../../../Flower</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>66aa3869-3058-da05-06cd-ce57b7db7bff++505</key>
+		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
 		<string>https://github.com/nickolanack/IOS-Flowgrammer.git</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -34,7 +30,7 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>66aa3869-3058-da05-06cd-ce57b7db7bff++505</string>
+	<string>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -49,7 +45,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>66aa3869-3058-da05-06cd-ce57b7db7bff++505</string>
+			<string>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>IOS-Flowgrammer</string>
 		</dict>
