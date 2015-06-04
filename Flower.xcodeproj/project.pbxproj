@@ -22,7 +22,6 @@
 		900FE87E18D1910700DDFDF5 /* InputBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE87D18D1910600DDFDF5 /* InputBlock.m */; };
 		900FE88118D1991E00DDFDF5 /* OutputBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88018D1991E00DDFDF5 /* OutputBlock.m */; };
 		900FE88418D2DBE700DDFDF5 /* FlowStackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88318D2DBE700DDFDF5 /* FlowStackItem.m */; };
-		900FE88718D3F4BF00DDFDF5 /* FlowBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88618D3F4BE00DDFDF5 /* FlowBlock.m */; };
 		900FE88A18D41FBA00DDFDF5 /* FlowLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88918D41FBA00DDFDF5 /* FlowLibraryViewController.m */; };
 		900FE88D18D647FA00DDFDF5 /* ArrayVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88C18D647FA00DDFDF5 /* ArrayVariable.m */; };
 		900FE89018D6487600DDFDF5 /* ObjectVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 900FE88F18D6487600DDFDF5 /* ObjectVariable.m */; };
@@ -75,6 +74,7 @@
 		90CC41FA1B1F5C8A008A87D2 /* 2015-06-03 000001.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */; };
 		90CC41FE1B1F5CCF008A87D2 /* 2015-06-02 000003.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */; };
 		90CC41FF1B1F5CCF008A87D2 /* 2015-06-03 000001.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */; };
+		90CC42071B20D371008A87D2 /* WaitBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CC42061B20D371008A87D2 /* WaitBlock.m */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -163,8 +163,6 @@
 		900FE88018D1991E00DDFDF5 /* OutputBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputBlock.m; sourceTree = "<group>"; };
 		900FE88218D2DBE700DDFDF5 /* FlowStackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowStackItem.h; sourceTree = "<group>"; };
 		900FE88318D2DBE700DDFDF5 /* FlowStackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowStackItem.m; sourceTree = "<group>"; };
-		900FE88518D3F4BE00DDFDF5 /* FlowBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowBlock.h; sourceTree = "<group>"; };
-		900FE88618D3F4BE00DDFDF5 /* FlowBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowBlock.m; sourceTree = "<group>"; };
 		900FE88818D41FBA00DDFDF5 /* FlowLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowLibraryViewController.h; sourceTree = "<group>"; };
 		900FE88918D41FBA00DDFDF5 /* FlowLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowLibraryViewController.m; sourceTree = "<group>"; };
 		900FE88B18D647F900DDFDF5 /* ArrayVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayVariable.h; sourceTree = "<group>"; };
@@ -244,6 +242,8 @@
 		90CC41F21B1E5691008A87D2 /* program.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = program.xib; sourceTree = "<group>"; };
 		90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-02 000003.flow"; sourceTree = "<group>"; };
 		90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-03 000001.flow"; sourceTree = "<group>"; };
+		90CC42051B20D371008A87D2 /* WaitBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitBlock.h; sourceTree = "<group>"; };
+		90CC42061B20D371008A87D2 /* WaitBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitBlock.m; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -647,8 +647,6 @@
 				90CC41F21B1E5691008A87D2 /* program.xib */,
 				90CFC91D18BB88C000F083B1 /* FunctionalBlock.h */,
 				90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */,
-				900FE88518D3F4BE00DDFDF5 /* FlowBlock.h */,
-				900FE88618D3F4BE00DDFDF5 /* FlowBlock.m */,
 				9031A3AA18C9162600893E8E /* ScriptBlock.h */,
 				9031A3AB18C9162600893E8E /* ScriptBlock.m */,
 				90CFC93318BD18BC00F083B1 /* ThreadStartBlock.h */,
@@ -667,6 +665,8 @@
 				900FE88018D1991E00DDFDF5 /* OutputBlock.m */,
 				900FE89118D6BB1D00DDFDF5 /* AudioBlock.h */,
 				900FE89218D6BB1D00DDFDF5 /* AudioBlock.m */,
+				90CC42051B20D371008A87D2 /* WaitBlock.h */,
+				90CC42061B20D371008A87D2 /* WaitBlock.m */,
 			);
 			name = Functions;
 			sourceTree = "<group>";
@@ -858,6 +858,7 @@
 				9009C64618F6050700D9A188 /* LogicGate.m in Sources */,
 				90D6C7AC18F83D7700645E94 /* GyroscopeSensor.m in Sources */,
 				90D6C79018F71E7800645E94 /* NorGate.m in Sources */,
+				90CC42071B20D371008A87D2 /* WaitBlock.m in Sources */,
 				9031A3AC18C9162600893E8E /* ScriptBlock.m in Sources */,
 				901444FF18BFF6B400867BFA /* LoopBlock.m in Sources */,
 				902EA14818C147570097D357 /* DelayViewController.m in Sources */,
@@ -868,7 +869,6 @@
 				90D6C79318F7303100645E94 /* ProximitySensor.m in Sources */,
 				90CFC93818BD196800F083B1 /* ThreadEndBlock.m in Sources */,
 				90D6C78118F6EE5500645E94 /* NotGate.m in Sources */,
-				900FE88718D3F4BF00DDFDF5 /* FlowBlock.m in Sources */,
 				90CFC93218BCF4A400F083B1 /* CodeViewController.m in Sources */,
 				9014450218C0E4C500867BFA /* LoopConnection.m in Sources */,
 				9079F39518DA920D00069E3E /* AudioViewController.m in Sources */,

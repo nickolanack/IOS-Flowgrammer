@@ -128,6 +128,13 @@
                 <outlet property="audioImage" destination="fg0-DW-D0J" id="Lbw-R0-DAy"/>
             </connections>
         </view>
+        <view contentMode="scaleToFill" id="XiF-tF-ZqY" customClass="WaitBlock">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="keyboard.png" width="28" height="15"/>
