@@ -11,6 +11,8 @@
 #import "Connection.h"
 #import "FlowView.h"
 #import "FlowBlock.h"
+#import "ThreadStartBlock.h"
+#import "ThreadEndBlock.h"
 
 @implementation Flowutils
 
@@ -102,7 +104,16 @@
     for(int i=0;i<blockStates.count;i++){
         NSDictionary *blockState=[blockStates objectAtIndex:i];
         Block *b=[self LoadFlowgramBlock:blockState withOwner:owner];
+        
         if(b!=nil){
+            
+            if([b isKindOfClass:[ThreadEndBlock class]]){
+                NSObject *last=[array lastObject];
+                if([last isKindOfClass:[ThreadStartBlock class]]){
+                    [((ThreadStartBlock *)last).primaryOutputConnection insertBlock:b];
+                }
+            }
+            
             [array addObject:b];
         }else{
         
@@ -129,14 +140,23 @@
                 Block *blockA=[blocks objectAtIndex:a];
                 Block *blockB=[blocks objectAtIndex:b];
                 if([blockA isKindOfClass:[FlowBlock class]]&&[blockB isKindOfClass:[FlowBlock class]]){
+                    
                     FlowBlock *functionA=(FlowBlock *)blockA;
+                    FlowBlock *functionB=(FlowBlock *)blockB;
                     if([functionA getNextBlock]!=blockB){
                         if(functionA.primaryOutputConnection!=nil){
                             
                             [removed addObject:connectionState];
                             [functionA.primaryOutputConnection insertBlock:blockB];
 
+                        }else{
+                            if (functionB.primaryInputConnection!=nil){
+                            
+                                [removed addObject:connectionState];
+                                [functionB.primaryInputConnection insertBlock:blockA];
+                            }
                         }
+                        
                     }else{
                         [removed addObject:connectionState];
                     }
