@@ -28,6 +28,7 @@
 @end
 @implementation ThreadStartBlock
 
+@synthesize labelText;
 
 -(void)configure{
     [super configure];
@@ -148,13 +149,41 @@
 }
 
 -(NSArray *)getMenuItemsArray{
-    if(_running){
-        return [super getMenuItemsArray];
-    }
+
     NSMutableArray *array=[[NSMutableArray alloc] initWithArray:[super getMenuItemsArray]];
-    [array addObject:[[UIMenuItem alloc] initWithTitle: @"Run" action:@selector(handleRunRequest)]];
+    if(!_running){
+       [array addObject:[[UIMenuItem alloc] initWithTitle: @"Run" action:@selector(handleRunRequest)]];
+    }
+    
+    [array addObject:[[UIMenuItem alloc] initWithTitle: @"Rename" action:@selector(handleRenameRequest)]];
     return [[NSArray alloc] initWithArray:array];
 }
+
+-(void)handleRenameRequest{
+    UIAlertView *rename = [[UIAlertView alloc] initWithTitle:@"Flow Name"
+                                                     message:@"set the name for this flow"
+                                                    delegate:self
+                                           cancelButtonTitle:@"Close"
+                                           otherButtonTitles:@"Ok", nil];
+    rename.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [rename show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==1){
+        NSString *label = [[alertView textFieldAtIndex:0] text];
+        [self setLabelText:label];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(self.labelText==nil||[self.labelText isEqualToString:@""]){
+                self.flowLabel.text=@"my flow";
+            }else{
+                self.flowLabel.text=self.labelText;
+            }
+            
+        });
+    }
+}
+
 
 -(void)handleRunRequest{
     [self run];

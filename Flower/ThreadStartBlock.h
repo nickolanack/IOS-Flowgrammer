@@ -9,8 +9,9 @@
 #import "FlowBlock.h"
 
 @interface ThreadStartBlock : FlowBlock
+@property  NSString *labelText;
 
-
+@property (weak, nonatomic) IBOutlet UILabel *flowLabel;
 -(void)run;
 
 @end

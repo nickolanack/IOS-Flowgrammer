@@ -399,8 +399,7 @@
         controlPointLengthFromCenterToDestination=distance/5.0;
         
     }
-    
-    
+
 }
 
 -(void)calculateCenterControlPointsRelativeToCenter{

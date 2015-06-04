@@ -75,6 +75,7 @@
 		90CC41FE1B1F5CCF008A87D2 /* 2015-06-02 000003.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F41B1F5C89008A87D2 /* 2015-06-02 000003.flow */; };
 		90CC41FF1B1F5CCF008A87D2 /* 2015-06-03 000001.flow in Resources */ = {isa = PBXBuildFile; fileRef = 90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */; };
 		90CC42071B20D371008A87D2 /* WaitBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CC42061B20D371008A87D2 /* WaitBlock.m */; };
+		90CC42091B20ED63008A87D2 /* signal.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CC42081B20ED63008A87D2 /* signal.png */; };
 		90CFC8E518BB881B00F083B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E418BB881B00F083B1 /* Foundation.framework */; };
 		90CFC8E718BB881B00F083B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */; };
 		90CFC8E918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
@@ -244,6 +245,7 @@
 		90CC41F51B1F5C8A008A87D2 /* 2015-06-03 000001.flow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2015-06-03 000001.flow"; sourceTree = "<group>"; };
 		90CC42051B20D371008A87D2 /* WaitBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitBlock.h; sourceTree = "<group>"; };
 		90CC42061B20D371008A87D2 /* WaitBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitBlock.m; sourceTree = "<group>"; };
+		90CC42081B20ED63008A87D2 /* signal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signal.png; sourceTree = "<group>"; };
 		90CFC8E118BB881B00F083B1 /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CFC8E418BB881B00F083B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90CFC8E618BB881B00F083B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -665,6 +667,7 @@
 				900FE88018D1991E00DDFDF5 /* OutputBlock.m */,
 				900FE89118D6BB1D00DDFDF5 /* AudioBlock.h */,
 				900FE89218D6BB1D00DDFDF5 /* AudioBlock.m */,
+				90CC42081B20ED63008A87D2 /* signal.png */,
 				90CC42051B20D371008A87D2 /* WaitBlock.h */,
 				90CC42061B20D371008A87D2 /* WaitBlock.m */,
 			);
@@ -771,6 +774,7 @@
 				900FE8AB18D6BD3100DDFDF5 /* Ping.aiff in Resources */,
 				900FE8AA18D6BD3100DDFDF5 /* Morse.aiff in Resources */,
 				900FE8A718D6BD3100DDFDF5 /* Funk.aiff in Resources */,
+				90CC42091B20ED63008A87D2 /* signal.png in Resources */,
 				90CC41FF1B1F5CCF008A87D2 /* 2015-06-03 000001.flow in Resources */,
 				902C0BCB18CA1B58008A177A /* xsm_loop.png in Resources */,
 				90CFC93C18BDBE1100F083B1 /* xsm_controls.png in Resources */,

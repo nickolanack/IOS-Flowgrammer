@@ -131,14 +131,37 @@
         <view contentMode="scaleToFill" id="XiF-tF-ZqY" customClass="WaitBlock">
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" id="AfO-BU-mc7">
+                    <rect key="frame" x="16" y="22" width="8" height="7"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.034608530662741388" green="1" blue="0.20684914776743979" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="Mkw-HM-qhi">
+                    <rect key="frame" x="16" y="9" width="8" height="7"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.057908051668714156" blue="0.093292530469890944" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mlZ-gN-t9O">
+                    <rect key="frame" x="8" y="8" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.6369561464088398" green="0.56269479723977811" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="signal.png"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="goView" destination="AfO-BU-mc7" id="ZG8-Pi-LHt"/>
+                <outlet property="waitView" destination="Mkw-HM-qhi" id="TYh-fG-Imp"/>
+            </connections>
         </view>
     </objects>
     <resources>
         <image name="keyboard.png" width="28" height="15"/>
         <image name="out.png" width="25" height="23"/>
+        <image name="signal.png" width="17" height="27"/>
         <image name="speaker.png" width="36" height="25"/>
         <image name="xsm_loop.png" width="29" height="27"/>
     </resources>
