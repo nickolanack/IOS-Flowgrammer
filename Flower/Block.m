@@ -125,6 +125,10 @@
     return true;
 }
 
+-(bool) isCloneable{
+    return true;
+}
+
 #pragma mark Detail Views and Menu
 
 -(NSArray *)getMenuItemsArray{
@@ -132,7 +136,9 @@
     if([self isDeletable]){
         [array addObject:[[UIMenuItem alloc] initWithTitle: @"Delete" action:@selector(handleDeleteRequest)]];
     }
-    [array addObject:[[UIMenuItem alloc] initWithTitle: @"Clone" action:@selector(handleCloneRequest)]];
+    if([self isCloneable]){
+        [array addObject:[[UIMenuItem alloc] initWithTitle: @"Clone" action:@selector(handleCloneRequest)]];
+    }
     return [[NSArray alloc] initWithArray:array];
 }
 

@@ -40,6 +40,9 @@
 -(bool)isSliceable{
     return false;
 }
+-(bool)isCloneable{
+    return false;
+}
 
 -(void)deleteBlock{
 
