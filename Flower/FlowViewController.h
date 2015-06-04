@@ -19,7 +19,6 @@
 
 @interface FlowViewController : UIViewController
 @property (strong, nonatomic) IBOutlet FlowView *flow;
-- (IBAction)runClick:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet FlowStackItem *flowStack;

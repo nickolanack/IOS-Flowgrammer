@@ -28,7 +28,7 @@
     VariableConnection *signal=[[VariableConnection alloc] init];
     [signal setConnectionAnchorTypeDestination:ConnectionEndPointAnchorTypeTop];
     [signal setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeTop];
-    [signal setCenterAlignOffsetDestination:CGPointMake(-15, 0)];
+    //[signal setCenterAlignOffsetDestination:CGPointMake(-15, 0)];
     [signal connectNode:nil toNode:self];
     
     [signal setVariableType:[BooleanVariable class]];

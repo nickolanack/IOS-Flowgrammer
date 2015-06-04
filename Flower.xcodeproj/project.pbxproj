@@ -497,7 +497,7 @@
 			name = Variables;
 			sourceTree = "<group>";
 		};
-		902EA14418C1471E0097D357 /* FunctionViewControllers */ = {
+		902EA14418C1471E0097D357 /* FlowViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				902EA14618C147570097D357 /* DelayViewController.h */,
@@ -509,7 +509,7 @@
 				9079F39318DA920D00069E3E /* AudioViewController.h */,
 				9079F39418DA920D00069E3E /* AudioViewController.m */,
 			);
-			name = FunctionViewControllers;
+			name = FlowViewControllers;
 			sourceTree = "<group>";
 		};
 		90CC41E41B1E27D5008A87D2 /* Utilites */ = {
@@ -582,7 +582,7 @@
 				90D6C78918F7003700645E94 /* ProcessorBlock.m */,
 				902C0BCC18CBAA54008A177A /* Variables */,
 				9009C63B18F5DC3500D9A188 /* Sensors */,
-				90CFC91C18BB885800F083B1 /* Functions */,
+				90CFC91C18BB885800F083B1 /* FlowBlocks */,
 				9009C63C18F5DCB500D9A188 /* Gate */,
 				90CFC92818BBAF5400F083B1 /* FlowView.h */,
 				90CFC92918BBAF5400F083B1 /* FlowView.m */,
@@ -638,10 +638,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		90CFC91C18BB885800F083B1 /* Functions */ = {
+		90CFC91C18BB885800F083B1 /* FlowBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				902EA14418C1471E0097D357 /* FunctionViewControllers */,
+				902EA14418C1471E0097D357 /* FlowViewControllers */,
 				90A8C5FD18C599DB00E73E79 /* nodeviews.xib */,
 				9031A3AE18C91A5700893E8E /* nodeviews.viewcontrollers.xib */,
 				90CC41F21B1E5691008A87D2 /* program.xib */,
@@ -668,7 +668,7 @@
 				90CC42051B20D371008A87D2 /* WaitBlock.h */,
 				90CC42061B20D371008A87D2 /* WaitBlock.m */,
 			);
-			name = Functions;
+			name = FlowBlocks;
 			sourceTree = "<group>";
 		};
 		90CFC94318BE425200F083B1 /* StyledViews */ = {
