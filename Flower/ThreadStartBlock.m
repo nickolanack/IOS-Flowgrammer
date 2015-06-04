@@ -47,7 +47,7 @@
 -(void)deleteBlock{
 
     
-    FunctionalBlock *current= [self getNextBlock];
+    FlowBlock *current= [self getNextBlock];
     NSMutableArray *blocksToSlice=[[NSMutableArray alloc] init];
     while(current != _end){
         if(current==nil){
@@ -63,7 +63,7 @@
     }
     
     
-    for (FunctionalBlock *blockInFlow in blocksToSlice) {
+    for (FlowBlock *blockInFlow in blocksToSlice) {
         [blockInFlow slice];
     }
    
@@ -81,7 +81,7 @@
 
 -(void)checkAndSetThreadEndBlock{
    
-    FunctionalBlock *next=[self getNextBlock];
+    FlowBlock *next=[self getNextBlock];
     if([next isKindOfClass:[ThreadEndBlock class]]){
         _end=(ThreadEndBlock *)next;
     }
@@ -89,7 +89,7 @@
 }
 
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     
     [self message:@"starting!"];
     [self message:@"initializing environment"];
@@ -183,10 +183,10 @@
 
 }
 
--(void)execute:(FunctionalBlock *)block{
+-(void)execute:(FlowBlock *)block{
     [self execute:block withPreviousBlock:nil];
 }
--(void)execute:(FunctionalBlock *)block withPreviousBlock:(FunctionalBlock *)prev{
+-(void)execute:(FlowBlock *)block withPreviousBlock:(FlowBlock *)prev{
     
     if(!_running)return;
     
@@ -201,7 +201,7 @@
         
         //chain execution.
         [block selectNextConnection:_delay-0.1];
-        FunctionalBlock *next=[block nextExecutionBlock];
+        FlowBlock *next=[block nextExecutionBlock];
         if(next!=nil){
             
             double delayInSeconds = _delay;

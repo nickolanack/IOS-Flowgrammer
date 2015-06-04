@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import "VariableConnection.h"
 
-@interface LoopBlock : FunctionalBlock
+@interface LoopBlock : FlowBlock
 
 @property Connection *loopin;
 @property Connection *loopout;
@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loopImage;
 
--(FunctionalBlock *) getLoopNextNode;
--(FunctionalBlock *) getLoopPrevNode;
+-(FlowBlock *) getLoopNextNode;
+-(FlowBlock *) getLoopPrevNode;
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface AudioBlock : FunctionalBlock<AVAudioPlayerDelegate>
+@interface AudioBlock : FlowBlock<AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *audioImage;
 @property NSString *sound;
 @end

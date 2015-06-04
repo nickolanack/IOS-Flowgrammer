@@ -8,7 +8,7 @@
 
 #import "Variable.h"
 #import "VariableConnection.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
 @implementation Variable
 

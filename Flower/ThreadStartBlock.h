@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
-@interface ThreadStartBlock : FunctionalBlock
+@interface ThreadStartBlock : FlowBlock
 
 
 -(void)run;

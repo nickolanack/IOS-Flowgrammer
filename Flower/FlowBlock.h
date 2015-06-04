@@ -14,7 +14,7 @@
 
 
 
-@interface FunctionalBlock : ProcessorBlock
+@interface FlowBlock : ProcessorBlock
 
 @property Connection *primaryInputConnection;
 @property Connection *primaryOutputConnection;
@@ -28,7 +28,7 @@
 @property Connection *selectedNextConnection;
 
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block;
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block;
 
 -(void)message:(NSString *)message;
 -(void)error:(NSString *)error;
@@ -40,10 +40,10 @@
 -(void)notifyInputConnectionStateDidChange;
 
 
--(FunctionalBlock *)getNextBlock;
+-(FlowBlock *)getNextBlock;
 -(void)selectNextConnection:(float)delay;
--(FunctionalBlock *)nextExecutionBlock;
--(FunctionalBlock *)getPreviousBlock;
+-(FlowBlock *)nextExecutionBlock;
+-(FlowBlock *)getPreviousBlock;
 
 
 -(NSArray *)getBlocksConnectedToOutput;

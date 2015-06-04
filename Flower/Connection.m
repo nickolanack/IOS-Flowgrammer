@@ -160,7 +160,7 @@
 }
 
 -(bool) canInsertBlock:(Block *)block{
-    if([block isKindOfClass:[FunctionalBlock class]])return true;
+    if([block isKindOfClass:[FlowBlock class]])return true;
     return false;
 }
 
@@ -232,10 +232,10 @@
 
 -(bool)connectNode:(Block *)newSource toNode:(Block *)newDest{
     
-    if([newSource isKindOfClass:[FunctionalBlock class]]&&[newDest isKindOfClass:[FunctionalBlock class]]){
+    if([newSource isKindOfClass:[FlowBlock class]]&&[newDest isKindOfClass:[FlowBlock class]]){
         
-        FunctionalBlock *sourceFn=(FunctionalBlock *)newSource;
-        FunctionalBlock *destFn=(FunctionalBlock *)newDest;
+        FlowBlock *sourceFn=(FlowBlock *)newSource;
+        FlowBlock *destFn=(FlowBlock *)newDest;
         
         [sourceFn setPrimaryOutputConnection:self];
         [destFn setPrimaryInputConnection:self];

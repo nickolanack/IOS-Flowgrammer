@@ -62,7 +62,7 @@
 
 
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     
     JSValue *output=[super blockEvaluateContext:context withPreviousBlock:block];
     if(block==[self getPreviousPrimaryLoopBlock]||block==[self getPreviousSecondaryLoopBlock]||block==self){
@@ -85,23 +85,23 @@
 }
 
 
--(FunctionalBlock *)getNextPrimaryLoopBlock{
+-(FlowBlock *)getNextPrimaryLoopBlock{
     if(self.primaryLoopOutputConnection==nil)return nil;
-    FunctionalBlock *next=(FunctionalBlock *)self.primaryLoopOutputConnection.destination;
+    FlowBlock *next=(FlowBlock *)self.primaryLoopOutputConnection.destination;
     if(next!=self)return next;
     return nil;
 }
 
--(FunctionalBlock *)getPreviousPrimaryLoopBlock{
+-(FlowBlock *)getPreviousPrimaryLoopBlock{
     if(self.primaryLoopInputConnection==nil)return nil;
-    FunctionalBlock *prev=(FunctionalBlock *)self.primaryLoopInputConnection.source;
+    FlowBlock *prev=(FlowBlock *)self.primaryLoopInputConnection.source;
     if(prev!=self)return prev;
     return nil;
 }
 
--(FunctionalBlock *)getNextSecondaryLoopBlock{
+-(FlowBlock *)getNextSecondaryLoopBlock{
     if(self.secondaryLoopOutputConnection==nil)return nil;
-    FunctionalBlock *next=(FunctionalBlock *)self.secondaryLoopOutputConnection.destination;
+    FlowBlock *next=(FlowBlock *)self.secondaryLoopOutputConnection.destination;
     if(next!=self)return next;
     return nil;
 }
@@ -111,7 +111,7 @@
     return ([self isPrimaryLoopEmpty]||[self doesPrimaryLoopHaveOneBlock])?false:true;
 }
 -(bool)doesPrimaryLoopHaveOneBlock{
-    FunctionalBlock *block=[self getNextPrimaryLoopBlock];
+    FlowBlock *block=[self getNextPrimaryLoopBlock];
     return (block!=self)?true:false;
 }
 -(bool)isPrimaryLoopEmpty{
@@ -123,16 +123,16 @@
     return ([self isSecondaryLoopEmpty]||[self doesSecondaryLoopHaveOneBlock])?false:true;
 }
 -(bool)doesSecondaryLoopHaveOneBlock{
-    FunctionalBlock *block=[self getNextSecondaryLoopBlock];
+    FlowBlock *block=[self getNextSecondaryLoopBlock];
     return (block!=self)?true:false;
 }
 -(bool)isSecondaryLoopEmpty{
     return ([self getNextSecondaryLoopBlock]==nil)?true:false;
 }
 
--(FunctionalBlock *)getPreviousSecondaryLoopBlock{
+-(FlowBlock *)getPreviousSecondaryLoopBlock{
     if(self.secondaryLoopInputConnection==nil)return nil;
-    FunctionalBlock *prev=(FunctionalBlock *)self.secondaryLoopInputConnection.source;
+    FlowBlock *prev=(FlowBlock *)self.secondaryLoopInputConnection.source;
     if(prev!=self)return prev;
     return nil;
 }
@@ -260,11 +260,11 @@
 -(void)handleDeleteRequest{
     
     while(self.primaryLoopOutputConnection.destination!=self){
-        [self.flow sliceBlock:(FunctionalBlock *)self.primaryLoopOutputConnection.destination];
+        [self.flow sliceBlock:(FlowBlock *)self.primaryLoopOutputConnection.destination];
     }
     
     while(self.secondaryLoopOutputConnection.destination!=self){
-        [self.flow sliceBlock:(FunctionalBlock *)self.secondaryLoopOutputConnection.destination];
+        [self.flow sliceBlock:(FlowBlock *)self.secondaryLoopOutputConnection.destination];
     }
     if(self.flow!=nil){
         [self.flow deleteConnection:self.primaryLoopOutputConnection];
@@ -317,7 +317,7 @@
     NSMutableDictionary *d=[[NSMutableDictionary alloc] initWithDictionary:[super save]];
     
     NSMutableArray *ifLoopBlocks=[[NSMutableArray alloc] init];
-    FunctionalBlock *b=(FunctionalBlock *)self.primaryLoopOutputConnection.destination;
+    FlowBlock *b=(FlowBlock *)self.primaryLoopOutputConnection.destination;
     while(b!=self){
         [ifLoopBlocks addObject:[NSNumber numberWithInt:[self.flow indexOfBlock:b]]];
         b=[b getNextBlock];
@@ -326,7 +326,7 @@
     
     
     NSMutableArray *elseLoopBlocks=[[NSMutableArray alloc] init];
-    FunctionalBlock *c=(FunctionalBlock *)self.secondaryLoopOutputConnection.destination;
+    FlowBlock *c=(FlowBlock *)self.secondaryLoopOutputConnection.destination;
     while(c!=self){
         [elseLoopBlocks addObject:[NSNumber numberWithInt:[self.flow indexOfBlock:c]]];
         c=[c getNextBlock];

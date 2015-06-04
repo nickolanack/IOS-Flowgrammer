@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
-@interface TimedDelayBlock : FunctionalBlock
+@interface TimedDelayBlock : FlowBlock
 @property (weak, nonatomic) IBOutlet UILabel *countdown;
 @property (nonatomic) float delay;
 

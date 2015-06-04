@@ -68,7 +68,7 @@
    
     
     while(self.loopout.destination!=self){
-        [self.flow sliceBlock:(FunctionalBlock *)self.loopout.destination];
+        [self.flow sliceBlock:(FlowBlock *)self.loopout.destination];
     }
    
     if(self.flow!=nil){
@@ -81,7 +81,7 @@
 
 
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     
     
     if(block==self.loopin.source){
@@ -148,7 +148,7 @@
 -(NSArray *)getBlocksConnectedToInput{
     NSMutableArray *a=[[NSMutableArray alloc] initWithArray:[super getBlocksConnectedToInput]];
     
-    FunctionalBlock *prevLoopNode=[self getLoopPrevNode];
+    FlowBlock *prevLoopNode=[self getLoopPrevNode];
     if(prevLoopNode!=nil)[a addObject:prevLoopNode];
     
     return [[NSArray alloc] initWithArray:a];
@@ -156,21 +156,21 @@
 -(NSArray *)getBlocksConnectedToOutput{
     NSMutableArray *a=[[NSMutableArray alloc] initWithArray:[super getBlocksConnectedToInput]];
     
-    FunctionalBlock *nextLoopNode=[self getLoopNextNode];
+    FlowBlock *nextLoopNode=[self getLoopNextNode];
     if(nextLoopNode!=nil)[a addObject:nextLoopNode];
     
     return [[NSArray alloc] initWithArray:a];
 }
 
--(FunctionalBlock *) getLoopNextNode{
+-(FlowBlock *) getLoopNextNode{
     
-   FunctionalBlock *n=(FunctionalBlock *)self.loopout.destination;
+   FlowBlock *n=(FlowBlock *)self.loopout.destination;
     if(n==self)return nil;
     return n;
    
 }
--(FunctionalBlock *) getLoopPrevNode{
-    FunctionalBlock *n=(FunctionalBlock *)self.loopin.source;
+-(FlowBlock *) getLoopPrevNode{
+    FlowBlock *n=(FlowBlock *)self.loopin.source;
     if(n==self)return nil;
     return n;
 }
@@ -215,7 +215,7 @@
     NSMutableDictionary *d=[[NSMutableDictionary alloc] initWithDictionary:[super save]];
 
     NSMutableArray *loopBlocks=[[NSMutableArray alloc] init];
-    FunctionalBlock *b=(FunctionalBlock *)self.loopout.destination;
+    FlowBlock *b=(FlowBlock *)self.loopout.destination;
     while(b!=self){
         [loopBlocks addObject:[NSNumber numberWithInt:[self.flow indexOfBlock:b]]];
         b=[b getNextBlock];

@@ -10,7 +10,7 @@
 #import "Block.h"
 #import "Connection.h"
 #import "FlowView.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
 @implementation Flowutils
 
@@ -128,8 +128,8 @@
             if(a!=NSNotFound&&b!=NSNotFound){
                 Block *blockA=[blocks objectAtIndex:a];
                 Block *blockB=[blocks objectAtIndex:b];
-                if([blockA isKindOfClass:[FunctionalBlock class]]&&[blockB isKindOfClass:[FunctionalBlock class]]){
-                    FunctionalBlock *functionA=(FunctionalBlock *)blockA;
+                if([blockA isKindOfClass:[FlowBlock class]]&&[blockB isKindOfClass:[FlowBlock class]]){
+                    FlowBlock *functionA=(FlowBlock *)blockA;
                     if([functionA getNextBlock]!=blockB){
                         if(functionA.primaryOutputConnection!=nil){
                             

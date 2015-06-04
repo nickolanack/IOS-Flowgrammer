@@ -12,7 +12,7 @@
 #import "NodeLibraryViewController.h"
 #import "FlowLibraryViewController.h"
 #import "FlowNameViewController.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import "Flowutils.h"
 
 
@@ -82,12 +82,12 @@
 
 }
 
--(void)addBlockToFlow:(FunctionalBlock *)node{
+-(void)addBlockToFlow:(FlowBlock *)node{
     [self.flow addBlock:node];
     
 }
 
--(void)addBlockToFlow:(FunctionalBlock *)node atConnection:(Connection *)connection{
+-(void)addBlockToFlow:(FlowBlock *)node atConnection:(Connection *)connection{
     [connection insertBlock:node];
 }
 

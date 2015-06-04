@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
-@interface OutputBlock : FunctionalBlock
+@interface OutputBlock : FlowBlock
 
 @end

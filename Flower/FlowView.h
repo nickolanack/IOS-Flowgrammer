@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
 
 
 @class Connection;
-@class FunctionalBlock;
+@class FlowBlock;
 
 @interface FlowView : UIView
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
@@ -38,7 +38,7 @@
 -(void)setNSNumberDelay:(NSNumber *)n;
 
 
--(bool)sliceBlock:(FunctionalBlock *)n;
+-(bool)sliceBlock:(FlowBlock *)n;
 
 -(bool)addBlock:(Block *)n;
 -(bool)deleteBlock:(Block *)n;

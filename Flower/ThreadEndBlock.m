@@ -10,7 +10,7 @@
 
 @implementation ThreadEndBlock
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     
     JSValue *output=[super blockEvaluateContext:context withPreviousBlock:block];
     [self message:@"finished!"];

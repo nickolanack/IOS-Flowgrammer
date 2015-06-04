@@ -99,7 +99,7 @@
 
 -(void)handleFlowTap:(UIGestureRecognizer *)gesture{
     
-    for (FunctionalBlock *node in self.blocks) {
+    for (FlowBlock *node in self.blocks) {
         [node setIsSelected:false];
         
     }
@@ -260,12 +260,12 @@
     
 }
 
--(void)selectNode:(FunctionalBlock *)n{
+-(void)selectNode:(FlowBlock *)n{
     
     
     NSArray *nodes=[n getConnectedBlocks];
     bool nextToDoubleSelection=false;
-    for (FunctionalBlock *next in nodes) {
+    for (FlowBlock *next in nodes) {
         if(next.isDoubleSelected)nextToDoubleSelection=true;
     }
     
@@ -273,7 +273,7 @@
         [n setIsDoubleSelected:true];
         [_selectedBlocks addObject:n];
     }else{
-        for (FunctionalBlock *node in self.blocks) {
+        for (FlowBlock *node in self.blocks) {
             if(n!=node)[node setIsSelected:false];
         }
         groupSelection=false;
@@ -283,7 +283,7 @@
     
 }
 
--(void)unselectNode:(FunctionalBlock *)n{
+-(void)unselectNode:(FlowBlock *)n{
     if(!groupSelection)return;
     [_selectedBlocks removeObject:n];
     
@@ -292,7 +292,7 @@
 }
 
 
--(void)dragStart:(FunctionalBlock *)n{
+-(void)dragStart:(FlowBlock *)n{
     
     if(!groupSelection&&n.isSelected&&!n.isDoubleSelected){
         if([n isAvailableForInsertion]){
@@ -309,7 +309,7 @@
     }
 }
 
--(void)drag:(FunctionalBlock *)n point:(CGPoint)p{
+-(void)drag:(FlowBlock *)n point:(CGPoint)p{
     
     if(_insertableConnections!=nil){
         for(Connection *c in _insertableConnections) {
@@ -346,7 +346,7 @@
     _hoveringOver=nil;
     [self dragEnd:nil];
 }
--(void)dragEnd:(FunctionalBlock *)n{
+-(void)dragEnd:(FlowBlock *)n{
     
     if(_insertableConnections!=nil){
         
@@ -367,9 +367,9 @@
     
 }
 
--(void)groupSelectNode:(FunctionalBlock *)n{
+-(void)groupSelectNode:(FlowBlock *)n{
     if(groupSelection)return;
-    for (FunctionalBlock *node in self.blocks) {
+    for (FlowBlock *node in self.blocks) {
         if(node!=n)[node setIsSelected:false];
     }
     _selectedBlocks=[[NSMutableArray alloc] initWithObjects:n, nil];
@@ -387,7 +387,7 @@
     if(!groupSelection)return nil;
     NSMutableArray *points = [[NSMutableArray alloc] init];
     
-    for (FunctionalBlock *node in _selectedBlocks) {
+    for (FlowBlock *node in _selectedBlocks) {
         [points addObject:[NSValue valueWithCGPoint:CGPointMake(node.frame.origin.x-n.frame.origin.x, node.frame.origin.y-n.frame.origin.y)]];
     }
     
@@ -453,7 +453,7 @@
 
 
 
--(bool)addRootBlock:(FunctionalBlock *)n{
+-(bool)addRootBlock:(FlowBlock *)n{
     [self clearDrag];
     if([self.roots indexOfObject:n]==NSNotFound)[self.roots addObject:n];
     [self addBlock:n];
@@ -475,13 +475,13 @@
 }
 
 
--(bool)sliceBlock:(FunctionalBlock *)n{
+-(bool)sliceBlock:(FlowBlock *)n{
     
     if([n isKindOfClass:[ThreadStartBlock class]])return false;
     if([n isKindOfClass:[ThreadEndBlock class]])return false;
     
-    FunctionalBlock *next=[n getNextBlock];
-    FunctionalBlock *previous=[n getPreviousBlock];;
+    FlowBlock *next=[n getNextBlock];
+    FlowBlock *previous=[n getPreviousBlock];;
     
     
     if(previous&&next){
@@ -503,7 +503,7 @@
     [n setPrimaryOutputConnection:nil];
     
     
-    for (FunctionalBlock *node in self.blocks) {
+    for (FlowBlock *node in self.blocks) {
         if(n!=node)[node setIsSelected:false];
     }
     

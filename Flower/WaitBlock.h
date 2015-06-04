@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Nick Blackwell. All rights reserved.
 //
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
-@interface WaitBlock : FunctionalBlock
+@interface WaitBlock : FlowBlock
 
 @end

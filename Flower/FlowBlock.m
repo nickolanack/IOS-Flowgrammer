@@ -8,13 +8,13 @@
 
 
 
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import "CodeViewController.h"
 #import "Connection.h"
 #import "FlowView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface FunctionalBlock()
+@interface FlowBlock()
 
 
 
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation FunctionalBlock
+@implementation FlowBlock
 
 
 
@@ -82,7 +82,7 @@
 
 }
 
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     
     
     if(javascript!=nil){
@@ -235,8 +235,8 @@
 
 
 
--(FunctionalBlock *)getNextBlock{
-    if(self.primaryOutputConnection!=nil)return (FunctionalBlock *)self.primaryOutputConnection.destination;
+-(FlowBlock *)getNextBlock{
+    if(self.primaryOutputConnection!=nil)return (FlowBlock *)self.primaryOutputConnection.destination;
         return nil;
 }
 -(void)selectNextConnection:(float)delay{
@@ -245,14 +245,14 @@
         [self.selectedNextConnection activate:delay];
     }
 }
--(FunctionalBlock *)nextExecutionBlock{
-    FunctionalBlock *block=self.selectedNextConnection!=nil?(FunctionalBlock *)self.selectedNextConnection.destination:nil;
+-(FlowBlock *)nextExecutionBlock{
+    FlowBlock *block=self.selectedNextConnection!=nil?(FlowBlock *)self.selectedNextConnection.destination:nil;
     self.selectedNextConnection=nil;
     return block;
 }
 
--(FunctionalBlock *)getPreviousBlock{
-    if(self.primaryInputConnection!=nil)return (FunctionalBlock *)self.primaryInputConnection.source;
+-(FlowBlock *)getPreviousBlock{
+    if(self.primaryInputConnection!=nil)return (FlowBlock *)self.primaryInputConnection.source;
     return nil;
 }
 

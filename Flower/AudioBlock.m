@@ -34,7 +34,7 @@
         [self.audioImage setTintColor:[UIColor magentaColor]];
     });
 }
--(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
+-(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     JSValue *output=[super blockEvaluateContext:context withPreviousBlock:block];
     
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:sound

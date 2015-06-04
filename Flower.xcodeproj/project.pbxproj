@@ -90,7 +90,7 @@
 		90CFC90918BB881B00F083B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CFC8E818BB881B00F083B1 /* UIKit.framework */; };
 		90CFC91118BB881B00F083B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC90F18BB881B00F083B1 /* InfoPlist.strings */; };
 		90CFC91318BB881B00F083B1 /* FlowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91218BB881B00F083B1 /* FlowerTests.m */; };
-		90CFC91F18BB88C000F083B1 /* FunctionalBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */; };
+		90CFC91F18BB88C000F083B1 /* FlowBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC91E18BB88C000F083B1 /* FlowBlock.m */; };
 		90CFC92A18BBAF5400F083B1 /* FlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92918BBAF5400F083B1 /* FlowView.m */; };
 		90CFC92D18BBB16D00F083B1 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFC92C18BBB16D00F083B1 /* Connection.m */; };
 		90CFC92F18BBB90000F083B1 /* play_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 90CFC92E18BBB8FF00F083B1 /* play_d.png */; };
@@ -264,8 +264,8 @@
 		90CFC90E18BB881B00F083B1 /* FlowerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlowerTests-Info.plist"; sourceTree = "<group>"; };
 		90CFC91018BB881B00F083B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		90CFC91218BB881B00F083B1 /* FlowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlowerTests.m; sourceTree = "<group>"; };
-		90CFC91D18BB88C000F083B1 /* FunctionalBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionalBlock.h; sourceTree = "<group>"; };
-		90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionalBlock.m; sourceTree = "<group>"; };
+		90CFC91D18BB88C000F083B1 /* FlowBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowBlock.h; sourceTree = "<group>"; };
+		90CFC91E18BB88C000F083B1 /* FlowBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowBlock.m; sourceTree = "<group>"; };
 		90CFC92818BBAF5400F083B1 /* FlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowView.h; sourceTree = "<group>"; };
 		90CFC92918BBAF5400F083B1 /* FlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowView.m; sourceTree = "<group>"; };
 		90CFC92B18BBB16D00F083B1 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
@@ -645,8 +645,8 @@
 				90A8C5FD18C599DB00E73E79 /* nodeviews.xib */,
 				9031A3AE18C91A5700893E8E /* nodeviews.viewcontrollers.xib */,
 				90CC41F21B1E5691008A87D2 /* program.xib */,
-				90CFC91D18BB88C000F083B1 /* FunctionalBlock.h */,
-				90CFC91E18BB88C000F083B1 /* FunctionalBlock.m */,
+				90CFC91D18BB88C000F083B1 /* FlowBlock.h */,
+				90CFC91E18BB88C000F083B1 /* FlowBlock.m */,
 				9031A3AA18C9162600893E8E /* ScriptBlock.h */,
 				9031A3AB18C9162600893E8E /* ScriptBlock.m */,
 				90CFC93318BD18BC00F083B1 /* ThreadStartBlock.h */,
@@ -890,7 +890,7 @@
 				90D6C79918F7450B00645E94 /* AltitudeSensor.m in Sources */,
 				90D6C7B418F85E3300645E94 /* HeadingSensor.m in Sources */,
 				902C0BDA18CBB311008A177A /* ComparisonConnection.m in Sources */,
-				90CFC91F18BB88C000F083B1 /* FunctionalBlock.m in Sources */,
+				90CFC91F18BB88C000F083B1 /* FlowBlock.m in Sources */,
 				90D6C7A518F8315500645E94 /* XorGate.m in Sources */,
 				90CFC92D18BBB16D00F083B1 /* Connection.m in Sources */,
 			);

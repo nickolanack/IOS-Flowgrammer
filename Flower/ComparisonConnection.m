@@ -80,7 +80,7 @@
     
 }
 
--(bool)connectNode:(FunctionalBlock *)nodeA toNode:(FunctionalBlock *)nodeB{
+-(bool)connectNode:(FlowBlock *)nodeA toNode:(FlowBlock *)nodeB{
     
     
     

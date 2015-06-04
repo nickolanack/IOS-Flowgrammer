@@ -8,7 +8,7 @@
 //
 
 #import "CodeViewController.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 
 @interface CodeViewController ()
 
@@ -18,7 +18,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    if(self.block!=nil&&[self.block isKindOfClass:[FunctionalBlock class]])[self.editor setText:((FunctionalBlock *)self.block).javascript];
+    if(self.block!=nil&&[self.block isKindOfClass:[FlowBlock class]])[self.editor setText:((FlowBlock *)self.block).javascript];
     [self.editor becomeFirstResponder];
     [super viewWillAppear:animated];
     
@@ -27,7 +27,7 @@
     [self.editor.layer setCornerRadius:3.0];
     
     if(self.block){
-        if(((VariableConnection *)[((FunctionalBlock *)self.block).outputVariableConnections objectAtIndex:0]).destination!=nil){
+        if(((VariableConnection *)[((FlowBlock *)self.block).outputVariableConnections objectAtIndex:0]).destination!=nil){
             
         }else{
             self.outputConnectionLabel.text=[NSString stringWithFormat:@"//%@ //no output connection",self.outputConnectionLabel.text];
@@ -37,8 +37,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
 
-    if(self.block!=nil&&[self.block isKindOfClass:[FunctionalBlock class]]){
-        [((FunctionalBlock *)self.block) setJavascript:self.editor.text];
+    if(self.block!=nil&&[self.block isKindOfClass:[FlowBlock class]]){
+        [((FlowBlock *)self.block) setJavascript:self.editor.text];
     }
     [super viewWillDisappear:animated];
 

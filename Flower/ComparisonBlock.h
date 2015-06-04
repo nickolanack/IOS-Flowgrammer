@@ -9,7 +9,7 @@
 #import "LoopBlock.h"
 #import "LoopConnection.h"
 
-@interface ComparisonBlock : FunctionalBlock
+@interface ComparisonBlock : FlowBlock
 
 @property Connection *primaryLoopOutputConnection;
 @property Connection *primaryLoopInputConnection;

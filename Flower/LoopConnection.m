@@ -7,7 +7,7 @@
 //
 
 #import "LoopConnection.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import "LoopBlock.h"
 
 
@@ -80,13 +80,13 @@
     
 }
 
--(bool)canInsertBlock:(FunctionalBlock *)block{
+-(bool)canInsertBlock:(FlowBlock *)block{
     if(block==self.loopBlock)return false;
     return [super canInsertBlock:block];
 }
 
 
--(bool)connectNode:(FunctionalBlock *)nodeA toNode:(FunctionalBlock *)nodeB{
+-(bool)connectNode:(FlowBlock *)nodeA toNode:(FlowBlock *)nodeB{
     
     
     if(nodeA==nodeB&&[nodeA isKindOfClass:[LoopBlock class]])[self setLoopBlock:(LoopBlock *)nodeA];

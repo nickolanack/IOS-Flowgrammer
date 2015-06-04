@@ -9,7 +9,7 @@
 #import "NodeLibraryViewController.h"
 #import "NodeViewCell.h"
 #import "VariableViewCell.h"
-#import "FunctionalBlock.h"
+#import "FlowBlock.h"
 #import "Variable.h"
 #import "Sensor.h"
 #import "LogicGate.h"
@@ -86,10 +86,10 @@
     return a;
 }
 
--(FunctionalBlock *)getLibraryNodeForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(FlowBlock *)getLibraryNodeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     int i=indexPath.item;
-    return (FunctionalBlock *)[[self getNodeLib] objectAtIndex:i];
+    return (FlowBlock *)[[self getNodeLib] objectAtIndex:i];
 
 }
 
@@ -172,7 +172,7 @@
 }
 - (void) selectFlowNode:(Block *)node{
     if(self.flow){
-        if(self.connection!=nil&&[node isKindOfClass:[FunctionalBlock class]]){
+        if(self.connection!=nil&&[node isKindOfClass:[FlowBlock class]]){
             [self.flow addBlock:node];
             [node moveCenterToPoint:[connection getCenterPoint]];
             [self.connection insertBlock:node];

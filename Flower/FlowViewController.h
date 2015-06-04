@@ -14,7 +14,7 @@
 @class FlowView;
 @class Block;
 @class Connection;
-@class FunctionalBlock;
+@class FlowBlock;
 
 
 @interface FlowViewController : UIViewController
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *openClick;
 
 -(void)addBlockToFlow:(Block *)node;
--(void)addBlockToFlow:(FunctionalBlock *)node atConnection:(Connection *)connection;
+-(void)addBlockToFlow:(FlowBlock *)node atConnection:(Connection *)connection;
 -(void)displayDetailViewForNode:(Block *)node withViewController:(NodeViewController *)vc;
 -(void)displayNodeLibraryWithConnection:(Connection *) c;
 -(void)displayNodeLibraryWithPoint:(NSValue *)point;
