@@ -239,9 +239,7 @@
     ThreadEndBlock *end=(ThreadEndBlock *)[Flowutils InstantiateWithBundle:@"program" andIndex:1 andOwner:self.delegate];
     [self addBlock:end];
     [end moveCenterToPoint:CGPointMake(_nextInsertPoint.x+100, _nextInsertPoint.y+100)];
-    [Flowutils InsertBlock:end At:start.primaryOutputConnection];
-    
-    
+    [start.primaryOutputConnection insertBlock:end];
 }
 -(void)handleInsertNode{
     if([self.delegate respondsToSelector:@selector(displayNodeLibraryWithConnection:)]){
@@ -361,7 +359,7 @@
         if(_hoveringOver&&n!=nil){
             [_hoveringOver clearHoverArea:n];
             
-            [Flowutils InsertBlock:n At:_hoveringOver];
+            [_hoveringOver insertBlock:n];
             _hoveringOver=nil;
             
         }

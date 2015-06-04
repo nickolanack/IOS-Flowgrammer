@@ -66,7 +66,7 @@
     
 }
 
--(Connection *)getNextConnectionForSplit{
+-(Connection *)createConnectionForInsertingBlock{
     
     ComparisonConnection *l=[[ComparisonConnection alloc] init];
     [l setIsPrimaryLoop:self.isPrimaryLoop];

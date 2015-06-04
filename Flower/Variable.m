@@ -58,7 +58,7 @@
     for (VariableConnection *v in self.mutatorConnections) {
         [v disconnectUnlockedEnd];
     }
-    [super handleDeleteRequest];
+    [self deleteBlock];
 }
 
 -(void)positionLabel{

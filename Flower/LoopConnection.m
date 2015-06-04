@@ -67,7 +67,7 @@
 }
 
 
--(Connection *)getNextConnectionForSplit{
+-(Connection *)createConnectionForInsertingBlock{
 
     LoopConnection *l=[[LoopConnection alloc] init];
     [l setLoopBlock:self.loopBlock];

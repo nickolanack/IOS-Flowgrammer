@@ -20,7 +20,7 @@
     
 
 
-+(bool)InsertBlock:(Block *)n At:(Connection *)c;
+
 
 +(Block *)InstantiateWithBundle:(NSString *)bundle andIndex:(int)index andOwner:(id) owner;
 

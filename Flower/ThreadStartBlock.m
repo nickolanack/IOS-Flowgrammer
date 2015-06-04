@@ -7,6 +7,7 @@
 //
 
 #import "ThreadStartBlock.h"
+#import "ThreadEndBlock.h"
 #import "Connection.h"
 #import "FlowView.h"
 @interface ThreadStartBlock()
@@ -21,6 +22,7 @@
 @property float delay;
 
 @property bool unlocked;
+@property  ThreadEndBlock *end;
 
 
 @end
@@ -34,6 +36,55 @@
     [[[Connection alloc] init] connectNode:self toNode:nil];
     _delay=0.5;
 }
+
+-(bool)isSliceable{
+    return false;
+}
+
+-(void)deleteBlock{
+
+    
+    FunctionalBlock *current= [self getNextBlock];
+    NSMutableArray *blocksToSlice=[[NSMutableArray alloc] init];
+    while(current != _end){
+        if(current==nil){
+            //@throw iterated past end of flow. unclosed/inconsistent flow?
+        }
+        
+        if(![current isSliceable]){
+            //@throw all flow blocks should be sliceable!
+        }
+        
+        [blocksToSlice addObject:current];
+        current =[current getNextBlock];
+    }
+    
+    
+    for (FunctionalBlock *blockInFlow in blocksToSlice) {
+        [blockInFlow slice];
+    }
+   
+    [current deleteBlock];
+    [super deleteBlock];
+    
+
+}
+
+-(void)notifyOutputConnectionStateDidChange{
+    if(_end==nil){
+        [self checkAndSetThreadEndBlock];
+    }
+}
+
+-(void)checkAndSetThreadEndBlock{
+   
+    FunctionalBlock *next=[self getNextBlock];
+    if([next isKindOfClass:[ThreadEndBlock class]]){
+        _end=(ThreadEndBlock *)next;
+    }
+    
+}
+
 
 -(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FunctionalBlock *)block{
     
@@ -94,13 +145,16 @@
 }
 
 -(NSArray *)getMenuItemsArray{
-    NSMutableArray *array=[[NSMutableArray alloc] init];
+    if(_running){
+        return [super getMenuItemsArray];
+    }
+    NSMutableArray *array=[[NSMutableArray alloc] initWithArray:[super getMenuItemsArray]];
     [array addObject:[[UIMenuItem alloc] initWithTitle: @"Run" action:@selector(handleRunRequest)]];
     return [[NSArray alloc] initWithArray:array];
 }
 
 -(void)handleRunRequest{
-    [self.flow run];
+    [self run];
 }
 
 

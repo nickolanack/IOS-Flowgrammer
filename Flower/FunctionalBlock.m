@@ -105,7 +105,7 @@
 }
 -(NSArray *)getMenuItemsArray{
     NSMutableArray *array=[[NSMutableArray alloc] initWithArray:[super getMenuItemsArray]];
-    if(![self isAvailableForInsertion]){
+    if([self isSliceable]){
         [array addObject:[[UIMenuItem alloc] initWithTitle: @"Slice" action:@selector(handleSliceRequest)]];
     }
     return [[NSArray alloc] initWithArray:array];
@@ -137,9 +137,8 @@
     return [[NSArray alloc] initWithArray:a];
 }
 
-
--(void)handleSliceRequest{
-
+-(void)slice{
+    
     [self.flow sliceBlock:self];
     [self setIsSelected:true];
     
@@ -147,6 +146,16 @@
 
 }
 
+
+
+
+-(void)handleSliceRequest{
+    [self slice];
+}
+
+-(bool)isSliceable{
+    return ![self isAvailableForInsertion];
+}
 
 -(void)handleDeleteRequest{
     
@@ -157,7 +166,9 @@
     for (VariableConnection *v in self.inputVariableConnections) {
         [v disconnectUnlockedEnd];
     }
-    [super handleDeleteRequest];
+    
+    [self deleteBlock];
+
     
 }
 
@@ -266,5 +277,12 @@
     return false;
 }
 
+
+-(void)notifyOutputConnectionStateDidChange{
+
+}
+-(void)notifyInputConnectionStateDidChange{
+
+}
 
 @end

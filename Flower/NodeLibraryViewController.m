@@ -173,7 +173,10 @@
 - (void) selectFlowNode:(Block *)node{
     if(self.flow){
         if(self.connection!=nil&&[node isKindOfClass:[FunctionalBlock class]]){
-            [Flowutils InsertBlock:((FunctionalBlock *)node) At:self.connection];
+            [self.flow addBlock:node];
+            [node moveCenterToPoint:[connection getCenterPoint]];
+            [self.connection insertBlock:node];
+            
         }else{
             [self.flow addBlock:node];
             if(self.point!=nil){

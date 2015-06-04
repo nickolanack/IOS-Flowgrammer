@@ -192,25 +192,65 @@
 }
 
 
--(Connection *)getNextConnectionForSplit{
+-(bool)insertBlock:(Block *)n{
+    
+    Block *next=self.destination;
+    
+    if(self.source!=nil){
+        [self connectNode:self.source toNode:n];
+    }
+    
+    FlowView *flow=self.source.flow;
+    
+    if(next!=nil){
+        Connection *nextCon;
+        if(self.source==nil){
+            nextCon=self;
+        }else{
+            nextCon=[self createConnectionForInsertingBlock];
+            if(n.flow!=nil){
+                [flow addConnection:nextCon];
+            }
+        }
+        
+        [nextCon connectNode:n toNode:next];
+        [nextCon needsUpdate];
+    }else{
+        [self connectNode:self.source toNode:n];
+    }
+    
+    [self needsUpdate];
+    
+    
+    return true;
+    
+}
+
+-(Connection *)createConnectionForInsertingBlock{
     return [[Connection alloc] init];
 }
 
--(bool)connectNode:(Block *)nodeA toNode:(Block *)nodeB{
+-(bool)connectNode:(Block *)newSource toNode:(Block *)newDest{
     
-    if([nodeA isKindOfClass:[FunctionalBlock class]]&&[nodeB isKindOfClass:[FunctionalBlock class]]){
+    if([newSource isKindOfClass:[FunctionalBlock class]]&&[newDest isKindOfClass:[FunctionalBlock class]]){
         
-        [(FunctionalBlock *)nodeA setPrimaryOutputConnection:self];
-        [(FunctionalBlock *)nodeB setPrimaryInputConnection:self];
+        FunctionalBlock *sourceFn=(FunctionalBlock *)newSource;
+        FunctionalBlock *destFn=(FunctionalBlock *)newDest;
         
-        [self setSource:nodeA];
-        [self setDestination:nodeB];
+        [sourceFn setPrimaryOutputConnection:self];
+        [destFn setPrimaryInputConnection:self];
+        
+        [self setSource:sourceFn];
+        [self setDestination:newDest];
+        
+        [sourceFn notifyOutputConnectionStateDidChange];
+        [destFn notifyInputConnectionStateDidChange];
         
         return true;
     }else{
-        if([nodeA isKindOfClass:[ThreadStartBlock class]]&&nodeB==nil){
-            [(ThreadStartBlock *)nodeA setPrimaryOutputConnection:self];
-            [self setSource:nodeA];
+        if([newSource isKindOfClass:[ThreadStartBlock class]]&&newDest==nil){
+            [(ThreadStartBlock *)newSource setPrimaryOutputConnection:self];
+            [self setSource:newSource];
             return true;
         }
     
@@ -464,6 +504,31 @@
     
     }
     @throw [[NSException alloc] initWithName:@"Invalid Connection Type Source" reason:@"Expected Source Connection to be distinct" userInfo:nil];
+}
+
+
+
+-(CGPoint) getSourcePoint{
+    if(self.source==nil){
+        if(self.destination==nil){
+            @throw [[NSException alloc] initWithName:@"NoCoordinatesConnected" reason:@"Attempted to get coordinates on disconnected connection" userInfo:nil];
+        }
+        
+    }
+    return [self.source.flow convertPoint:connectionPointSource fromCoordinateSpace:self];
+}
+-(CGPoint) getDestinationPoint{
+    if(self.destination==nil){
+        return [self getSourcePoint];
+    }
+    return [self.destination.flow convertPoint:connectionPointDestination fromCoordinateSpace:self];
+}
+
+-(CGPoint) getCenterPoint{
+    if(self.destination==nil){
+        return [self getSourcePoint];
+    }
+    return [self.source.flow convertPoint:centerPoint fromCoordinateSpace:self];
 }
 
 

@@ -105,6 +105,10 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 
 -(void)needsUpdate;
 -(bool)canInsertBlock:(Block *)block;
+
+-(bool)insertBlock:(Block *)n;
+
+
 -(bool)drawInsertArea:(Block *)node;
 -(bool)drawHoverArea:(Block *)node;
 -(float)distanceToHoverArea:(CGPoint)p;
@@ -113,7 +117,7 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 
 -(void)setMidPointColor:(UIColor *)midPointColor;
 
--(Connection *)getNextConnectionForSplit;
+
 
 -(bool)connectNode:(Block *)a toNode:(Block *)b;
 -(bool)deleteConnectionFromFlow:(FlowView *)f;
@@ -137,6 +141,7 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 -(void)drawEndPoints:(CGContextRef)context;
 -(void)drawMidPoint:(CGContextRef)context;
 -(CGRect)rectUnion:(CGRect)a :(CGRect)b;
+-(Connection *)createConnectionForInsertingBlock;
 
 -(void)setDrawFrame:(bool)b;
 
@@ -152,6 +157,22 @@ typedef NS_ENUM(NSInteger, ConnectionEndPointStyle) {
 -(void)activate:(float)delay;
 
 -(NSDictionary *)save;
+
+
+/*!
+ * returns the CGPoint of the connection source relative to the coordinate system used by the source and destination points
+ */
+-(CGPoint) getSourcePoint;
+
+/*!
+ * returns the CGPoint of the connection destination relative to the coordinate system used by the source and destination points
+ */
+-(CGPoint) getDestinationPoint;
+
+/*!
+ * returns the CGPoint of the connection midpoint (insertion point) relative to the coordinate system used by the source and destination points
+ */
+-(CGPoint) getCenterPoint;
 
 @end
 

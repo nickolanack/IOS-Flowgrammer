@@ -39,7 +39,6 @@
 -(NSArray *)getConnections;
 -(NSArray *)getConnectedBlocks;
 -(NSArray *)getMenuItemsArray;
--(void)handleDeleteRequest;
 
 -(void)deleteBlockFromFlow:(FlowView *)f;
 

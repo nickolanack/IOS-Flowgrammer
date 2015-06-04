@@ -88,8 +88,7 @@
 }
 
 -(void)addBlockToFlow:(FunctionalBlock *)node atConnection:(Connection *)connection{
-    [Flowutils InsertBlock:node At:connection];
-    
+    [connection insertBlock:node];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -292,9 +291,6 @@
     }
 }
 
-- (IBAction)runClick:(id)sender {
-    [self.flow run];
-}
 
 -(void)openFlow:(NSString *)file{
     

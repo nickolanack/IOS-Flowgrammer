@@ -273,7 +273,7 @@
         [self.primaryLoopOutputConnection removeFromSuperview];
         [self.secondaryLoopOutputConnection removeFromSuperview];
     }
-    [super handleDeleteRequest];
+    [self deleteBlock];
 }
 
 
@@ -298,14 +298,14 @@
     NSArray *ifLoopBlocks=[state objectForKey:@"ifLoopBlocks"];
     if(ifLoopBlocks!=nil){
         for(NSNumber *b in ifLoopBlocks){
-            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.primaryLoopInputConnection];
+            [self.primaryLoopInputConnection insertBlock:[self.flow blockAtIndex:[b integerValue]]];
         }
     }
     
     NSArray *elseLoopBlocks=[state objectForKey:@"elseLoopBlocks"];
     if(elseLoopBlocks!=nil){
         for(NSNumber *b in elseLoopBlocks){
-            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.secondaryLoopInputConnection];
+            [self.secondaryLoopInputConnection insertBlock:[self.flow blockAtIndex:[b integerValue]]];
         }
     }
     

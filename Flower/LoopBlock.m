@@ -76,7 +76,7 @@
     }else{
         [self.loopout removeFromSuperview];
     }
-    [super handleDeleteRequest];
+    [self deleteBlock];
 }
 
 
@@ -187,7 +187,7 @@
  
     if(loopBlocks!=nil){
         for(NSNumber *b in loopBlocks){
-            [Flowutils InsertBlock:(FunctionalBlock *)[self.flow blockAtIndex:[b integerValue]] At:self.loopin];
+            [self.loopin insertBlock:[self.flow blockAtIndex:[b integerValue]]];
         }
         
    

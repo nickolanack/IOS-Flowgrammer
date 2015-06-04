@@ -61,15 +61,6 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AJg-KY-eyW">
-                                <rect key="frame" x="614" y="960" width="47" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Run"/>
-                                <connections>
-                                    <action selector="runClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lgo-mb-YUI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uu7-PD-kjA">
                                 <rect key="frame" x="539" y="960" width="67" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -101,7 +92,6 @@
                         <connections>
                             <outlet property="descriptionLabel" destination="1kJ-VB-GsJ" id="1r6-0W-QqO"/>
                             <outlet property="nameLabel" destination="mL1-6e-zbx" id="5VV-3v-nS4"/>
-                            <outlet property="runButton" destination="AJg-KY-eyW" id="gW9-El-BGz"/>
                             <outlet property="saveSpinner" destination="sjo-Vl-1f0" id="hYa-Xb-gtR"/>
                         </connections>
                     </view>

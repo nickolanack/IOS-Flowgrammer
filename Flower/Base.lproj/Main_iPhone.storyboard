@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGt-qJ-IdM">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGt-qJ-IdM">
                                 <rect key="frame" x="191" y="515" width="63" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Settings"/>
@@ -25,20 +25,9 @@
                                     <segue destination="Gez-oW-xKT" kind="modal" id="H16-ac-YoT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15J-zh-yye">
-                                <rect key="frame" x="269" y="515" width="31" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Run"/>
-                                <connections>
-                                    <action selector="runClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lo7-fn-OyY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aA4-Cp-rLY" firstAttribute="top" secondItem="15J-zh-yye" secondAttribute="bottom" constant="20" id="2oL-FV-tG8"/>
-                            <constraint firstAttribute="trailing" secondItem="15J-zh-yye" secondAttribute="trailing" constant="20" id="4kx-ck-HNa"/>
-                            <constraint firstItem="15J-zh-yye" firstAttribute="leading" secondItem="IGt-qJ-IdM" secondAttribute="trailing" constant="8" id="eOW-nW-wkV"/>
                             <constraint firstItem="aA4-Cp-rLY" firstAttribute="top" secondItem="IGt-qJ-IdM" secondAttribute="bottom" constant="20" id="run-cd-Xwv"/>
                         </constraints>
                     </view>

@@ -66,10 +66,10 @@
     if(inputs!=nil){
         for(int i=0;i<inputs.count;i++){
             int j=[((NSNumber *)[inputs objectAtIndex:i]) integerValue];
-            if(j!=NSNotFound)[Flowutils InsertBlock:[self.flow blockAtIndex:j] At:[self.inputVariableConnections objectAtIndex:i]];
-            
-            
-            
+            if(j!=NSNotFound){
+                [[self.inputVariableConnections objectAtIndex:i] insertBlock:[self.flow blockAtIndex:j]];
+            }
+
         }
         
     }
@@ -78,7 +78,8 @@
     if(outputs!=nil){
         for(int i=0;i<outputs.count;i++){
             int j=[((NSNumber *)[outputs objectAtIndex:i]) integerValue];
-            if(j!=NSNotFound)[Flowutils InsertBlock:[self.flow blockAtIndex:j] At:[self.outputVariableConnections objectAtIndex:i]];
+
+            [[self.outputVariableConnections objectAtIndex:i] insertBlock:[self.flow blockAtIndex:j]];
         }
         
     }

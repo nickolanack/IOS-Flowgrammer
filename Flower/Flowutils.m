@@ -134,7 +134,8 @@
                         if(functionA.primaryOutputConnection!=nil){
                             
                             [removed addObject:connectionState];
-                            [Flowutils InsertBlock:(FunctionalBlock *)blockB At:functionA.primaryOutputConnection];
+                            [functionA.primaryOutputConnection insertBlock:blockB];
+
                         }
                     }else{
                         [removed addObject:connectionState];
@@ -149,50 +150,6 @@
     }
     
 }
-
-
-+(bool)InsertBlock:(Block *)n At:(Connection *)c{
-    
-    Block *next=c.destination;
-    
-    if(c.source!=nil){
-        [c connectNode:c.source toNode:n];
-    }
-    
-    FlowView *flow=c.source.flow;
-    
-    /*
-     if(!_isRestoring){
-     CGPoint center=c.centerPoint;
-     center=[self convertPoint:center fromView:c];
-     [n moveCenterToPoint:center];
-     }
-     */
-    
-    if(next!=nil){
-        Connection *nextCon;
-        if(c.source==nil){
-            nextCon=c;
-        }else{
-            nextCon=[c getNextConnectionForSplit];
-            if(n.flow!=nil){
-                [flow addConnection:nextCon];
-            }
-        }
-        
-        [nextCon connectNode:n toNode:next];
-        [nextCon needsUpdate];
-    }else{
-        [c connectNode:c.source toNode:n];
-    }
-    
-    [c needsUpdate];
-    
-    
-    return true;
-    
-}
-
 
 +(Block *)InstantiateWithBundle:(NSString *)bundle andIndex:(int)index andOwner:(id) owner{
     Block *b= (Block *)[[[NSBundle mainBundle] loadNibNamed:bundle owner:owner options:nil] objectAtIndex:index];

@@ -36,6 +36,9 @@
 -(void)willEvaluate;
 -(void)didEvaluate;
 
+-(void)notifyOutputConnectionStateDidChange;
+-(void)notifyInputConnectionStateDidChange;
+
 
 -(FunctionalBlock *)getNextBlock;
 -(void)selectNextConnection:(float)delay;
@@ -46,5 +49,7 @@
 -(NSArray *)getBlocksConnectedToOutput;
 -(NSArray *)getBlocksConnectedToInput;
 
+-(bool)isSliceable;
+-(void)slice;
 
 @end

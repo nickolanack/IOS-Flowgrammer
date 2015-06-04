@@ -222,10 +222,10 @@
 -(void)deleteBlock{
     if(self.flow!=nil){
         FlowView *f=self.flow;
-        [f deleteBlock:self];
         for (Connection *c in [self getConnections]) {
             [f deleteConnection:c];
         }
+        [f deleteBlock:self];
     }else{
         if(self.superview!=nil){
 
