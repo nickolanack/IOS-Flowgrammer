@@ -10,4 +10,6 @@
 
 @interface WaitBlock : FlowBlock
 
+@property (weak, nonatomic) IBOutlet UIView *goView;
+@property (weak, nonatomic) IBOutlet UIView *waitView;
 @end

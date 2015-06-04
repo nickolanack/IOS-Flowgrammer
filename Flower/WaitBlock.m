@@ -14,7 +14,7 @@
 @interface WaitBlock()
 
 @property NSCondition *lock;
-@property bool unlocked;
+@property bool locked;
 
 @end
 
@@ -36,29 +36,30 @@
     
     
     [self setName:@"Wait For Signal"];
-    
+    _lock=[NSCondition new];
+    _locked=false;
 }
 
 
 -(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     JSValue *output=[super blockEvaluateContext:context withPreviousBlock:block];
-    _unlocked=false;
-    _lock=[NSCondition new];
+    
+   
     
     bool wait=true;
     
     Block *signal=((VariableConnection *)[self.inputVariableConnections objectAtIndex:0]).source;
     if(signal!=nil&&[signal isKindOfClass:[BooleanVariable class]]){
-        wait =![[((BooleanVariable *)signal) value] boolValue];
+        _locked =![[((BooleanVariable *)signal) value] boolValue];
     }
     
     
     
     
-    if(wait){
+    if(_locked){
         [_lock lock];
     }
-    while (!_unlocked)[_lock wait];
+    while (_locked)[_lock wait];
     [_lock unlock];
     return output;
 }
@@ -69,12 +70,26 @@
     if(signal!=nil&&[signal isKindOfClass:[BooleanVariable class]]){
         wait =![[((BooleanVariable *)signal) value] boolValue];
     }
+   
+    
     
     if(!wait){
-        [_lock lock];
-        _unlocked=true;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.waitView setHidden:true];
+            [self.goView setHidden:false];
+        });
+        
+        
+       
+        _locked=false;
         [_lock signal];
-        [_lock unlock];
+        
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.waitView setHidden:false];
+            [self.goView setHidden:true];
+        });
+        
     }
     
 }
