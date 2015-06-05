@@ -41,7 +41,7 @@
     self.activeShadowRadius=5.0f;
     
     
-    self.doubleActiveBorderColor=[UIColor magentaColor];
+    self.doubleActiveBorderColor=[UIColor purpleColor];
     self.idleBackgroundColor=self.backgroundColor;
     self.backgroundColor=[UIColor clearColor];
     [self.layer setBackgroundColor:self.idleBackgroundColor.CGColor];
