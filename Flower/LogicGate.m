@@ -25,6 +25,7 @@
 
     [self.layer setBorderWidth:0];
     [self setName:@"Logic Gate"];
+    [self setDescription:@"Performs a boolean logic operation"];
     [self positionLabel];
     
     self.inset=10.0;

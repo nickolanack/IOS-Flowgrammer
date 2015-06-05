@@ -20,13 +20,6 @@
 		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
 		<string>../../../Flower</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>E1471BC99E23A3B3C0353D2CE7B9E10DB3DE64DB</key>
-		<string>https://github.com/nickolanack/IOS-Flowgrammer.git</string>
-	</dict>
-	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/nickolanack/IOS-Flowgrammer.git/trunk/Flower.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
