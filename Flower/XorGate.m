@@ -25,7 +25,7 @@
     [a connectNode:nil toNode:self];
     
     [a setVariableType:[BooleanVariable class]];
-    [a setMidPointColor:[UIColor magentaColor]];
+    [a setMidPointColor:[BooleanVariable Color]];
     
     
     VariableConnection *b=[[VariableConnection alloc] init];
@@ -35,7 +35,7 @@
     [b connectNode:nil toNode:self];
     
     [b setVariableType:[BooleanVariable class]];
-    [b setMidPointColor:[UIColor magentaColor]];
+    [b setMidPointColor:[BooleanVariable Color]];
     
 }
 -(bool)evaluate{

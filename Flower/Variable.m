@@ -22,6 +22,7 @@
     self.accessorConnections=[[NSMutableArray alloc] init];
     self.mutatorConnections=[[NSMutableArray alloc] init];
     
+    [self.layer setBackgroundColor:[Variable Color].CGColor];
    
     [self setName:@"Variable"];
 }
@@ -209,6 +210,8 @@
 
 }
 
-
++(UIColor*)Color{
+    return [UIColor lightGrayColor];
+}
 
 @end

@@ -45,7 +45,7 @@
     [o connectNode:self toNode:nil];
     
     [o setVariableType:[BooleanVariable class]];
-    [o setMidPointColor:[UIColor magentaColor]];
+    [o setMidPointColor:[BooleanVariable Color]];
 }
 
 -(bool)evaluate{

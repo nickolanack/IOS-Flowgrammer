@@ -46,7 +46,7 @@
     [a connectNode:nil toNode:self];
     
     [a setVariableType:[BooleanVariable class]];
-    [a setMidPointColor:[UIColor magentaColor]];
+    [a setMidPointColor:[BooleanVariable Color]];
     
 }
 
@@ -59,7 +59,7 @@
     [o connectNode:self toNode:nil];
     
     [o setVariableType:[BooleanVariable class]];
-    [o setMidPointColor:[UIColor magentaColor]];
+    [o setMidPointColor:[BooleanVariable Color]];
     
 }
 

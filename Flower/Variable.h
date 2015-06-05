@@ -28,4 +28,5 @@
 -(NSString *)type;
 -(NSString *)toString;
 
++(UIColor*)Color;
 @end
