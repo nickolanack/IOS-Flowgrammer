@@ -32,7 +32,7 @@
     VariableConnection *o=[[VariableConnection alloc] init];
     [o setName:@"out"];
     [o setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeRight];
-    [o setCenterAlignOffsetSource:CGPointMake(-5, 0)];
+    [o setCenterAlignOffsetSource:CGPointMake(-2, 0)];
     [o connectNode:self toNode:nil];
     
     [o setVariableType:[BooleanVariable class]];
@@ -50,6 +50,7 @@
     
     
     CGPathAddEllipseInRect(p, nil, CGRectMake(3, 3, f.size.width-6, f.size.height-6));
+    CGPathAddEllipseInRect(p, nil, CGRectMake(1, 1, f.size.width-2, f.size.height-2));
     return p;
 }
 
