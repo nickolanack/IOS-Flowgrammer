@@ -11,6 +11,7 @@
 @interface LogicGate()
 
 @property bool configuring;
+@property UIColor *fillColor;
 
 @end
 
@@ -38,6 +39,8 @@
     [self addInputs];
     [self addOutputs];
     _configuring=false;
+    
+    _fillColor=[UIColor whiteColor];
     
 }
 
@@ -171,7 +174,7 @@
     
     
     CGContextAddPath(context,  self.path);
-    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetFillColorWithColor(context, _fillColor.CGColor);
     CGContextFillPath(context);
    
     CGContextAddPath(context,  self.path);

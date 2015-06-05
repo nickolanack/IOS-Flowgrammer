@@ -61,6 +61,7 @@
 		9071F16618D95CEC00202A7C /* speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 9071F16518D95CEC00202A7C /* speaker.png */; };
 		9071F16918D96F4E00202A7C /* NumberVariableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9071F16818D96F4E00202A7C /* NumberVariableViewController.m */; };
 		9079F39518DA920D00069E3E /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9079F39418DA920D00069E3E /* AudioViewController.m */; };
+		9081F3AC1B22264F00C19B6E /* Clock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9081F3AB1B22264F00C19B6E /* Clock.m */; };
 		909EC4C418E358110003DBE9 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 909EC4C318E358110003DBE9 /* keyboard.png */; };
 		909EC4C718E5298C0003DBE9 /* FlowLibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C618E5298C0003DBE9 /* FlowLibraryCell.m */; };
 		909EC4CA18E54B2A0003DBE9 /* FlowNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909EC4C918E54B2A0003DBE9 /* FlowNameViewController.m */; };
@@ -221,6 +222,8 @@
 		9071F16818D96F4E00202A7C /* NumberVariableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberVariableViewController.m; sourceTree = "<group>"; };
 		9079F39318DA920D00069E3E /* AudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioViewController.h; sourceTree = "<group>"; };
 		9079F39418DA920D00069E3E /* AudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioViewController.m; sourceTree = "<group>"; };
+		9081F3AA1B22264F00C19B6E /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
+		9081F3AB1B22264F00C19B6E /* Clock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clock.m; sourceTree = "<group>"; };
 		909EC4C318E358110003DBE9 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
 		909EC4C518E5298C0003DBE9 /* FlowLibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowLibraryCell.h; sourceTree = "<group>"; };
 		909EC4C618E5298C0003DBE9 /* FlowLibraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowLibraryCell.m; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				90D6C7A418F8315500645E94 /* XorGate.m */,
 				90D6C7A718F834FD00645E94 /* XnorGate.h */,
 				90D6C7A818F834FD00645E94 /* XnorGate.m */,
+				9081F3AA1B22264F00C19B6E /* Clock.h */,
+				9081F3AB1B22264F00C19B6E /* Clock.m */,
 			);
 			name = Gate;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90CFC8F518BB881B00F083B1 /* FlowAppDelegate.m in Sources */,
+				9081F3AC1B22264F00C19B6E /* Clock.m in Sources */,
 				90D6C78D18F71E6100645E94 /* NandGate.m in Sources */,
 				90D6C79618F7361F00645E94 /* LocationSensor.m in Sources */,
 				909EC4CA18E54B2A0003DBE9 /* FlowNameViewController.m in Sources */,
