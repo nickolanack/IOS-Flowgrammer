@@ -14,7 +14,7 @@
 
 -(void)configure{
     [super configure];
-    [self.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
+    
     [self setName:@"Boolean"];
     [self setDescription:@"a boolean variable has two states: on, and off. it can be connected as the input or output of a variable connection"];
     
@@ -58,9 +58,9 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if(bval){
-            [self.layer setBackgroundColor:[UIColor magentaColor].CGColor];
+            [self.layer setBackgroundColor:[BooleanVariable Color].CGColor];
         }else{
-            [self.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
+            [self.layer setBackgroundColor:[Variable Color].CGColor];
         }
     });
 }
@@ -68,5 +68,8 @@
     return [NSNumber numberWithBool:[(NSNumber *)super.value boolValue]];
 }
 
++(UIColor *)Color{
+    return [UIColor magentaColor];
+}
 
 @end

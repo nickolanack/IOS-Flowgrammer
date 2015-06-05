@@ -14,7 +14,7 @@
 -(void)configure{
     [super configure];
     [self setValue:[NSNumber numberWithInteger:0]];
-    [self.layer setBackgroundColor:[UIColor cyanColor].CGColor];
+    [self.layer setBackgroundColor:[NumberVariable Color].CGColor];
     [self setName:@"Number"];
     [self setDescription:@"represents integer, or floating point numbers"];
 }
@@ -70,6 +70,10 @@
 }
 -(int)getDetailNibIndex{
     return 1;
+}
+
++(UIColor*)Color{
+    return [UIColor cyanColor];
 }
 
 @end

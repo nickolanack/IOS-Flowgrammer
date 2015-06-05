@@ -13,7 +13,7 @@
 -(void)configure{
     [super configure];
     [self setValue:@""];
-    [self.layer setBackgroundColor:[UIColor blueColor].CGColor];
+    [self.layer setBackgroundColor:[StringVariable Color].CGColor];
     [self setName:@"String"];
     [self setDescription:@"represents text"];
 }
@@ -50,6 +50,10 @@
 }
 -(int)getDetailNibIndex{
     return 0;
+}
+
++(UIColor*)Color{
+    return [UIColor blueColor];
 }
 
 @end

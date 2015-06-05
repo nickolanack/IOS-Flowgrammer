@@ -13,7 +13,7 @@
 -(void)configure{
     [super configure];
     [self setValue:@[]];
-    [self.layer setBackgroundColor:[UIColor orangeColor].CGColor];
+    [self.layer setBackgroundColor:[ArrayVariable Color].CGColor];
     [self setName:@"Array"];
     [self setDescription:@"represents an array of variables"];
 }
@@ -54,6 +54,10 @@
 
 -(int)getDetailNibIndex{
     return 0;
+}
+
++(UIColor*)Color{
+    return [UIColor orangeColor];
 }
 
 @end
