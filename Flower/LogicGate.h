@@ -46,4 +46,7 @@
 
 -(CGPathRef)getPath;
 -(bool)evaluate;
+-(void)propagate;
+
+
 @end
