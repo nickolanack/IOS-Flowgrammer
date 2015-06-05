@@ -176,6 +176,8 @@
 }
 -(void)setVariableType:(Class)variableType{
     variableTypes=@[[NSValue valueWithBytes:&variableType objCType:@encode(Class)]];
+    
+    
 }
 -(bool)canInsertBlock:(Block *)block{
 
