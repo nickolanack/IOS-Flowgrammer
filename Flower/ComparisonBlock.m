@@ -46,7 +46,7 @@
     Class c1=[NumberVariable class], c2=[BooleanVariable class];
     
     [shouldLoop setVariableTypes:@[[NSValue valueWithBytes:&c1 objCType:@encode(Class)],[NSValue valueWithBytes:&c2 objCType:@encode(Class)]]];
-    [shouldLoop setMidPointColors:@[[UIColor magentaColor],[UIColor cyanColor]]];
+    [shouldLoop setMidPointColors:@[[BooleanVariable Color],[NumberVariable Color]]];
 
     [self setName:@"If Else"];
 }

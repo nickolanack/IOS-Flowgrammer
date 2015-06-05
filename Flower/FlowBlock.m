@@ -42,7 +42,7 @@
 
 -(void)configure{
     [super configure];
-    self.runningBackgroundColor=[UIColor greenColor];
+    self.runningBackgroundColor=[UIColor colorWithRed:170/255.0 green:244/255.0 blue:182/255.0 alpha:1];
     [self setDescription:@"a logic block performs some function possibly interacting with variables and special connections"];
 
 }

@@ -39,7 +39,7 @@
     Class c1=[NumberVariable class], c2=[BooleanVariable class];
     
     [shouldLoop setVariableTypes:@[[NSValue valueWithBytes:&c1 objCType:@encode(Class)],[NSValue valueWithBytes:&c2 objCType:@encode(Class)]]];
-    [shouldLoop setMidPointColors:@[[UIColor magentaColor],[UIColor cyanColor]]];
+    [shouldLoop setMidPointColors:@[[BooleanVariable Color],[NumberVariable Color]]];
 
     
     VariableConnection *incrementor=[[VariableConnection alloc] init];
@@ -49,7 +49,7 @@
     [incrementor connectNode:self toNode:nil];
     
     [incrementor setVariableType:[NumberVariable class]];
-    [incrementor setMidPointColor:[UIColor cyanColor]];
+    [incrementor setMidPointColor:[NumberVariable Color]];
     
     VariableConnection *decrementor=[[VariableConnection alloc] init];
     [decrementor setName:@"decrement"];
@@ -58,7 +58,7 @@
     [decrementor connectNode:self toNode:nil];
     
     [decrementor setVariableType:[NumberVariable class]];
-    [decrementor setMidPointColor:[UIColor cyanColor]];
+    [decrementor setMidPointColor:[NumberVariable Color]];
 
     
     [self setName:@"Loop"];

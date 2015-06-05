@@ -44,7 +44,7 @@
     [spe setNamesVariable:true];
     
     [spe setVariableType:[NumberVariable class]];
-    [spe setMidPointColor:[UIColor cyanColor]];
+    [spe setMidPointColor:[NumberVariable Color]];
 }
 
 

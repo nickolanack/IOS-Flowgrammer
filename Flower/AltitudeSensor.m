@@ -34,7 +34,7 @@
     [alt setNamesVariable:true];
     
     [alt setVariableType:[NumberVariable class]];
-    [alt setMidPointColor:[UIColor cyanColor]];
+    [alt setMidPointColor:[NumberVariable Color]];
     
     VariableConnection *acc=[[VariableConnection alloc] init];
     [acc setName:@"accuracy m"];
@@ -44,7 +44,7 @@
     [acc setNamesVariable:true];
     
     [acc setVariableType:[NumberVariable class]];
-    [acc setMidPointColor:[UIColor cyanColor]];
+    [acc setMidPointColor:[NumberVariable Color]];
     
 }
 

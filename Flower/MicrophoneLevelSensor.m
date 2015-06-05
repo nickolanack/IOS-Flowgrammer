@@ -30,7 +30,7 @@
     [peak setNamesVariable:true];
     
     [peak setVariableType:[NumberVariable class]];
-    [peak setMidPointColor:[UIColor cyanColor]];
+    [peak setMidPointColor:[NumberVariable Color]];
     
     
     VariableConnection *avg=[[VariableConnection alloc] init];
@@ -41,7 +41,7 @@
     [avg setNamesVariable:true];
     
     [avg setVariableType:[NumberVariable class]];
-    [avg setMidPointColor:[UIColor cyanColor]];
+    [avg setMidPointColor:[NumberVariable Color]];
     
 }
 

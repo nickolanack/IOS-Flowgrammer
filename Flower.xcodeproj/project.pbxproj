@@ -566,7 +566,6 @@
 			isa = PBXGroup;
 			children = (
 				90CFC93B18BDBE1100F083B1 /* xsm_controls.png */,
-				900FE89418D6BD1D00DDFDF5 /* System Sounds For Audio Block */,
 				90CFC92E18BBB8FF00F083B1 /* play_d.png */,
 				90CFC93918BD509F00F083B1 /* xsm_edit.png */,
 				9071F16518D95CEC00202A7C /* speaker.png */,
@@ -665,6 +664,7 @@
 				900FE87D18D1910600DDFDF5 /* InputBlock.m */,
 				900FE87F18D1991E00DDFDF5 /* OutputBlock.h */,
 				900FE88018D1991E00DDFDF5 /* OutputBlock.m */,
+				900FE89418D6BD1D00DDFDF5 /* System Sounds For Audio Block */,
 				900FE89118D6BB1D00DDFDF5 /* AudioBlock.h */,
 				900FE89218D6BB1D00DDFDF5 /* AudioBlock.m */,
 				90CC42081B20ED63008A87D2 /* signal.png */,

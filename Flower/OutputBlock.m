@@ -31,7 +31,7 @@
     [title connectNode:nil toNode:self];
     
     [title setVariableType:[StringVariable class]];
-    [title setMidPointColor:[UIColor blueColor]];
+    [title setMidPointColor:[StringVariable Color]];
     
     VariableConnection *message=[[VariableConnection alloc] init];
     [message setConnectionAnchorTypeDestination:ConnectionEndPointAnchorTypeTop];
@@ -40,7 +40,7 @@
     [message connectNode:nil toNode:self];
     
     [message setVariableType:[StringVariable class]];
-    [message setMidPointColor:[UIColor blueColor]];
+    [message setMidPointColor:[StringVariable Color]];
     
     [self setName:@"Print Message"];
     

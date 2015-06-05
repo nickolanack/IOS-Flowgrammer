@@ -30,7 +30,7 @@
     [label connectNode:nil toNode:self];
     
     [label setVariableType:[StringVariable class]];
-    [label setMidPointColor:[UIColor blueColor]];
+    [label setMidPointColor:[StringVariable Color]];
     
     VariableConnection *input=[[VariableConnection alloc] init];
     [input setName:@"input text"];
@@ -40,7 +40,7 @@
     [input connectNode:self toNode:nil];
     
     [input setVariableType:[StringVariable class]];
-    [input setMidPointColor:[UIColor blueColor]];
+    [input setMidPointColor:[StringVariable Color]];
     
     [self setName:@"Keyboard Input"];
     

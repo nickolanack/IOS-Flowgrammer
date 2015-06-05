@@ -39,7 +39,7 @@
         [x setNamesVariable:true];
         
         [x setVariableType:[NumberVariable class]];
-        [x setMidPointColor:[UIColor cyanColor]];
+        [x setMidPointColor:[NumberVariable Color]];
         
         VariableConnection *y=[[VariableConnection alloc] init];
         [y setName:@"y"];
@@ -48,7 +48,7 @@
         [y setNamesVariable:true];
         
         [y setVariableType:[NumberVariable class]];
-        [y setMidPointColor:[UIColor cyanColor]];
+        [y setMidPointColor:[NumberVariable Color]];
         
         VariableConnection *z=[[VariableConnection alloc] init];
         [z setName:@"z"];
@@ -58,7 +58,7 @@
         [z setNamesVariable:true];
         
         [z setVariableType:[NumberVariable class]];
-        [z setMidPointColor:[UIColor cyanColor]];
+        [z setMidPointColor:[NumberVariable Color]];
         
         [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMGyroData *gyroData, NSError *error) {
             

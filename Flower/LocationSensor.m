@@ -35,7 +35,7 @@
     [lat setNamesVariable:true];
     
     [lat setVariableType:[NumberVariable class]];
-    [lat setMidPointColor:[UIColor cyanColor]];
+    [lat setMidPointColor:[NumberVariable Color]];
     
     
     VariableConnection *lon=[[VariableConnection alloc] init];
@@ -45,7 +45,7 @@
     [lon setNamesVariable:true];
     
     [lon setVariableType:[NumberVariable class]];
-    [lon setMidPointColor:[UIColor cyanColor]];
+    [lon setMidPointColor:[NumberVariable Color]];
     
     VariableConnection *alt=[[VariableConnection alloc] init];
     [alt setName:@"accuracy m"];
@@ -55,7 +55,7 @@
     [alt setNamesVariable:true];
     
     [alt setVariableType:[NumberVariable class]];
-    [alt setMidPointColor:[UIColor cyanColor]];
+    [alt setMidPointColor:[NumberVariable Color]];
     
 
 }
