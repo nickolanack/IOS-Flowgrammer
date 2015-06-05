@@ -14,7 +14,7 @@
 @interface WaitBlock()
 
 @property NSCondition *lock;
-@property bool locked;
+@property bool signalToWait;
 
 @end
 
@@ -32,34 +32,27 @@
     [signal connectNode:nil toNode:self];
     
     [signal setVariableType:[BooleanVariable class]];
-    [signal setMidPointColor:[UIColor blueColor]];
+    [signal setMidPointColor:[BooleanVariable Color]];
     
     
     [self setName:@"Wait For Signal"];
     _lock=[NSCondition new];
-    _locked=false;
+    _signalToWait=false;
 }
 
 
 -(JSValue *)blockEvaluateContext:(JSContext *)context withPreviousBlock:(FlowBlock *)block{
     JSValue *output=[super blockEvaluateContext:context withPreviousBlock:block];
     
-   
-    
-    bool wait=true;
-    
     Block *signal=((VariableConnection *)[self.inputVariableConnections objectAtIndex:0]).source;
     if(signal!=nil&&[signal isKindOfClass:[BooleanVariable class]]){
-        _locked =![[((BooleanVariable *)signal) value] boolValue];
+        _signalToWait =![[((BooleanVariable *)signal) value] boolValue];
     }
     
-    
-    
-    
-    if(_locked){
+    if(_signalToWait){
         [_lock lock];
     }
-    while (_locked)[_lock wait];
+    while (_signalToWait)[_lock wait];
     [_lock unlock];
     return output;
 }
@@ -81,7 +74,7 @@
         
         
        
-        _locked=false;
+        _signalToWait=false;
         [_lock signal];
         
     }else{
