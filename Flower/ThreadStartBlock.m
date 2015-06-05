@@ -8,6 +8,8 @@
 
 #import "ThreadStartBlock.h"
 #import "ThreadEndBlock.h"
+#import "VariableConnection.h"
+#import "BooleanVariable.h"
 #import "Connection.h"
 #import "FlowView.h"
 @interface ThreadStartBlock()
@@ -24,6 +26,7 @@
 @property bool unlocked;
 @property  ThreadEndBlock *end;
 
+@property bool triggerState;
 
 @end
 @implementation ThreadStartBlock
@@ -35,6 +38,17 @@
     [self.layer setCornerRadius:self.frame.size.height/2.0];
     [self setName:@"Start"];
     [[[Connection alloc] init] connectNode:self toNode:nil];
+    
+    
+    VariableConnection *signal=[[VariableConnection alloc] init];
+    [signal setConnectionAnchorTypeDestination:ConnectionEndPointAnchorTypeTop];
+    [signal setConnectionAnchorTypeSource:ConnectionEndPointAnchorTypeTop];
+    //[signal setCenterAlignOffsetDestination:CGPointMake(-15, 0)];
+    [signal connectNode:nil toNode:self];
+    
+    [signal setVariableType:[BooleanVariable class]];
+    [signal setMidPointColor:[BooleanVariable Color]];
+    
     _delay=0.5;
 }
 
@@ -47,7 +61,15 @@
 
 -(void)deleteBlock{
 
+
+    [self sliceOutAllBlocksInThread];
+    [_end deleteBlock];
+    [super deleteBlock];
     
+
+}
+
+-(void)sliceOutAllBlocksInThread{
     FlowBlock *current= [self getNextBlock];
     NSMutableArray *blocksToSlice=[[NSMutableArray alloc] init];
     while(current != _end){
@@ -67,10 +89,6 @@
     for (FlowBlock *blockInFlow in blocksToSlice) {
         [blockInFlow slice];
     }
-   
-    [current deleteBlock];
-    [super deleteBlock];
-    
 
 }
 
@@ -254,6 +272,22 @@
 }
 
 
+
+-(void)notifyInputVariableDidChangeValueForConnection:(VariableConnection *)vc{
+    
+    bool signalValue=_triggerState;
+    Block *signal=((VariableConnection *)[self.inputVariableConnections objectAtIndex:0]).source;
+    if(signal!=nil&&[signal isKindOfClass:[BooleanVariable class]]){
+        signalValue =[[((BooleanVariable *)signal) value] boolValue];
+    }
+    
+    
+    
+    if(signalValue&&signalValue!=_triggerState){
+        [self run];
+    }
+    
+}
 
 
 
